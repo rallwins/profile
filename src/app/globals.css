@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --paper: #f4f1ea;
+  --panel: #fbfaf6;
+  --ink: #14161c;
+  --slate: #3e4754;
+  --line: #d5d0c6;
+  --accent: #2436b0;
+  --accent-ink: #f7f5ef;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #101218;
+  --panel: #171b24;
+  --ink: #f3f0e8;
+  --slate: #b7c0cc;
+  --line: #2e3440;
+  --accent: #c5d0ff;
+  --accent-ink: #101218;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: var(--font-source), "Source Sans 3", sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  color: var(--ink);
+  font-family: var(--font-source), "Source Sans 3", sans-serif;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 24%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.article {
+  max-width: 42rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.article h2 {
+  margin-top: 2.25rem;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.article p,
+.article li {
+  margin-top: 0.9rem;
+}
+
+.article ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.react-flow__attribution {
+  background: transparent !important;
+  color: var(--slate) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
