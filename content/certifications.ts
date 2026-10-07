@@ -16,18 +16,9 @@ export const certifications: Certification[] = [
     status: "completed",
     issued: "September 2026",
     examCode: "AIF-C01",
-    credentialId: null,
-    verificationUrl: null,
-    note: "TODO: credential ID and the verification link are not in the résumé.",
-  },
-  {
-    id: "planned-slot",
-    name: "Additional certification",
-    status: "planned",
-    issued: null,
-    examCode: null,
-    credentialId: null,
-    verificationUrl: null,
-    note: "Planned slot only. TODO: no further certification is named. This is not a completed credential.",
+    credentialId: "cd4be8c7c3ea48aca09bc7a181355061",
+    verificationUrl:
+      "https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5",
+    note: "Credential ID and verification link from the public LinkedIn profile.",
   },
 ];

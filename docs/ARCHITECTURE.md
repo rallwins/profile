@@ -13,7 +13,7 @@ A static Next.js App Router site. Content lives in typed modules and one MDX not
 | `/experience` | Weighted roles and the career progression |
 | `/ai` | Production AI practice versus personal experiments |
 | `/projects` | Personal / experimental projects only |
-| `/certifications` | Completed certification, planned placeholder, education |
+| `/certifications` | Completed certification and education |
 | `/writing` | Architecture Notes index |
 | `/writing/[slug]` | MDX article |
 | `/contact` | Mailto form |

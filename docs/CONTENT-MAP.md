@@ -15,7 +15,8 @@ The public name is **Allwins Rajaiah**, matching the brief and the LinkedIn URL.
 | Skill inventory | Resume “Core Technology”, plus Azure under cloud because Tekizma’s résumé and the brief both place Azure there |
 | Employers, titles, locations, dates, responsibility bullets, technology lines, key achievements | Resume |
 | Education institution and degree | Resume, with the brief’s fuller school name and years 1998–2002 |
-| AWS Certified AI Practitioner, exam AIF-C01 | Resume. Issued September 2026 from the brief. |
+| AWS Certified AI Practitioner, exam AIF-C01 | Resume. Issued September 2026 from the brief. LinkedIn shows the same month. |
+| Credential ID `cd4be8c7c3ea48aca09bc7a181355061` and Credly verification URL | Public LinkedIn profile, Licenses & Certifications |
 | Awards (Avishkar 2006, MD’s Merit Award 2005) | Brief. Not repeated on the résumé, still published because the brief listed them as facts. |
 | Technology radar bands | Brief. Not upgraded, including GCP at Exploring, even though the résumé lists GCP under cloud skills. |
 | Case-study flows and ADR topics | Brief, written so they stay consistent with the résumé’s Tekizma and modernization work |
@@ -36,8 +37,6 @@ The résumé includes a mobile phone number. It is not printed on the site or in
 | Gap | How the UI treats it |
 | --- | --- |
 | GitHub profile URL | Control explains that the URL is not published. No href is invented. |
-| Certification credential ID and verification link | Marked TODO beside AIF-C01 |
-| Any certification beyond AIF-C01 | One slot labeled Planned, with no invented name |
 | Recommendation quotes and who said them | “What Colleagues Say” shows theme labels only |
 | Early-career responsibilities, domains, and technology stacks | Title, employer, and dates only. Detail is marked omitted. |
 | Personal-project repositories, demos, unspecified stacks, and lessons learned | Placeholders. Projects are labeled personal/experimental. |

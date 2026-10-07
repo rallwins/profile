@@ -40,15 +40,22 @@ describe("verified profile facts", () => {
     }
   });
 
-  it("does not invent recommendation quotes or a credential id", () => {
+  it("does not invent recommendation quotes and records the published credential", () => {
     for (const item of recommendations) {
       expect(item.quote).toBeNull();
       expect(item.attribution).toBeNull();
     }
     const completed = certifications.find((item) => item.status === "completed");
+    expect(completed?.name).toBe("AWS Certified AI Practitioner");
+    expect(completed?.issued).toBe("September 2026");
     expect(completed?.examCode).toBe("AIF-C01");
-    expect(completed?.credentialId).toBeNull();
-    expect(completed?.verificationUrl).toBeNull();
+    expect(completed?.credentialId).toBe("cd4be8c7c3ea48aca09bc7a181355061");
+    expect(completed?.verificationUrl).toBe(
+      "https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5",
+    );
+    expect(certifications.some((item) => item.id === "planned-slot" || item.status === "planned")).toBe(
+      false,
+    );
   });
 
   it("keeps the radar bands from the brief", () => {

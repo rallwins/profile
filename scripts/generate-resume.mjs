@@ -130,7 +130,9 @@ paragraph("Team Lead, 3i-Infotech, Apr 2004 – Feb 2007.");
 paragraph("Java Developer, Asic Infotech Pvt. Ltd., May 2003 – Feb 2004.");
 
 heading("Certification and education");
-paragraph("AWS Certified AI Practitioner (AIF-C01), issued September 2026. Credential ID and verification link: not stated.");
+paragraph(
+  "AWS Certified AI Practitioner (AIF-C01), issued September 2026. Credential ID cd4be8c7c3ea48aca09bc7a181355061. Verification: https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5.",
+);
 paragraph(
   "B.E., Computer Science & Engineering, Bharathiar University / Amrita Institute of Technology and Science, India, 1998–2002.",
 );

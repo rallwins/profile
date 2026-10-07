@@ -52,7 +52,7 @@ export const routes: RouteItem[] = [
     href: "/certifications",
     label: "Certifications",
     index: "07",
-    description: "Completed credential, a planned slot, and education.",
+    description: "Completed credential and education.",
   },
   {
     href: "/writing",

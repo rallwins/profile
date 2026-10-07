@@ -16,7 +16,7 @@ export default function CertificationsPage() {
         index="07"
         eyebrow="Certifications"
         title="Credentials, only as recorded."
-        lede="One completed certification. Anything else stays in a planned slot until it has a name and a date."
+        lede="One completed certification, issued September 2026."
       />
       <ul className="mt-12 space-y-4">
         {certifications.map((item) => (
