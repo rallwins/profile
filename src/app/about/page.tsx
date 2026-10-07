@@ -1,0 +1,85 @@
+import type { Metadata } from "next";
+import { awards } from "../../../content/awards";
+import { progression } from "../../../content/experience";
+import { education, profile, summaryParagraphs } from "../../../content/profile";
+import { recommendations } from "../../../content/recommendations";
+import { Frame, PageIntro } from "@/components/page-intro";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: profile.aboutShort,
+  alternates: { canonical: "/about" },
+};
+
+export default function AboutPage() {
+  return (
+    <Frame>
+      <PageIntro
+        index="01"
+        eyebrow="About"
+        title="Director of Technology and Solutions Architect."
+        lede={profile.aboutShort}
+      />
+      <p className="mt-6 text-sm text-slate">Résumé name: {profile.fullName}.</p>
+      <div className="mt-10 max-w-3xl space-y-4 text-lg leading-relaxed text-ink">
+        {summaryParagraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+      <section className="mt-16 border-t border-line pt-10">
+        <h2 className="font-serif text-3xl">Timeline</h2>
+        <ol className="mt-6 max-w-3xl border-l border-line pl-6">
+          {progression.map((role) => (
+            <li key={role.id} className="relative pb-6">
+              <span className="absolute -left-[1.65rem] top-1.5 h-2 w-2 bg-accent" aria-hidden="true" />
+              <p className="text-xs uppercase tracking-[0.14em] text-slate">
+                {role.start} – {role.end}
+              </p>
+              <p className="mt-1 text-ink">
+                {role.title}
+                <span className="text-slate"> · {role.employer}</span>
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section className="mt-16 grid gap-10 border-t border-line pt-10 lg:grid-cols-2">
+        <div>
+          <h2 className="font-serif text-3xl">Education</h2>
+          <p className="mt-4 text-ink">{education.degree}</p>
+          <p className="mt-1 text-sm text-slate">
+            {education.school}
+            <span> · {education.years}</span>
+          </p>
+        </div>
+        <div>
+          <h2 className="font-serif text-3xl">Awards</h2>
+          <ul className="mt-4 space-y-4">
+            {awards.map((award) => (
+              <li key={award.id}>
+                <p className="text-ink">
+                  {award.title} <span className="text-slate">· {award.year}</span>
+                </p>
+                <p className="text-sm text-slate">{award.detail}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section className="mt-16 border-t border-line pt-10">
+        <h2 className="font-serif text-3xl">What colleagues say</h2>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
+          No recommendation text is published here. The labels below are themes only. They are not quotations, and they are not attributed.
+        </p>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {recommendations.map((item) => (
+            <li key={item.id} className="border border-line bg-panel p-4">
+              <p className="text-ink">{item.theme}</p>
+              <p className="mt-2 text-xs leading-relaxed text-slate">{item.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Frame>
+  );
+}
