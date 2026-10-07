@@ -1,0 +1,59 @@
+---
+title: "Designing Enterprise RAG Systems: Architecture, Retrieval, Evaluation and Guardrails"
+description: "A sample architecture note on retrieval, context, evaluation, and guardrails. Draft written for this profile. Not previously published."
+category: "AI Architecture"
+status: "draft"
+---
+
+This is a sample draft written for this profile. It has not been published elsewhere, and it does not describe a named client system.
+
+## The question the architecture has to answer
+
+An enterprise language interface fails in a specific way: it sounds sure, and it is answering from the wrong document, a stale extract, or a guess. Retrieval-augmented generation exists to keep the model inside material the organization already stands behind. The design work is deciding what “stands behind” means before anyone writes a prompt.
+
+## Retrieval is a product surface
+
+Treat the index as a system with owners. A useful split is source, chunk, and citation.
+
+The source is the system of record: a data product, a policy, a runbook. If that source has no owner, it does not belong in the index yet.
+
+The chunk is the unit you retrieve. Size it so a person can check the citation. A chunk that only makes sense with three unseen neighbors will produce answers nobody can audit.
+
+The citation is what the interface shows. If the user cannot open the same passage the model saw, you do not have retrieval. You have a paraphrase.
+
+Hybrid search — a lexical path plus a vector path — is often the boring choice that survives contact with product names, error codes, and policy numbers. This note does not claim a particular index was selected for a deployment.
+
+## Context is a budget
+
+The model should see the smallest set of passages that can support the answer, plus the instruction that tells it to refuse when those passages are not enough. Stuffing the window is not a retrieval strategy. It hides ranking mistakes and raises the chance that an unrelated paragraph wins.
+
+Put metadata in the context on purpose: source, time, and whether the passage is current. A model will not infer your retention rules.
+
+## Evaluation before the demo
+
+Decide the tests while the corpus is still small.
+
+- Retrieval: did the right passage land in the top set? Measure that separately from the prose.
+- Faithfulness: does the answer stay inside the passages?
+- Refusal: does the system decline when the corpus does not contain the answer?
+- Regression: when a document changes, which questions move?
+
+A single “it looks good” review will not catch a retrieval regression. LLM evaluation, in this sense, is a set of fixtures, not a vibe.
+
+## Guardrails are architecture
+
+Guardrails are the constraints around what may be retrieved, what may be said, and what may be done.
+
+Retrieval guardrails limit the corpus by identity and purpose. A person should not retrieve a passage they could not open in the source system.
+
+Output guardrails cover refusal, citation, and the categories of request you will not answer. They are not a filter bolted on after the model is already eloquent.
+
+Action guardrails matter the moment an agent can call a tool. MCP-style tool use is a permission boundary. The agent proposes; a policy decides whether the tool runs. Natural-language data interaction can stay read-only for a long time. That is a design choice, not a lack of ambition.
+
+## Observability
+
+Log the question, the passages, the model’s answer, and the refusal or tool decision. You need that trace when an answer is wrong. You do not need to log secrets to get it. Keep the trace under the same retention rules as the source data.
+
+## A shape that holds
+
+Enterprise data is engineered into a knowledge layer. Retrieval selects context. The model speaks from that context. Guardrails and evaluation sit on the path, and an agent reaches an enterprise action only through an explicit tool boundary. That is the whole argument. The rest is corpus ownership and measurement.
