@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { awards } from "../../../content/awards";
 import { progression } from "../../../content/experience";
 import { education, profile, summaryParagraphs } from "../../../content/profile";
 import { recommendations } from "../../../content/recommendations";
@@ -43,28 +42,13 @@ export default function AboutPage() {
           ))}
         </ol>
       </section>
-      <section className="mt-16 grid gap-10 border-t border-line pt-10 lg:grid-cols-2">
-        <div>
-          <h2 className="font-serif text-3xl">Education</h2>
-          <p className="mt-4 text-ink">{education.degree}</p>
-          <p className="mt-1 text-sm text-slate">
-            {education.school}
-            <span> · {education.years}</span>
-          </p>
-        </div>
-        <div>
-          <h2 className="font-serif text-3xl">Awards</h2>
-          <ul className="mt-4 space-y-4">
-            {awards.map((award) => (
-              <li key={award.id}>
-                <p className="text-ink">
-                  {award.title} <span className="text-slate">· {award.year}</span>
-                </p>
-                <p className="text-sm text-slate">{award.detail}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section className="mt-16 border-t border-line pt-10">
+        <h2 className="font-serif text-3xl">Education</h2>
+        <p className="mt-4 text-ink">{education.degree}</p>
+        <p className="mt-1 text-sm text-slate">
+          {education.school}
+          {education.years ? <span> · {education.years}</span> : null}
+        </p>
       </section>
       <section className="mt-16 border-t border-line pt-10">
         <h2 className="font-serif text-3xl">What colleagues say</h2>
@@ -73,7 +57,7 @@ export default function AboutPage() {
         </p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {recommendations.map((item) => (
-            <li key={item.id} className="border border-line bg-panel p-4">
+            <li key={item.id} className="plate">
               <p className="text-ink">{item.theme}</p>
               <p className="mt-2 text-xs leading-relaxed text-slate">{item.note}</p>
             </li>

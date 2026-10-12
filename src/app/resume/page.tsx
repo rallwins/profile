@@ -16,20 +16,20 @@ export default function ResumePage() {
         index="10"
         eyebrow="Résumé"
         title="The record, without the gaps filled in."
-        lede="Generated from the résumé and the facts supplied with this profile. Early-career detail that was not on the source is omitted. A phone number is not printed."
+        lede="Generated from the résumé. Early-career roles keep the title, employer, and dates the résumé prints. Contact on this copy is email and LinkedIn."
       />
       <TrackLink
         event="resume_download"
         href="/resume.pdf"
         download
-        className="mt-8 inline-flex h-11 items-center border border-accent bg-accent px-4 text-sm text-accent-ink"
+        className="mt-8 inline-flex h-11 items-center bg-accent px-5 text-sm text-accent-ink"
       >
         Download résumé
       </TrackLink>
       <object
         data="/resume.pdf"
         type="application/pdf"
-        className="mt-8 h-[80vh] w-full border border-line bg-panel"
+        className="plate mt-8 h-[80vh] w-full p-0"
         aria-label="Résumé of Allwins Rajaiah"
       >
         <p className="p-4 text-sm">

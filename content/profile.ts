@@ -2,16 +2,16 @@ export const profile = {
   name: "Allwins Rajaiah",
   fullName: "Allwins Kannan Rajaiah",
   title:
-    "Solutions Architect | Director of Technology | AI & GenAI | Cloud | Data | Full Stack",
+    "Solutions Architect | Director of Technology | AI | Cloud | Data | Full Stack",
   supporting:
-    "Technology leader with 22+ years of experience designing enterprise solutions, modernizing applications and data platforms, and translating business strategy into scalable technology architectures.",
+    "Director of Technology and Solutions Architect with 22+ years leading technology strategy, enterprise architecture, engineering, and delivery across Cloud, AI/GenAI, Data, Microservices, and Full-Stack platforms.",
   aboutShort:
-    "Director of Technology and Solutions Architect with 22+ years across Cloud, AI/GenAI, Data, Full-Stack Engineering, and Enterprise Architecture. Translates business needs into scalable solutions across AWS and GCP, leads modernization and data initiatives, and drives architecture and engineering excellence.",
+    "Architects enterprise and cloud solutions across AWS and GCP, leads AI and data modernization, and stays hands-on with Java, Spring Boot, Angular, Kubernetes, Docker, Terraform, and CI/CD.",
   seoTitle:
     "Allwins Rajaiah | Solutions Architect | Director of Technology | AI | Cloud | Data",
   seoDescription:
     "Allwins Rajaiah is a Director of Technology and Solutions Architect with 22+ years of experience across AI, cloud, data engineering, enterprise architecture and full-stack systems.",
-  canonical: "https://profile.allwinsrajaiah.com",
+  canonical: "https://allwinsrajaiah.com",
   linkedin: "https://www.linkedin.com/in/allwinsrajaiah/",
   email: "allwins.rs@gmail.com",
   githubUrl: null as string | null,
@@ -37,8 +37,7 @@ export const heroMetadata = [
 ] as const;
 
 export const education = {
-  degree: "Bachelor of Engineering — Computer Science & Engineering",
-  school:
-    "Bharathiar University / Amrita Institute of Technology and Science, India",
-  years: "1998–2002",
+  degree: "B.E., Computer Science & Engineering",
+  school: "Amrita Institute, Bharathiar University, India",
+  years: null as string | null,
 } as const;

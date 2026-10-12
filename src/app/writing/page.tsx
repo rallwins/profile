@@ -29,7 +29,7 @@ export default function WritingPage() {
       </ul>
       <div className="mt-10 space-y-4">
         {articles.map((article) => (
-          <article key={article.slug} className="border border-line bg-panel p-6">
+          <article key={article.slug} className="plate">
             <p className="text-xs uppercase tracking-[0.14em] text-accent">
               {article.category} · {article.status === "draft" ? "Sample draft" : "Note"}
             </p>

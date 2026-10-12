@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Newsreader, Source_Sans_3 } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { profile } from "../../content/profile";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -9,15 +9,16 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-source",
+  variable: "--font-outfit",
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-newsreader",
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -51,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${newsreader.variable} h-full antialiased`}
+      className={`${outfit.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -62,10 +63,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <JsonLd data={websiteJsonLd()} />
         <ThemeProvider>
           <SiteHeader />
-          <main id="content" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          <div className="flex min-h-full flex-1 flex-col xl:pl-72">
+            <main id="content" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </div>
         </ThemeProvider>
         <Analytics />
       </body>

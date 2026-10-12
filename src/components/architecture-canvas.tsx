@@ -29,8 +29,8 @@ function ArchNode({ data }: NodeProps<Node<ArchData>>) {
   const title = data.mode === "logical" ? data.logical : data.physical;
   return (
     <div
-      className={`w-44 border bg-panel px-3 py-3 text-left shadow-none ${
-        data.selected ? "border-accent" : "border-line"
+      className={`w-48 bg-panel px-3 py-3 text-left shadow-[inset_3px_0_0_var(--accent)] ${
+        data.selected ? "outline outline-1 outline-offset-2 outline-accent" : ""
       }`}
     >
       <Handle type="target" position={Position.Left} className="!h-2 !w-2 !border-line !bg-paper" />
@@ -120,8 +120,8 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
             key={value}
             type="button"
             aria-pressed={mode === value}
-            className={`h-9 border px-3 text-xs uppercase tracking-[0.14em] ${
-              mode === value ? "border-accent text-accent" : "border-line text-ink"
+            className={`h-9 px-3 text-[0.68rem] font-medium uppercase tracking-[0.16em] ${
+              mode === value ? "bg-accent text-accent-ink" : "bg-panel text-ink"
             }`}
             onClick={() => setMode(value)}
           >
@@ -131,8 +131,8 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
         <button
           type="button"
           aria-pressed={highlight}
-          className={`h-9 border px-3 text-xs uppercase tracking-[0.14em] ${
-            highlight ? "border-accent text-accent" : "border-line text-ink"
+          className={`h-9 px-3 text-[0.68rem] font-medium uppercase tracking-[0.16em] ${
+            highlight ? "bg-accent text-accent-ink" : "bg-panel text-ink"
           }`}
           onClick={() => setHighlight((value) => !value)}
         >
@@ -140,7 +140,7 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
         </button>
       </div>
       {wide ? (
-        <div className="mt-4 h-[32rem] border border-line bg-panel">
+        <div className="plate mt-4 h-[32rem] p-0">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -158,7 +158,7 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
           </ReactFlow>
         </div>
       ) : (
-        <p className="mt-4 border border-line bg-panel p-4 text-sm text-slate lg:hidden">
+        <p className="plate mt-4 text-sm text-slate lg:hidden">
           On a small screen the canvas is replaced by the plain-language flow below. Widen the window for pan, zoom, and the logical or physical labels.
         </p>
       )}

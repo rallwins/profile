@@ -52,7 +52,7 @@ export function ContactForm() {
           autoComplete="name"
           required
           maxLength={LIMITS.name}
-          className="mt-2 w-full border border-line bg-panel px-3 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="mt-2 w-full border-0 border-b border-line bg-transparent px-0 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         />
       </div>
       <div>
@@ -66,7 +66,7 @@ export function ContactForm() {
           autoComplete="email"
           required
           maxLength={LIMITS.email}
-          className="mt-2 w-full border border-line bg-panel px-3 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="mt-2 w-full border-0 border-b border-line bg-transparent px-0 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         />
       </div>
       <div>
@@ -79,7 +79,7 @@ export function ContactForm() {
           required
           rows={7}
           maxLength={LIMITS.message}
-          className="mt-2 w-full border border-line bg-panel px-3 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="mt-2 w-full border-0 border-b border-line bg-transparent px-0 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         />
       </div>
       {error ? (
@@ -92,7 +92,7 @@ export function ContactForm() {
           Your email program should open with this note. If it does not, write to {profile.email}.
         </p>
       ) : null}
-      <button type="submit" className="h-11 border border-accent bg-accent px-5 text-sm text-accent-ink">
+      <button type="submit" className="h-11 bg-accent px-5 text-sm text-accent-ink">
         Send via email
       </button>
     </form>

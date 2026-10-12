@@ -23,4 +23,4 @@ Regenerate the résumé PDF from the same facts with `npm run resume`.
 
 ## Deploy
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). The intended host is `https://profile.allwinsrajaiah.com` on Vercel. Design, architecture, and content rules are in `docs/`.
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). The canonical host is `https://allwinsrajaiah.com` on Vercel. Design, architecture, and content rules are in `docs/`.

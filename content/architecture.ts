@@ -76,9 +76,9 @@ export const heroDiagram: Diagram = {
     {
       id: "cloud",
       logical: "Cloud",
-      physical: "AWS, Azure, GCP",
+      physical: "AWS and GCP",
       description:
-        "Cloud is the platform layer: compute, storage, networking, security, monitoring, availability, and cost. Current work spans Azure and AWS. The broader profile also covers GCP.",
+        "Cloud is the platform layer: compute, storage, networking, security, monitoring, availability, and cost. The résumé names architectures across AWS and GCP, and cloud design in AWS for the current role. Data platforms in that role use Azure Databricks.",
       column: 2,
       row: 0,
     },
@@ -448,7 +448,7 @@ export const caseStudies: CaseStudy[] = [
       "Operational data needed a path to analytics and applications that could be checked, reused, and explained when numbers disagreed.",
     architecture:
       "Source systems feed ingestion, transformation, and validation. Reconciliation is a first-class flow: mappings, rules, exceptions, and a processing pattern. Modeled data is published as products for analytics and applications.",
-    technologyChoices: ["Azure", "Databricks", "PySpark", "dbt", "SQL"],
+    technologyChoices: ["Azure Databricks", "PySpark", "dbt", "SQL"],
     designDecisions: [
       "Treat validation and reconciliation as architecture, not as a spreadsheet after the pipeline.",
       "Prefer reusable dbt and Databricks assets over one-off transformations.",
@@ -466,7 +466,7 @@ export const caseStudies: CaseStudy[] = [
     dataFlow:
       "Source Systems → Ingestion → Transformation → Validation → Data Modeling → Data Products → Analytics/Applications, with reconciliation beside validation.",
     outcome:
-      "Stated on the résumé: improved data quality/reconciliation accuracy to 50% by implementing automated validation and exception-handling frameworks. Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering. No other figures are added.",
+      "Stated on the résumé: enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks. Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering. No other figures are added.",
     diagramId: "data-platform",
   },
   {
@@ -566,7 +566,7 @@ export const adrs: Adr[] = [
       "A managed platform shortens the path to orchestration and raises a dependency on that platform.",
     ],
     outcome:
-      "The résumé states reusable dbt/Databricks frameworks as part of a 40% reduction in development effort, and automated validation as part of reconciliation accuracy to 50%. This note does not add further results.",
+      "The résumé states reusable dbt/Databricks frameworks as part of a 40% reduction in development effort, and the design and deployment of automated validation and exception-handling frameworks as enhancing reconciliation accuracy by 50%. This note does not add further results.",
   },
   {
     slug: "why-rest-spring-boot",

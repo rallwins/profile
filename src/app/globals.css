@@ -3,30 +3,30 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --paper: #f4f1ea;
-  --panel: #fbfaf6;
-  --ink: #14161c;
-  --slate: #3e4754;
-  --line: #d5d0c6;
-  --accent: #2436b0;
-  --accent-ink: #f7f5ef;
+  --paper: #e7eef2;
+  --panel: #f7fafb;
+  --ink: #142028;
+  --slate: #3d4c57;
+  --line: #c5d0d8;
+  --accent: #1f4e5f;
+  --accent-ink: #f4f8f9;
   color-scheme: light;
 }
 
 .dark {
-  --paper: #101218;
-  --panel: #171b24;
-  --ink: #f3f0e8;
-  --slate: #b7c0cc;
-  --line: #2e3440;
-  --accent: #c5d0ff;
-  --accent-ink: #101218;
+  --paper: #0e1418;
+  --panel: #162026;
+  --ink: #e7eef2;
+  --slate: #a9bac6;
+  --line: #2a3944;
+  --accent: #d7e4ea;
+  --accent-ink: #0e1418;
   color-scheme: dark;
 }
 
 @theme inline {
-  --font-sans: var(--font-source), "Source Sans 3", sans-serif;
-  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-outfit), "Outfit", sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
   --color-paper: var(--paper);
   --color-panel: var(--panel);
   --color-ink: var(--ink);
@@ -36,6 +36,12 @@
   --color-accent-ink: var(--accent-ink);
 }
 
+@utility plate {
+  background-color: var(--panel);
+  box-shadow: inset 3px 0 0 var(--accent);
+  padding: 1.35rem 1.5rem 1.5rem;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -43,16 +49,12 @@ html {
 body {
   min-height: 100%;
   background-color: var(--paper);
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--line) 55%, transparent) 1px, transparent 1px);
-  background-size: 72px 72px;
   color: var(--ink);
-  font-family: var(--font-source), "Source Sans 3", sans-serif;
+  font-family: var(--font-outfit), "Outfit", sans-serif;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 24%, transparent);
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
 }
 
 :focus-visible {
@@ -83,22 +85,23 @@ body {
 }
 
 .article {
-  max-width: 42rem;
+  max-width: 40rem;
   font-size: 1.0625rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--ink);
 }
 
 .article h2 {
-  margin-top: 2.25rem;
-  font-family: var(--font-newsreader), Georgia, serif;
-  font-size: 1.8rem;
-  line-height: 1.2;
+  margin-top: 2.5rem;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 460;
+  font-size: 1.85rem;
+  line-height: 1.15;
 }
 
 .article p,
 .article li {
-  margin-top: 0.9rem;
+  margin-top: 0.95rem;
 }
 
 .article ul {

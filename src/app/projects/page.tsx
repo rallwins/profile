@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       <PageIntro index="06" eyebrow="Projects" title="Personal experiments, labeled as such." lede={personalProjectsIntro} />
       <div className="mt-12 space-y-8">
         {personalProjects.map((project) => (
-          <article key={project.slug} className="border border-line bg-panel p-6">
+          <article key={project.slug} className="plate">
             <p className="text-xs uppercase tracking-[0.14em] text-accent">Personal / experimental</p>
             <h2 className="mt-2 font-serif text-3xl">{project.name}</h2>
             <dl className="mt-4 grid gap-4 text-sm leading-relaxed md:grid-cols-2">

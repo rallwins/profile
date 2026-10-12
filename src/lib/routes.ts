@@ -16,13 +16,13 @@ export const routes: RouteItem[] = [
     href: "/about",
     label: "About",
     index: "01",
-    description: "Practice, timeline, education, awards, and colleague themes.",
+    description: "Practice, timeline, education, and colleague themes.",
   },
   {
     href: "/expertise",
     label: "Expertise",
     index: "02",
-    description: "Five practice groups and the technology radar.",
+    description: "Practice groups from the résumé and the technology radar.",
   },
   {
     href: "/architecture",

@@ -79,7 +79,7 @@ export default function ArchitecturePage() {
         </p>
         <div className="mt-8 space-y-10">
           {adrs.map((adr) => (
-            <article key={adr.slug} id={adr.slug} className="border border-line bg-panel p-6">
+            <article key={adr.slug} id={adr.slug} className="plate">
               <h3 className="font-serif text-2xl">{adr.title}</h3>
               <dl className="mt-4 space-y-4 text-sm leading-relaxed">
                 <div>

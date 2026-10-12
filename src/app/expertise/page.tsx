@@ -16,11 +16,11 @@ export default function ExpertisePage() {
         index="02"
         eyebrow="Expertise"
         title="Practice, grouped."
-        lede="Five plates from the résumé’s technology inventory. Skills are listed once, inside the group they belong to."
+        lede="Practice groups from the résumé’s technology inventory. A skill can appear in the group the résumé gives it, and again where a role names it."
       />
       <div className="mt-12 grid gap-5 lg:grid-cols-2">
         {expertiseGroups.map((group, index) => (
-          <article key={group.id} className="border border-line bg-panel p-6">
+          <article key={group.id} className="plate">
             <p className="text-xs tracking-[0.16em] text-accent">{String(index + 1).padStart(2, "0")}</p>
             <h2 className="mt-2 font-serif text-2xl text-ink">{group.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate">{group.summary}</p>
@@ -39,7 +39,7 @@ export default function ExpertisePage() {
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate">{radarNote}</p>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {radarBands.map((band) => (
-            <div key={band} className="border border-line p-5">
+            <div key={band} className="plate">
               <h3 className="text-xs uppercase tracking-[0.16em] text-accent">{band}</h3>
               <ul className="mt-4 space-y-2 text-ink">
                 {radar

@@ -19,6 +19,7 @@ const production = [
   "AI governance",
   "Evaluation",
   "Guardrails",
+  "Langfuse",
 ];
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function AiPage() {
       </section>
       <ArchitectureCanvasLoader diagram={aiActionDiagram} />
       <DiagramReading diagram={aiActionDiagram} />
-      <section className="mt-12 border border-line bg-panel p-6">
+      <section className="plate mt-12">
         <h2 className="font-serif text-2xl">Personal / experimental</h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
           A local Llama-based model, a RAG system, an AI agent, grocery and product recognition, and a voice or multimodal assistant are listed as personal experiments. They are not production claims.

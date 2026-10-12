@@ -25,9 +25,9 @@ export const expertiseGroups: ExpertiseGroup[] = [
   },
   {
     id: "ai-data-engineering",
-    title: "AI, GenAI & Data Engineering",
+    title: "AI & GenAI",
     summary:
-      "Applying generative and agentic AI to enterprise data and engineering work, with the data-engineering tools named on the résumé.",
+      "Generative and agentic AI from the résumé, including Bedrock, RAG, MCP, governance, evaluation, and Langfuse.",
     skills: [
       "AIDLC",
       "Generative AI",
@@ -41,19 +41,16 @@ export const expertiseGroups: ExpertiseGroup[] = [
       "AI Guardrails",
       "AI Governance",
       "AI Evaluation",
-      "PySpark",
-      "dbt",
-      "Spark",
+      "Langfuse",
     ],
   },
   {
     id: "cloud",
     title: "Cloud & Platform Architecture",
     summary:
-      "AWS, Azure, and GCP, plus the delivery platform around them. Azure sits here because the current role’s data platforms and the brief both place it in cloud work.",
+      "AWS and GCP, with the platform practices named beside them: Kubernetes, Docker, Terraform, serverless, security, and cost.",
     skills: [
       "AWS",
-      "Azure",
       "GCP",
       "Kubernetes",
       "Docker",
@@ -62,13 +59,13 @@ export const expertiseGroups: ExpertiseGroup[] = [
       "Cloud Security",
       "Scalability",
       "Reliability & Cost Optimization",
-      "CI/CD",
-      "GitHub Actions",
-      "Jenkins",
-      "Automated Testing",
-      "Release Engineering",
-      "Git",
     ],
+  },
+  {
+    id: "devops",
+    title: "DevOps",
+    summary: "Delivery practices from the résumé: CI/CD, automation, and release engineering.",
+    skills: ["CI/CD", "GitHub Actions", "Jenkins", "Automated Testing", "Release Engineering", "Git"],
   },
   {
     id: "data",
@@ -80,6 +77,8 @@ export const expertiseGroups: ExpertiseGroup[] = [
       "Data Pipelines",
       "Data Modeling",
       "Databricks",
+      "PySpark",
+      "dbt",
       "SQL",
       "Data Quality",
       "Data Governance",

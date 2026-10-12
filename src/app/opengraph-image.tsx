@@ -14,20 +14,21 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#f4f1ea",
-          color: "#14161c",
+          background: "#e7eef2",
+          color: "#142028",
           padding: "72px",
-          fontFamily: "Georgia, serif",
         }}
       >
-        <div style={{ fontSize: 22, letterSpacing: 4, color: "#2436b0" }}>PROFILE</div>
+        <div style={{ display: "flex", fontSize: 18, letterSpacing: 6, color: "#1f4e5f" }}>
+          ALLWINSRAJAIAH.COM
+        </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 76, lineHeight: 1 }}>Allwins Rajaiah</div>
-          <div style={{ marginTop: 24, fontSize: 28, fontFamily: "sans-serif", color: "#3e4754" }}>
+          <div style={{ fontSize: 78, lineHeight: 0.95, fontStyle: "italic" }}>Allwins Rajaiah</div>
+          <div style={{ marginTop: 28, fontSize: 26, color: "#3d4c57" }}>
             Solutions Architect · Director of Technology · AI · Cloud · Data
           </div>
         </div>
-        <div style={{ fontSize: 22, fontFamily: "sans-serif" }}>profile.allwinsrajaiah.com</div>
+        <div style={{ width: 120, height: 6, background: "#1f4e5f" }} />
       </div>
     ),
     { ...size },

@@ -1,9 +1,11 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { awards } from "../content/awards";
 import { certifications } from "../content/certifications";
 import { roles } from "../content/experience";
+import { expertiseGroups } from "../content/expertise";
 import { personalProjects } from "../content/projects";
-import { profile } from "../content/profile";
+import { education, profile } from "../content/profile";
 import { recommendations } from "../content/recommendations";
 import { radar } from "../content/radar";
 
@@ -13,7 +15,12 @@ describe("verified profile facts", () => {
     expect(profile.fullName).toBe("Allwins Kannan Rajaiah");
     expect(profile.email).toBe("allwins.rs@gmail.com");
     expect(profile.linkedin).toBe("https://www.linkedin.com/in/allwinsrajaiah/");
-    expect(profile.canonical).toBe("https://profile.allwinsrajaiah.com");
+    expect(profile.canonical).toBe("https://allwinsrajaiah.com");
+    expect(profile.title).toContain("AI | Cloud | Data | Full Stack");
+    expect(education.school).toBe("Amrita Institute, Bharathiar University, India");
+    expect(education.degree).toBe("B.E., Computer Science & Engineering");
+    expect(education.years).toBeNull();
+    expect(awards).toEqual([]);
     expect(profile.githubUrl).toBeNull();
     expect(profile.seoTitle).toBe(
       "Allwins Rajaiah | Solutions Architect | Director of Technology | AI | Cloud | Data",
@@ -58,17 +65,28 @@ describe("verified profile facts", () => {
     );
   });
 
-  it("keeps the radar bands from the brief", () => {
+  it("keeps the radar aligned with the résumé inventory", () => {
     expect(radar.filter((item) => item.band === "Core").map((item) => item.name)).toEqual([
       "AWS",
-      "Azure",
+      "GCP",
       "Databricks",
       "Java",
       "Spring Boot",
       "SQL",
       "PySpark",
     ]);
-    expect(radar.find((item) => item.name === "GCP")?.band).toBe("Exploring");
+    expect(radar.find((item) => item.name === "GCP")?.band).toBe("Core");
+    expect(radar.some((item) => item.name === "Azure")).toBe(false);
+    const tekizma = roles.find((role) => role.id === "tekizma");
+    expect(tekizma?.technologies).not.toContain("Azure");
+    expect(tekizma?.responsibilities.join(" ")).toContain("Design cloud architectures in AWS");
+    expect(tekizma?.achievements[0]).toBe(
+      "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.",
+    );
+    const skills = expertiseGroups.flatMap((group) => group.skills);
+    expect(skills).toContain("Langfuse");
+    expect(skills).toContain("GCP");
+    expect(skills).not.toContain("Azure");
   });
 
   it("does not attach links to personal projects", () => {
@@ -91,5 +109,9 @@ describe("verified profile facts", () => {
     expect(generator).toContain("Tekizma Inc.");
     expect(blob).not.toContain("95666");
     expect(blob).not.toContain("87576");
+    expect(blob).not.toContain("1998");
+    expect(blob).not.toContain("Avishkar");
+    expect(generator).toContain("Amrita Institute, Bharathiar University");
+    expect(generator).toContain("cd4be8c7c3ea48aca09bc7a181355061");
   });
 });

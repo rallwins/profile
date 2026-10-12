@@ -19,6 +19,6 @@ export const certifications: Certification[] = [
     credentialId: "cd4be8c7c3ea48aca09bc7a181355061",
     verificationUrl:
       "https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5",
-    note: "Credential ID and verification link from the public LinkedIn profile.",
+    note: "The résumé names AWS Certified AI Practitioner AIF-C01 and does not print a credential ID or issue date. The ID, Credly link, and September 2026 issue date are the public LinkedIn and Credly values.",
   },
 ];

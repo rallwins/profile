@@ -40,7 +40,7 @@ export const roles: Role[] = [
       "Architect Azure Databricks data platforms covering data ingestion, transformation, modeling, orchestration, validation, and reusable data products for analytics and downstream applications.",
       "Design and optimize data engineering pipelines using PySpark, SQL, dbt, and Databricks, with emphasis on data quality, performance, reliability, and reusable data assets.",
       "Design reconciliation architecture and data flows, defining source-to-target mappings, validation rules, data quality controls, exception handling, and scalable processing patterns.",
-      "Design cloud architectures across Azure and AWS, covering compute, storage, networking, security, monitoring, availability, scalability, and cost optimization.",
+      "Design cloud architectures in AWS, covering compute, storage, networking, security, monitoring, availability, scalability, and cost optimization.",
       "Lead legacy application modernization and cloud migration, migrating a Spring/JSP-based enterprise application to a modern Spring Boot, Angular, REST API, Hibernate, and MySQL architecture on AWS.",
       "Drive decomposition of legacy application components into modern application and API layers, improving scalability, maintainability, deployment automation, and integration capabilities.",
       "Integrate AI/ML capabilities with enterprise data platforms for intelligent data processing, natural-language data interaction, automated documentation, and AI-assisted engineering workflows.",
@@ -48,7 +48,6 @@ export const roles: Role[] = [
       "Provide technical leadership and mentoring across data engineering, application development, QA, and cross-functional engineering teams, driving engineering excellence and Agile delivery.",
     ],
     technologies: [
-      "Azure",
       "Databricks",
       "PySpark",
       "dbt",
@@ -64,7 +63,7 @@ export const roles: Role[] = [
       "Data Engineering",
     ],
     achievements: [
-      "Improved data quality/reconciliation accuracy to 50% by implementing automated validation and exception-handling frameworks.",
+      "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.",
       "Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.",
     ],
     omittedNote: null,

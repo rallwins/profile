@@ -5,7 +5,7 @@ import { progression, type Role } from "../../content/experience";
 
 function Detail({ role }: { role: Role }) {
   return (
-    <div className="border border-line bg-panel p-5 md:p-6" role="tabpanel" id={`role-panel-${role.id}`}>
+    <div className="plate" role="tabpanel" id={`role-panel-${role.id}`}>
       <p className="text-xs uppercase tracking-[0.16em] text-accent">{role.progression}</p>
       <h3 className="mt-2 font-serif text-3xl text-ink">{role.title}</h3>
       <p className="mt-2 text-sm text-slate">
@@ -68,16 +68,20 @@ export function CareerProgression() {
               id={`role-tab-${item.id}`}
               aria-selected={selected}
               aria-controls={`role-panel-${item.id}`}
-              className={`min-w-40 shrink-0 border px-3 py-3 text-left ${
-                selected ? "border-accent bg-panel" : "border-line"
+              className={`min-w-40 shrink-0 px-3 py-3 text-left ${
+                selected ? "bg-accent text-accent-ink" : "bg-panel text-ink"
               }`}
               onClick={() => setActive(item.id)}
             >
-              <span className="block text-[0.7rem] tracking-[0.14em] text-slate">
+              <span className={`block text-[0.7rem] tracking-[0.14em] ${selected ? "text-accent-ink" : "text-slate"}`}>
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="mt-1 block text-sm text-ink">{item.progression}</span>
-              <span className="mt-1 block text-xs text-slate">{item.start}</span>
+              <span className={`mt-1 block text-sm ${selected ? "text-accent-ink" : "text-ink"}`}>
+                {item.progression}
+              </span>
+              <span className={`mt-1 block text-xs ${selected ? "text-accent-ink" : "text-slate"}`}>
+                {item.start}
+              </span>
             </button>
           );
         })}

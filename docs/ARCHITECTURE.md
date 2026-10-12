@@ -7,7 +7,7 @@ A static Next.js App Router site. Content lives in typed modules and one MDX not
 | Route | Role |
 | --- | --- |
 | `/` | Executive hero, metadata, interactive operating model, proof points, report index |
-| `/about` | Narrative, timeline, education, awards, recommendation placeholders |
+| `/about` | Narrative, timeline, education, and recommendation placeholders |
 | `/expertise` | Five expertise plates and the technology radar |
 | `/architecture` | Case studies, diagrams, ADRs |
 | `/experience` | Weighted roles and the career progression |

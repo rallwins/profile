@@ -13,24 +13,30 @@ export default function HomePage() {
 
   return (
     <Frame>
-      <p className="text-xs uppercase tracking-[0.18em] text-accent">Technology leadership</p>
-      <h1 className="mt-4 max-w-5xl font-serif text-[clamp(3.1rem,7vw,5.5rem)] leading-[0.95] text-ink">
-        {profile.name}
-      </h1>
-      <p className="mt-6 max-w-3xl text-xl leading-snug text-ink">{profile.title}</p>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate">{profile.supporting}</p>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/architecture" className="inline-flex h-11 items-center border border-accent bg-accent px-4 text-sm text-accent-ink">
+      <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(16rem,0.65fr)]">
+        <div>
+          <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-accent">
+            Technology leadership
+          </p>
+          <h1 className="mt-5 max-w-4xl font-serif text-[clamp(3.5rem,8vw,6.25rem)] font-light italic leading-[0.88] tracking-tight text-ink">
+            {profile.name}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-snug text-ink">{profile.title}</p>
+        </div>
+        <p className="max-w-sm text-base leading-relaxed text-slate lg:pb-2">{profile.supporting}</p>
+      </div>
+      <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <Link href="/architecture" className="inline-flex h-11 items-center bg-accent px-5 text-sm text-accent-ink">
           View architecture
         </Link>
-        <Link href="/experience" className="inline-flex h-11 items-center border border-line px-4 text-sm text-ink">
+        <Link href="/experience" className="text-sm text-ink underline decoration-line underline-offset-4 hover:text-accent">
           Explore experience
         </Link>
         <TrackLink
           event="resume_download"
           href="/resume.pdf"
           download
-          className="inline-flex h-11 items-center border border-line px-4 text-sm text-ink"
+          className="text-sm text-ink underline decoration-line underline-offset-4 hover:text-accent"
         >
           Download résumé
         </TrackLink>
@@ -38,33 +44,37 @@ export default function HomePage() {
           event="linkedin_click"
           href={profile.linkedin}
           external
-          className="inline-flex h-11 items-center border border-line px-4 text-sm text-ink"
+          className="text-sm text-ink underline decoration-line underline-offset-4 hover:text-accent"
         >
           LinkedIn
         </TrackLink>
       </div>
-      <dl className="mt-12 grid border-y border-line sm:grid-cols-2 lg:grid-cols-5">
+      <dl className="mt-14 divide-y divide-line border-y border-line">
         {heroMetadata.map((item) => (
-          <div key={item.label} className="border-b border-line px-0 py-4 sm:px-4 lg:border-b-0 lg:border-r lg:last:border-r-0">
-            <dt className="text-xs uppercase tracking-[0.14em] text-slate">{item.label}</dt>
-            <dd className="mt-2 text-sm text-ink">{item.value}</dd>
+          <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-6">
+            <dt className="text-[0.72rem] font-medium uppercase tracking-[0.2em] text-slate">{item.label}</dt>
+            <dd className="font-serif text-xl font-light text-ink">{item.value}</dd>
           </div>
         ))}
       </dl>
       <ArchitectureCanvasLoader diagram={heroDiagram} />
       <DiagramReading diagram={heroDiagram} />
-      <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-serif text-3xl text-ink">Recent scope</h2>
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+      <section className="mt-20">
+        <h2 className="font-serif text-4xl font-light text-ink">Recent scope</h2>
+        <div className="mt-8 grid gap-5 lg:grid-cols-2">
           {recent.map((role) => (
-            <article key={role.id} className="border border-line bg-panel p-5">
-              <p className="text-xs uppercase tracking-[0.14em] text-accent">{role.end === "Present" ? "Current" : "Previous"}</p>
-              <h3 className="mt-2 font-serif text-2xl text-ink">{role.progression}</h3>
-              <p className="mt-1 text-sm text-slate">
+            <article key={role.id} className="plate">
+              <p className="text-[0.72rem] font-medium uppercase tracking-[0.2em] text-accent">
+                {role.end === "Present" ? "Current" : "Previous"}
+              </p>
+              <h3 className="mt-3 font-serif text-3xl font-light text-ink">{role.progression}</h3>
+              <p className="mt-2 text-sm text-slate">
                 {role.employer} · {role.start} – {role.end}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-ink">{role.architectureScope}</p>
-              {role.achievements[0] ? <p className="mt-4 text-sm leading-relaxed text-slate">{role.achievements[0]}</p> : null}
+              {role.achievements[0] ? (
+                <p className="mt-4 text-sm leading-relaxed text-slate">{role.achievements[0]}</p>
+              ) : null}
             </article>
           ))}
         </div>
@@ -72,16 +82,19 @@ export default function HomePage() {
           Full experience
         </Link>
       </section>
-      <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-serif text-3xl text-ink">Contents</h2>
-        <ol className="mt-6 divide-y divide-line border-y border-line">
+      <section className="mt-20">
+        <h2 className="font-serif text-4xl font-light text-ink">Contents</h2>
+        <ol className="mt-6">
           {routes
             .filter((route) => route.href !== "/")
             .map((route) => (
-              <li key={route.href}>
-                <Link href={route.href} className="flex flex-col gap-1 py-4 hover:text-accent md:flex-row md:items-baseline md:gap-8">
-                  <span className="w-16 text-xs tracking-[0.16em] text-accent">{route.index}</span>
-                  <span className="w-40 text-ink">{route.label}</span>
+              <li key={route.href} className="border-t border-line">
+                <Link
+                  href={route.href}
+                  className="grid gap-2 py-5 hover:text-accent md:grid-cols-[4rem_10rem_minmax(0,1fr)] md:items-baseline md:gap-6"
+                >
+                  <span className="font-serif text-2xl font-light text-accent">{route.index}</span>
+                  <span className="text-ink">{route.label}</span>
                   <span className="text-sm text-slate">{route.description}</span>
                 </Link>
               </li>

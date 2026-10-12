@@ -1,6 +1,6 @@
 # Design system
 
-Editorial technology for a director of technology. The reference is an architecture report: wide margins, a strong serif for titles, a plain sans for reading, hairline rules, and one indigo used only for emphasis. It is not a terminal, a hacker theme, a neon showcase, or a generic card template.
+A limestone atelier for a director of technology. The page is a cool stone field with a fixed identity rail, a soft high-contrast serif for names, and a geometric sans for reading. One deep teal is the only accent. It is not a terminal, a hacker theme, a neon showcase, or a graph-paper report.
 
 ## Color
 
@@ -8,42 +8,42 @@ Tokens live in `src/app/globals.css` and switch with the `dark` class.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| paper | `#f4f1ea` | `#101218` | Page background |
-| panel | `#fbfaf6` | `#171b24` | Framed figures and form fields |
-| ink | `#14161c` | `#f3f0e8` | Headings and body |
-| slate | `#3e4754` | `#b7c0cc` | Secondary text |
-| line | `#d5d0c6` | `#2e3440` | Borders and the background grid |
-| accent | `#2436b0` | `#c5d0ff` | Links, focus, the single highlight |
+| paper | `#e7eef2` | `#0e1418` | Page background |
+| panel | `#f7fafb` | `#162026` | Identity rail, plates, fields |
+| ink | `#142028` | `#e7eef2` | Headings and body |
+| slate | `#3d4c57` | `#a9bac6` | Secondary text |
+| line | `#c5d0d8` | `#2a3944` | Rules and dividers |
+| accent | `#1f4e5f` | `#d7e4ea` | Links, focus, the single highlight, filled actions |
 
-Slate on paper and accent on paper are aimed at WCAG 2.2 AA for normal text. Accent is never used as a large gradient field.
+Slate on paper and accent on paper are aimed at WCAG 2.2 AA for normal text. In dark mode the accent lightens so it stays readable on the stone field, and filled actions use `accent-ink` for the label. Accent is never a gradient or a glow.
 
 ## Type
 
-- **Newsreader** for headings. Optical size is left to the font; tracking stays tight.
-- **Source Sans 3** for navigation, body, and diagrams.
-- No monospace UI. Figure numbers use the sans at small size with wide tracking.
+- **Fraunces** for names, page titles, and large index numerals. Light weight, with italics reserved for the name.
+- **Outfit** for navigation, body, labels, and diagrams.
+- No monospace UI. Small labels use the sans with wide tracking.
 
-Scale: hero name around `clamp(3.2rem, 7vw, 5.6rem)`. Page titles `text-4xl` to `text-5xl`. Body `1.0625rem` with a relaxed line height. Measure for prose stays near 68 characters.
+Scale: the home name is `clamp(3.5rem, 8vw, 6.25rem)` and italic. Page titles are `text-4xl` to `text-5xl` at a light weight. Body stays near `1.0625rem` with a relaxed line height. Prose measure stays near 40rem.
 
 ## Space and structure
 
-- Content width `76rem`, horizontal padding `1.25rem` on small screens and `2rem` from `md`.
-- Sections separate with a full-width hairline, not with stacked drop shadows.
-- A 72px grid sits behind the page at low contrast. It is decoration, not a layout cage.
-- Depth is a 1px border plus, where a figure needs it, a single soft shadow in dark mode only.
+- On wide screens a 18rem identity rail is fixed at the left: name, section index, theme, résumé, and the canonical host. Content sits in the remaining column, capped at `64rem` (`max-w-5xl`), with `1.5rem` padding on small screens and `2.5rem` from `md`.
+- Below `xl`, the rail collapses to a sticky top bar and a focus-trapped menu.
+- Sections separate with space and a single rule. Plates are panel fills with a 3px accent inset on the left edge.
+- Depth is that inset mark. There is no background grid and no drop-shadow stack.
 
 ## Components
 
-- **Report index.** Section numbers (`01`) in accent, a slash, then a small-caps eyebrow.
-- **Metadata row.** A definition list with vertical rules. Not pills or badges.
-- **Expertise plates.** Bordered groups. Skills are a quiet list inside the plate.
-- **Diagram frame.** Caption, canvas on wide screens, and a plain-language flow that is always in the HTML.
-- **Buttons.** Border and text. The accent fill is reserved for the primary action on a page.
+- **Index numeral.** A large Fraunces figure in accent beside the page title. The eyebrow is small-caps sans, without a slash.
+- **Specification row.** Home metadata is a stacked definition list: a fixed label column and a serif value. Not a five-column rule grid.
+- **Plates.** Expertise, roles, case notes, and colleague themes share the left accent mark.
+- **Diagram frame.** Caption, canvas on wide screens, and a plain-language flow that is always in the HTML. Canvas nodes repeat the left accent mark.
+- **Actions.** The primary action is a solid accent fill. Secondary actions are underlined text.
 - **Focus.** `2px` accent outline, `3px` offset, visible on keyboard focus only.
 
 ## Motion
 
-Framer Motion is limited to a 12px fade on first view and a slow dash on diagram edges after the figure scrolls into view. `prefers-reduced-motion: reduce` removes both. Theme changes do not animate color.
+Diagram edges use a slow dash after the figure scrolls into view, and only when the canvas is shown. `prefers-reduced-motion: reduce` removes animation, transition, and smooth scrolling. Theme changes do not animate color.
 
 ## Theme
 
@@ -51,4 +51,4 @@ Framer Motion is limited to a 12px fade on first view and a slow dash on diagram
 
 ## What this system refuses
 
-Terminal chrome, matrix rain, neon glow, cartoon illustration, stock gradient meshes, and layout patterns copied from other personal portfolios.
+Terminal chrome, matrix rain, neon glow, cartoon illustration, stock gradient meshes, graph-paper backgrounds, and layout patterns copied from other personal portfolios.

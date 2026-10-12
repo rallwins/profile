@@ -1,36 +1,36 @@
 # Content map
 
-Source of truth, in order: the resume file supplied for this profile (`Allwins_Rajaiah.docx`), then the written brief where the resume is silent. If neither states a fact, the site shows a TODO and does not guess.
+Source of truth: `Allwins_Rajaiah.pdf` (Allwins Kannan Rajaiah). If the résumé does not state a fact, the site does not invent it. A public LinkedIn / Credly value is kept only where the résumé is silent, and the page says so.
 
-The public name is **Allwins Rajaiah**, matching the brief and the LinkedIn URL. The resume header prints **Allwins Kannan Rajaiah**. Both appear: the longer form on the résumé and the about page, the shorter form in navigation and the SEO title.
+The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé header prints **Allwins Kannan Rajaiah**. Both appear: the longer form on the résumé and the about page, the shorter form in navigation and the SEO title.
 
 ## Verified and published
 
 | Item | Source |
 | --- | --- |
-| Positioning, 22+ years, hero supporting line, short about, SEO title and description | Brief |
-| Email `allwins.rs@gmail.com` | Resume header. Used for contact. |
-| LinkedIn `https://www.linkedin.com/in/allwinsrajaiah/` | Brief and resume |
-| Professional summary paragraphs | Resume |
-| Skill inventory | Resume “Core Technology”, plus Azure under cloud because Tekizma’s résumé and the brief both place Azure there |
-| Employers, titles, locations, dates, responsibility bullets, technology lines, key achievements | Resume |
-| Education institution and degree | Resume, with the brief’s fuller school name and years 1998–2002 |
-| AWS Certified AI Practitioner, exam AIF-C01 | Resume. Issued September 2026 from the brief. LinkedIn shows the same month. |
-| Credential ID `cd4be8c7c3ea48aca09bc7a181355061` and Credly verification URL | Public LinkedIn profile, Licenses & Certifications |
-| Awards (Avishkar 2006, MD’s Merit Award 2005) | Brief. Not repeated on the résumé, still published because the brief listed them as facts. |
-| Technology radar bands | Brief. Not upgraded, including GCP at Exploring, even though the résumé lists GCP under cloud skills. |
-| Case-study flows and ADR topics | Brief, written so they stay consistent with the résumé’s Tekizma and modernization work |
-| Preferred host `profile.allwinsrajaiah.com` | Brief |
+| Title line, 22+ years, professional summary | Résumé |
+| Email `allwins.rs@gmail.com` | Résumé header. Used for contact. |
+| LinkedIn `https://www.linkedin.com/in/allwinsrajaiah/` | Résumé |
+| Skill inventory | Résumé “Core Technology”, plus technologies named on a role. Azure is published only as Azure Databricks in the current data-platform work. |
+| Employers, titles, locations, dates, responsibility bullets, technology lines, key achievements | Résumé, including early-career roles that list title, employer, and dates only |
+| Education | Résumé: B.E., Computer Science & Engineering, Amrita Institute, Bharathiar University, India. No years are printed on the résumé, so none are shown. |
+| AWS Certified AI Practitioner, exam AIF-C01 | Résumé |
+| Credential ID `cd4be8c7c3ea48aca09bc7a181355061`, Credly verification URL, issued September 2026 | Public LinkedIn / Credly. The résumé does not print an ID or an issue date, and it does not contradict these values. |
+| Technology radar | Grouped from the résumé inventory. GCP is Core, with AWS. Exploring holds the résumé’s emerging tools. |
+| Case-study flows and ADR topics | Written so they stay consistent with the résumé’s Tekizma and modernization work |
+| Canonical host `https://allwinsrajaiah.com` | Production domain. `www.allwinsrajaiah.com` redirects to the apex when DNS is attached. |
 
-Résumé achievements are quoted, not rewritten into stronger numbers:
+Résumé achievements are quoted:
 
-- Data quality/reconciliation accuracy to 50% by automated validation and exception handling.
-- Development effort reduced by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.
-- Official Health Plan Marketplace for New York State of Health, 5 million enrollments for 2020.
+- Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.
+- Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.
+- Official Health Plan Marketplace for New York State of Health, processing 5 million enrollments for 2020.
 
 ## Withheld on purpose
 
-The résumé includes a mobile phone number. It is not printed on the site or in the generated PDF. The brief asked not to publish a phone number.
+The résumé includes a mobile phone number. It is not printed on the site or in the generated PDF. The résumé has no street address, and none is added.
+
+The résumé lists no awards. Earlier award lines are not published.
 
 ## TODO — unknown, so not invented
 
@@ -42,14 +42,11 @@ The résumé includes a mobile phone number. It is not printed on the site or in
 | Personal-project repositories, demos, unspecified stacks, and lessons learned | Placeholders. Projects are labeled personal/experimental. |
 | A separate numeric outcome for the AI case study | Stated as not on the résumé |
 | Locations for employers other than Marlabs (Piscataway, NJ) | Omitted |
-
-## Not used
-
-Web snippets that named other employers were ignored. They conflicted with the résumé and with the instruction not to invent companies.
+| Education years | Omitted. The résumé does not print them. |
 
 ## Production AI versus experiments
 
-Production language is limited to the résumé: Generative AI, Agentic AI, AgentCore Runtime, Amazon Bedrock, RAG, MCP, knowledge bases, guardrails, governance, evaluation, and AI applied to data platforms and engineering workflow.
+Production language is limited to the résumé: Generative AI, Agentic AI, AgentCore Runtime, Amazon Bedrock, RAG, MCP, knowledge bases, guardrails, governance, evaluation, Langfuse, and AI applied to data platforms and engineering workflow.
 
 Personal projects (local Llama-based SLM, a RAG system, an AI agent, grocery/product recognition, a voice/multimodal assistant) are a separate page and are not described as shipped client work.
 

@@ -9,23 +9,24 @@ export const radarBands: RadarBand[] = ["Core", "Advanced", "Exploring"];
 
 export const radar: RadarItem[] = [
   { name: "AWS", band: "Core" },
-  { name: "Azure", band: "Core" },
+  { name: "GCP", band: "Core" },
   { name: "Databricks", band: "Core" },
   { name: "Java", band: "Core" },
   { name: "Spring Boot", band: "Core" },
   { name: "SQL", band: "Core" },
   { name: "PySpark", band: "Core" },
-  { name: "GenAI", band: "Advanced" },
+  { name: "Generative AI", band: "Advanced" },
   { name: "RAG", band: "Advanced" },
   { name: "MCP", band: "Advanced" },
   { name: "Agentic AI", band: "Advanced" },
   { name: "Terraform", band: "Advanced" },
   { name: "Kubernetes", band: "Advanced" },
-  { name: "GCP", band: "Exploring" },
-  { name: "LLM evaluation", band: "Exploring" },
-  { name: "Multimodal AI", band: "Exploring" },
-  { name: "AI agents", band: "Exploring" },
+  { name: "AI Evaluation", band: "Advanced" },
+  { name: "Flutter", band: "Exploring" },
+  { name: "Replit", band: "Exploring" },
+  { name: "Cursor", band: "Exploring" },
+  { name: "GitHub Copilot", band: "Exploring" },
 ];
 
 export const radarNote =
-  "Bands are the working radar supplied for this profile. They are not a ranking of the skills inventory. GCP stays in Exploring here even though the résumé also lists GCP among cloud platforms.";
+  "Core and Advanced follow the résumé’s architecture, cloud, data, and AI inventory. Exploring lists Flutter, Replit, Cursor, and GitHub Copilot from the résumé’s Mobile & Emerging Tech line. Android and iOS sit with application engineering from the Marlabs mobile platforms. Azure Databricks is named in the current data-platform role.";
