@@ -22,7 +22,7 @@ export default function ResumePage() {
         event="resume_download"
         href="/resume.pdf"
         download
-        className="mt-8 inline-flex h-11 items-center bg-accent px-5 text-sm text-accent-ink"
+        className="mt-8 inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink"
       >
         Download résumé
       </TrackLink>

@@ -27,8 +27,8 @@ export default function ArchitecturePage() {
           const diagram = figures.find((item) => item.id === study.diagramId);
           return (
             <article key={study.slug} id={study.slug} className="border-t border-line pt-10">
-              <p className="text-xs uppercase tracking-[0.16em] text-accent">Case study</p>
-              <h2 className="mt-2 font-serif text-4xl text-ink">{study.title}</h2>
+              <p className="text-xs uppercase tracking-[0.04em] text-accent">Case study</p>
+              <h2 className="mt-2 font-semibold tracking-tight text-4xl text-ink">{study.title}</h2>
               <p className="mt-4 max-w-3xl text-slate">{study.context}</p>
               <TrackLink event="case_study_opened" href={`#${study.slug}`} className="mt-3 inline-block text-sm text-accent">
                 Open this case
@@ -43,20 +43,20 @@ export default function ArchitecturePage() {
                   ["Outcome", study.outcome],
                 ].map(([label, value]) => (
                   <div key={label}>
-                    <dt className="text-xs uppercase tracking-[0.14em] text-slate">{label}</dt>
+                    <dt className="text-xs uppercase tracking-[0.04em] text-slate">{label}</dt>
                     <dd className="mt-2 text-sm leading-relaxed text-ink">{value}</dd>
                   </div>
                 ))}
               </dl>
-              <h3 className="mt-8 text-xs uppercase tracking-[0.14em] text-slate">Technology choices</h3>
+              <h3 className="mt-8 text-xs uppercase tracking-[0.04em] text-slate">Technology choices</h3>
               <p className="mt-2 text-sm text-ink">{study.technologyChoices.join(" · ")}</p>
-              <h3 className="mt-6 text-xs uppercase tracking-[0.14em] text-slate">Design decisions</h3>
+              <h3 className="mt-6 text-xs uppercase tracking-[0.04em] text-slate">Design decisions</h3>
               <ul className="mt-2 space-y-2 text-sm leading-relaxed text-ink">
                 {study.designDecisions.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <h3 className="mt-6 text-xs uppercase tracking-[0.14em] text-slate">Trade-offs</h3>
+              <h3 className="mt-6 text-xs uppercase tracking-[0.04em] text-slate">Trade-offs</h3>
               <ul className="mt-2 space-y-2 text-sm leading-relaxed text-ink">
                 {study.tradeoffs.map((item) => (
                   <li key={item}>{item}</li>
@@ -73,33 +73,33 @@ export default function ArchitecturePage() {
         })}
       </div>
       <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-serif text-3xl">Architecture decision notes</h2>
+        <h2 className="font-semibold tracking-tight text-3xl">Architecture decision notes</h2>
         <p className="mt-3 max-w-2xl text-sm text-slate">
           Reasoning consistent with the case studies. These are not signed client records and they do not add results beyond the résumé.
         </p>
         <div className="mt-8 space-y-10">
           {adrs.map((adr) => (
             <article key={adr.slug} id={adr.slug} className="plate">
-              <h3 className="font-serif text-2xl">{adr.title}</h3>
+              <h3 className="font-semibold tracking-tight text-2xl">{adr.title}</h3>
               <dl className="mt-4 space-y-4 text-sm leading-relaxed">
                 <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-slate">Context</dt>
+                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Context</dt>
                   <dd className="mt-1">{adr.context}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-slate">Decision</dt>
+                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Decision</dt>
                   <dd className="mt-1">{adr.decision}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-slate">Alternatives</dt>
+                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Alternatives</dt>
                   <dd className="mt-1">{adr.alternatives.join(" ")}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-slate">Trade-offs</dt>
+                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Trade-offs</dt>
                   <dd className="mt-1">{adr.tradeoffs.join(" ")}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-[0.14em] text-slate">Outcome</dt>
+                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Outcome</dt>
                   <dd className="mt-1">{adr.outcome}</dd>
                 </div>
               </dl>

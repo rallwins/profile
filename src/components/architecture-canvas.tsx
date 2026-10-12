@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import {
-  Background,
   Controls,
   Handle,
   Position,
@@ -29,13 +28,13 @@ function ArchNode({ data }: NodeProps<Node<ArchData>>) {
   const title = data.mode === "logical" ? data.logical : data.physical;
   return (
     <div
-      className={`w-48 bg-panel px-3 py-3 text-left shadow-[inset_3px_0_0_var(--accent)] ${
-        data.selected ? "outline outline-1 outline-offset-2 outline-accent" : ""
+      className={`w-48 rounded-2xl border bg-panel px-4 py-3 text-left ${
+        data.selected ? "border-accent" : "border-line"
       }`}
     >
-      <Handle type="target" position={Position.Left} className="!h-2 !w-2 !border-line !bg-paper" />
-      <p className="font-serif text-[0.95rem] leading-snug text-ink">{title}</p>
-      <Handle type="source" position={Position.Right} className="!h-2 !w-2 !border-line !bg-paper" />
+      <Handle type="target" position={Position.Left} className="!h-2 !w-2 !rounded-full !border-line !bg-paper" />
+      <p className="font-semibold tracking-tight text-[0.95rem] leading-snug text-ink">{title}</p>
+      <Handle type="source" position={Position.Right} className="!h-2 !w-2 !rounded-full !border-line !bg-paper" />
     </div>
   );
 }
@@ -109,7 +108,7 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
   return (
     <figure id={`diagram-${diagram.id}`} className="mt-8">
       <figcaption className="flex flex-wrap items-baseline justify-between gap-3">
-        <span className="text-xs uppercase tracking-[0.16em] text-slate">
+        <span className="text-xs uppercase tracking-[0.04em] text-slate">
           {diagram.figure} — {diagram.title}
         </span>
         <span className="max-w-xl text-sm text-slate">{diagram.caption}</span>
@@ -120,7 +119,7 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
             key={value}
             type="button"
             aria-pressed={mode === value}
-            className={`h-9 px-3 text-[0.68rem] font-medium uppercase tracking-[0.16em] ${
+            className={`h-9 rounded-full px-4 text-xs font-semibold ${
               mode === value ? "bg-accent text-accent-ink" : "bg-panel text-ink"
             }`}
             onClick={() => setMode(value)}
@@ -131,7 +130,7 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
         <button
           type="button"
           aria-pressed={highlight}
-          className={`h-9 px-3 text-[0.68rem] font-medium uppercase tracking-[0.16em] ${
+          className={`h-9 rounded-full px-4 text-xs font-semibold ${
             highlight ? "bg-accent text-accent-ink" : "bg-panel text-ink"
           }`}
           onClick={() => setHighlight((value) => !value)}
@@ -140,7 +139,7 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
         </button>
       </div>
       {wide ? (
-        <div className="plate mt-4 h-[32rem] p-0">
+        <div className="plate mt-4 h-[32rem] overflow-hidden p-0">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -153,7 +152,6 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
             onNodeClick={(_, node) => setSelected(node.id)}
             aria-label={`${diagram.title}. Pan and zoom the canvas. Select a node for its description.`}
           >
-            <Background gap={28} color="var(--line)" />
             <Controls showInteractive={false} />
           </ReactFlow>
         </div>
@@ -163,8 +161,8 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
         </p>
       )}
       {current ? (
-        <div className="mt-4 border-l-2 border-accent pl-4" aria-live="polite">
-          <h3 className="font-serif text-2xl text-ink">
+        <div className="plate mt-4" aria-live="polite">
+          <h3 className="font-semibold tracking-tight text-2xl text-ink">
             {mode === "logical" ? current.logical : current.physical}
           </h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate">{current.description}</p>

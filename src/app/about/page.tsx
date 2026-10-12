@@ -26,12 +26,12 @@ export default function AboutPage() {
         ))}
       </div>
       <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-serif text-3xl">Timeline</h2>
+        <h2 className="font-semibold tracking-tight text-3xl">Timeline</h2>
         <ol className="mt-6 max-w-3xl border-l border-line pl-6">
           {progression.map((role) => (
             <li key={role.id} className="relative pb-6">
-              <span className="absolute -left-[1.65rem] top-1.5 h-2 w-2 bg-accent" aria-hidden="true" />
-              <p className="text-xs uppercase tracking-[0.14em] text-slate">
+              <span className="absolute -left-[1.7rem] top-1.5 h-2.5 w-2.5 rounded-full bg-accent" aria-hidden="true" />
+              <p className="text-xs uppercase tracking-[0.04em] text-slate">
                 {role.start} – {role.end}
               </p>
               <p className="mt-1 text-ink">
@@ -43,7 +43,7 @@ export default function AboutPage() {
         </ol>
       </section>
       <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-serif text-3xl">Education</h2>
+        <h2 className="font-semibold tracking-tight text-3xl">Education</h2>
         <p className="mt-4 text-ink">{education.degree}</p>
         <p className="mt-1 text-sm text-slate">
           {education.school}
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </p>
       </section>
       <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-serif text-3xl">What colleagues say</h2>
+        <h2 className="font-semibold tracking-tight text-3xl">What colleagues say</h2>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
           No recommendation text is published here. The labels below are themes only. They are not quotations, and they are not attributed.
         </p>

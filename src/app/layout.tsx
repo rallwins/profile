@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { profile } from "../../content/profile";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -9,16 +9,9 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const outfit = Outfit({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -52,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${jakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -63,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <JsonLd data={websiteJsonLd()} />
         <ThemeProvider>
           <SiteHeader />
-          <div className="flex min-h-full flex-1 flex-col xl:pl-72">
+          <div className="flex min-h-full flex-1 flex-col xl:pl-[19.5rem]">
             <main id="content" className="flex-1">
               {children}
             </main>

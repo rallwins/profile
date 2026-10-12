@@ -8,6 +8,9 @@ import { DiagramReading } from "@/components/diagram-reading";
 import { Frame } from "@/components/page-intro";
 import { TrackLink } from "@/components/track-link";
 
+const secondaryAction =
+  "inline-flex h-11 items-center rounded-full bg-panel px-5 text-sm font-semibold text-ink";
+
 export default function HomePage() {
   const recent = roles.filter((role) => role.weight === "recent");
 
@@ -15,59 +18,50 @@ export default function HomePage() {
     <Frame>
       <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(16rem,0.65fr)]">
         <div>
-          <p className="text-[0.72rem] font-medium uppercase tracking-[0.28em] text-accent">
-            Technology leadership
-          </p>
-          <h1 className="mt-5 max-w-4xl font-serif text-[clamp(3.5rem,8vw,6.25rem)] font-light italic leading-[0.88] tracking-tight text-ink">
+          <p className="text-xs font-semibold uppercase tracking-[0.06em] text-accent">Technology leadership</p>
+          <h1 className="mt-4 max-w-4xl text-[clamp(2.75rem,6vw,4.25rem)] font-semibold leading-[1.05] tracking-tight text-ink">
             {profile.name}
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-snug text-ink">{profile.title}</p>
+          <p className="mt-5 max-w-xl text-lg leading-snug text-ink">{profile.title}</p>
         </div>
         <p className="max-w-sm text-base leading-relaxed text-slate lg:pb-2">{profile.supporting}</p>
       </div>
-      <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-        <Link href="/architecture" className="inline-flex h-11 items-center bg-accent px-5 text-sm text-accent-ink">
+      <div className="mt-8 flex flex-wrap items-center gap-3">
+        <Link
+          href="/architecture"
+          className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink"
+        >
           View architecture
         </Link>
-        <Link href="/experience" className="text-sm text-ink underline decoration-line underline-offset-4 hover:text-accent">
+        <Link href="/experience" className={secondaryAction}>
           Explore experience
         </Link>
-        <TrackLink
-          event="resume_download"
-          href="/resume.pdf"
-          download
-          className="text-sm text-ink underline decoration-line underline-offset-4 hover:text-accent"
-        >
+        <TrackLink event="resume_download" href="/resume.pdf" download className={secondaryAction}>
           Download résumé
         </TrackLink>
-        <TrackLink
-          event="linkedin_click"
-          href={profile.linkedin}
-          external
-          className="text-sm text-ink underline decoration-line underline-offset-4 hover:text-accent"
-        >
+        <TrackLink event="linkedin_click" href={profile.linkedin} external className={secondaryAction}>
           LinkedIn
         </TrackLink>
       </div>
-      <dl className="mt-14 divide-y divide-line border-y border-line">
+      <dl className="mt-12 grid gap-3 sm:grid-cols-2">
         {heroMetadata.map((item) => (
-          <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-6">
-            <dt className="text-[0.72rem] font-medium uppercase tracking-[0.2em] text-slate">{item.label}</dt>
-            <dd className="font-serif text-xl font-light text-ink">{item.value}</dd>
+          <div key={item.label} className="rounded-[1.25rem] bg-panel px-5 py-4">
+            <dt className="text-xs font-semibold uppercase tracking-[0.06em] text-slate">{item.label}</dt>
+            <dd className="mt-1 text-lg font-semibold tracking-tight text-ink">{item.value}</dd>
           </div>
         ))}
       </dl>
       <ArchitectureCanvasLoader diagram={heroDiagram} />
       <DiagramReading diagram={heroDiagram} />
-      <section className="mt-20">
-        <h2 className="font-serif text-4xl font-light text-ink">Recent scope</h2>
-        <div className="mt-8 grid gap-5 lg:grid-cols-2">
+      <section className="mt-16">
+        <h2 className="text-3xl font-semibold tracking-tight text-ink">Recent scope</h2>
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
           {recent.map((role) => (
             <article key={role.id} className="plate">
-              <p className="text-[0.72rem] font-medium uppercase tracking-[0.2em] text-accent">
+              <p className="text-xs font-semibold uppercase tracking-[0.06em] text-accent">
                 {role.end === "Present" ? "Current" : "Previous"}
               </p>
-              <h3 className="mt-3 font-serif text-3xl font-light text-ink">{role.progression}</h3>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-ink">{role.progression}</h3>
               <p className="mt-2 text-sm text-slate">
                 {role.employer} · {role.start} – {role.end}
               </p>
@@ -78,23 +72,23 @@ export default function HomePage() {
             </article>
           ))}
         </div>
-        <Link href="/experience" className="mt-6 inline-block text-sm text-accent">
+        <Link href="/experience" className="mt-6 inline-block text-sm font-semibold text-accent">
           Full experience
         </Link>
       </section>
-      <section className="mt-20">
-        <h2 className="font-serif text-4xl font-light text-ink">Contents</h2>
-        <ol className="mt-6">
+      <section className="mt-16">
+        <h2 className="text-3xl font-semibold tracking-tight text-ink">Contents</h2>
+        <ol className="mt-6 grid gap-3">
           {routes
             .filter((route) => route.href !== "/")
             .map((route) => (
-              <li key={route.href} className="border-t border-line">
+              <li key={route.href} className="rounded-[1.25rem] bg-panel">
                 <Link
                   href={route.href}
-                  className="grid gap-2 py-5 hover:text-accent md:grid-cols-[4rem_10rem_minmax(0,1fr)] md:items-baseline md:gap-6"
+                  className="grid gap-2 px-5 py-4 hover:text-accent md:grid-cols-[4rem_10rem_minmax(0,1fr)] md:items-baseline md:gap-6"
                 >
-                  <span className="font-serif text-2xl font-light text-accent">{route.index}</span>
-                  <span className="text-ink">{route.label}</span>
+                  <span className="text-sm font-semibold text-accent">{route.index}</span>
+                  <span className="font-semibold text-ink">{route.label}</span>
                   <span className="text-sm text-slate">{route.description}</span>
                 </Link>
               </li>

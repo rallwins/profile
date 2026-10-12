@@ -43,7 +43,7 @@ export function ContactForm() {
         This opens your email program to {profile.email}. Nothing is stored on a server. Line breaks and control characters are removed before the message is attached.
       </p>
       <div>
-        <label htmlFor="name" className="text-xs uppercase tracking-[0.14em] text-slate">
+        <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.04em] text-slate">
           Name
         </label>
         <input
@@ -52,11 +52,11 @@ export function ContactForm() {
           autoComplete="name"
           required
           maxLength={LIMITS.name}
-          className="mt-2 w-full border-0 border-b border-line bg-transparent px-0 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="mt-2 w-full rounded-2xl border border-line bg-panel px-4 py-3 text-ink outline-none"
         />
       </div>
       <div>
-        <label htmlFor="email" className="text-xs uppercase tracking-[0.14em] text-slate">
+        <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.04em] text-slate">
           Email
         </label>
         <input
@@ -66,11 +66,11 @@ export function ContactForm() {
           autoComplete="email"
           required
           maxLength={LIMITS.email}
-          className="mt-2 w-full border-0 border-b border-line bg-transparent px-0 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="mt-2 w-full rounded-2xl border border-line bg-panel px-4 py-3 text-ink outline-none"
         />
       </div>
       <div>
-        <label htmlFor="message" className="text-xs uppercase tracking-[0.14em] text-slate">
+        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.04em] text-slate">
           Message
         </label>
         <textarea
@@ -79,7 +79,7 @@ export function ContactForm() {
           required
           rows={7}
           maxLength={LIMITS.message}
-          className="mt-2 w-full border-0 border-b border-line bg-transparent px-0 py-3 text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          className="mt-2 w-full rounded-2xl border border-line bg-panel px-4 py-3 text-ink outline-none"
         />
       </div>
       {error ? (
@@ -92,7 +92,7 @@ export function ContactForm() {
           Your email program should open with this note. If it does not, write to {profile.email}.
         </p>
       ) : null}
-      <button type="submit" className="h-11 bg-accent px-5 text-sm text-accent-ink">
+      <button type="submit" className="h-11 rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink">
         Send via email
       </button>
     </form>

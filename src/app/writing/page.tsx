@@ -20,9 +20,9 @@ export default function WritingPage() {
         title="Notes from the practice."
         lede="One sample draft is on this site. It was written for the profile and has not been published before. Empty categories stay empty."
       />
-      <ul className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.14em] text-slate">
+      <ul className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.04em] text-slate">
         {writingCategories.map((category) => (
-          <li key={category} className="border border-line px-3 py-2">
+          <li key={category} className="rounded-full border border-line bg-panel px-3 py-2">
             {category}
           </li>
         ))}
@@ -30,10 +30,10 @@ export default function WritingPage() {
       <div className="mt-10 space-y-4">
         {articles.map((article) => (
           <article key={article.slug} className="plate">
-            <p className="text-xs uppercase tracking-[0.14em] text-accent">
+            <p className="text-xs uppercase tracking-[0.04em] text-accent">
               {article.category} · {article.status === "draft" ? "Sample draft" : "Note"}
             </p>
-            <h2 className="mt-2 font-serif text-3xl">
+            <h2 className="mt-2 font-semibold tracking-tight text-3xl">
               <Link href={`/writing/${article.slug}`} className="hover:text-accent">
                 {article.title}
               </Link>

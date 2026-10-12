@@ -14,21 +14,36 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#e7eef2",
-          color: "#142028",
+          background: "#f2f4f7",
+          color: "#1c1e21",
           padding: "72px",
         }}
       >
-        <div style={{ display: "flex", fontSize: 18, letterSpacing: 6, color: "#1f4e5f" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            alignSelf: "flex-start",
+            background: "#1b4fbf",
+            color: "#ffffff",
+            borderRadius: 999,
+            fontSize: 18,
+            fontWeight: 600,
+            letterSpacing: 1.5,
+            padding: "10px 18px",
+          }}
+        >
           ALLWINSRAJAIAH.COM
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 78, lineHeight: 0.95, fontStyle: "italic" }}>Allwins Rajaiah</div>
-          <div style={{ marginTop: 28, fontSize: 26, color: "#3d4c57" }}>
+          <div style={{ fontSize: 72, fontWeight: 600, lineHeight: 1.05, letterSpacing: -1.5 }}>
+            Allwins Rajaiah
+          </div>
+          <div style={{ marginTop: 24, fontSize: 26, color: "#5c6570" }}>
             Solutions Architect · Director of Technology · AI · Cloud · Data
           </div>
         </div>
-        <div style={{ width: 120, height: 6, background: "#1f4e5f" }} />
+        <div style={{ width: 72, height: 12, borderRadius: 999, background: "#1b4fbf" }} />
       </div>
     ),
     { ...size },

@@ -38,7 +38,7 @@ export default function AiPage() {
         lede="The production practice is enterprise engineering, data platforms, and application modernization. Personal experiments are a different page and are not described as shipped work."
       />
       <section className="mt-12">
-        <h2 className="font-serif text-3xl">Production experience</h2>
+        <h2 className="font-semibold tracking-tight text-3xl">Production experience</h2>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate">
           Taken from the current role and the résumé summary: AI and data modernization, integration of AI/ML with enterprise data for intelligent processing, natural-language interaction, automated documentation, and AI-assisted engineering.
         </p>
@@ -53,7 +53,7 @@ export default function AiPage() {
       <ArchitectureCanvasLoader diagram={aiActionDiagram} />
       <DiagramReading diagram={aiActionDiagram} />
       <section className="plate mt-12">
-        <h2 className="font-serif text-2xl">Personal / experimental</h2>
+        <h2 className="font-semibold tracking-tight text-2xl">Personal / experimental</h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
           A local Llama-based model, a RAG system, an AI agent, grocery and product recognition, and a voice or multimodal assistant are listed as personal experiments. They are not production claims.
         </p>

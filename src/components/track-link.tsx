@@ -20,7 +20,7 @@ type Props = {
 };
 
 export function TrackLink({ event, href, children, className, external, download }: Props) {
-  const classNames = className ?? "text-ink underline-offset-4 hover:text-accent hover:underline";
+  const classNames = className ?? "font-medium text-ink hover:text-accent";
   if (external) {
     return (
       <a

@@ -21,10 +21,10 @@ export default function CertificationsPage() {
       <ul className="mt-12 space-y-4">
         {certifications.map((item) => (
           <li key={item.id} className="plate">
-            <p className="text-xs uppercase tracking-[0.14em] text-accent">
+            <p className="text-xs uppercase tracking-[0.04em] text-accent">
               {item.status === "completed" ? "Completed" : "Planned"}
             </p>
-            <h2 className="mt-2 font-serif text-3xl">{item.name}</h2>
+            <h2 className="mt-2 font-semibold tracking-tight text-3xl">{item.name}</h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">{item.note}</p>
             <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
               <div>
@@ -48,7 +48,7 @@ export default function CertificationsPage() {
         ))}
       </ul>
       <section className="mt-12 border-t border-line pt-8">
-        <h2 className="font-serif text-3xl">Education</h2>
+        <h2 className="font-semibold tracking-tight text-3xl">Education</h2>
         <p className="mt-3 text-ink">{education.degree}</p>
         <p className="text-sm text-slate">
           {education.school}

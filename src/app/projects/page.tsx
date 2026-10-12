@@ -16,25 +16,25 @@ export default function ProjectsPage() {
       <div className="mt-12 space-y-8">
         {personalProjects.map((project) => (
           <article key={project.slug} className="plate">
-            <p className="text-xs uppercase tracking-[0.14em] text-accent">Personal / experimental</p>
-            <h2 className="mt-2 font-serif text-3xl">{project.name}</h2>
+            <p className="text-xs uppercase tracking-[0.04em] text-accent">Personal / experimental</p>
+            <h2 className="mt-2 font-semibold tracking-tight text-3xl">{project.name}</h2>
             <dl className="mt-4 grid gap-4 text-sm leading-relaxed md:grid-cols-2">
               <div>
-                <dt className="text-xs uppercase tracking-[0.14em] text-slate">Problem</dt>
+                <dt className="text-xs uppercase tracking-[0.04em] text-slate">Problem</dt>
                 <dd className="mt-1">{project.problem}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.14em] text-slate">Architecture</dt>
+                <dt className="text-xs uppercase tracking-[0.04em] text-slate">Architecture</dt>
                 <dd className="mt-1">{project.architecture}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.14em] text-slate">Technology</dt>
+                <dt className="text-xs uppercase tracking-[0.04em] text-slate">Technology</dt>
                 <dd className="mt-1">
                   {project.technology.join(", ")}. {project.technologyTodo}
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.14em] text-slate">What I learned</dt>
+                <dt className="text-xs uppercase tracking-[0.04em] text-slate">What I learned</dt>
                 <dd className="mt-1">{project.learnedTodo}</dd>
               </div>
             </dl>

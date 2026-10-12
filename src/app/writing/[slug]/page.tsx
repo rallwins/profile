@@ -34,10 +34,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <Frame>
       <JsonLd data={articleJsonLd(article)} />
-      <p className="text-xs uppercase tracking-[0.16em] text-accent">
+      <p className="text-xs uppercase tracking-[0.04em] text-accent">
         {article.category} · Sample draft · Not previously published
       </p>
-      <h1 className="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">{article.title}</h1>
+      <h1 className="mt-4 max-w-3xl font-semibold tracking-tight text-4xl leading-tight md:text-5xl">{article.title}</h1>
       <p className="mt-4 max-w-2xl text-slate">{article.description}</p>
       <article className="article mt-10">
         <MDXRemote source={article.body} />

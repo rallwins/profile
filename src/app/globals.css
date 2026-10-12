@@ -3,30 +3,30 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --paper: #e7eef2;
-  --panel: #f7fafb;
-  --ink: #142028;
-  --slate: #3d4c57;
-  --line: #c5d0d8;
-  --accent: #1f4e5f;
-  --accent-ink: #f4f8f9;
+  --paper: #f2f4f7;
+  --panel: #ffffff;
+  --ink: #1c1e21;
+  --slate: #5c6570;
+  --line: #e3e6eb;
+  --accent: #1b4fbf;
+  --accent-ink: #ffffff;
+  --radius: 1.25rem;
   color-scheme: light;
 }
 
 .dark {
-  --paper: #0e1418;
-  --panel: #162026;
-  --ink: #e7eef2;
-  --slate: #a9bac6;
-  --line: #2a3944;
-  --accent: #d7e4ea;
-  --accent-ink: #0e1418;
+  --paper: #121418;
+  --panel: #1b1f26;
+  --ink: #f3f5f8;
+  --slate: #b6bec8;
+  --line: #2c323b;
+  --accent: #c5d4ff;
+  --accent-ink: #121418;
   color-scheme: dark;
 }
 
 @theme inline {
-  --font-sans: var(--font-outfit), "Outfit", sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
   --color-paper: var(--paper);
   --color-panel: var(--panel);
   --color-ink: var(--ink);
@@ -34,11 +34,12 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --radius-surface: var(--radius);
 }
 
 @utility plate {
   background-color: var(--panel);
-  box-shadow: inset 3px 0 0 var(--accent);
+  border-radius: var(--radius);
   padding: 1.35rem 1.5rem 1.5rem;
 }
 
@@ -50,7 +51,7 @@ body {
   min-height: 100%;
   background-color: var(--paper);
   color: var(--ink);
-  font-family: var(--font-outfit), "Outfit", sans-serif;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
 }
 
 ::selection {
@@ -93,10 +94,10 @@ body {
 
 .article h2 {
   margin-top: 2.5rem;
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-weight: 460;
-  font-size: 1.85rem;
-  line-height: 1.15;
+  font-weight: 600;
+  font-size: 1.65rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .article p,
@@ -110,9 +111,28 @@ body {
   list-style: disc;
 }
 
+.react-flow__node {
+  box-shadow: none;
+}
+
+.react-flow__controls {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: none;
+}
+
+.react-flow__controls-button {
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  fill: var(--ink);
+  box-shadow: none;
+}
+
 .react-flow__attribution {
   background: transparent !important;
   color: var(--slate) !important;
+  box-shadow: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

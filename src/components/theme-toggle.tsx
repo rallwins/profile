@@ -12,7 +12,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="h-10 bg-paper px-3 text-left text-[0.68rem] font-medium uppercase tracking-[0.16em] text-ink hover:text-accent xl:bg-paper"
+      className="h-10 rounded-full bg-paper px-4 text-left text-xs font-semibold text-ink"
       aria-label={`${label}. Activate to change.`}
       onClick={() => {
         const index = order.indexOf(choice);
