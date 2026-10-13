@@ -4,9 +4,10 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { awards } from "../content/awards";
 import { certifications } from "../content/certifications";
-import { roles } from "../content/experience";
+import { progression, roles } from "../content/experience";
 import { expertiseGroups } from "../content/expertise";
 import { personalProjects } from "../content/projects";
+import { visualResume } from "../content/visual-resume";
 import { education, profile } from "../content/profile";
 import { recommendations, recommendationsNote } from "../content/recommendations";
 import { radar } from "../content/radar";
@@ -23,7 +24,7 @@ describe("verified profile facts", () => {
     expect(education.degree).toBe("B.E., Computer Science & Engineering");
     expect(education.years).toBeNull();
     expect(awards).toEqual([]);
-    expect(profile.githubUrl).toBeNull();
+    expect(profile.githubUrl).toBe("https://github.com/rallwins");
     expect(profile.seoTitle).toBe(
       "Allwins Rajaiah | Solutions Architect | Director of Technology | AI | Cloud | Data",
     );
@@ -96,11 +97,28 @@ describe("verified profile facts", () => {
     expect(skills).not.toContain("Azure");
   });
 
-  it("does not attach links to personal projects", () => {
+  it("lists latest roles first and links only the visible public repositories", () => {
+    expect(roles[0]?.employer).toBe("Tekizma Inc.");
+    expect(roles.at(-1)?.employer).toBe("Asic Infotech Pvt. Ltd.");
+    expect(progression.map((role) => role.id)).toEqual(roles.map((role) => role.id));
+    expect(visualResume.roles[0]?.employer).toBe("Tekizma Inc.");
+    expect(visualResume.roles.at(-1)?.employer).toBe("Asic Infotech");
+    expect(personalProjects.map((project) => project.url)).toEqual([
+      "https://github.com/rallwins/local-slm-chat",
+      "https://github.com/rallwins/rag_replit",
+      "https://github.com/rallwins/rag_resume",
+      "https://github.com/rallwins/voice_asst",
+    ]);
+    expect(personalProjects.map((project) => project.language)).toEqual([
+      "Python",
+      "TypeScript",
+      "HTML",
+      "Python",
+    ]);
     for (const project of personalProjects) {
-      expect(project.github).toBeNull();
-      expect(project.demo).toBeNull();
-      expect(project.status).toBe("personal-experimental");
+      expect(project.description).toBeNull();
+      expect(project.label).toContain("no description");
+      expect(project.url).not.toContain("/profile");
     }
   });
 

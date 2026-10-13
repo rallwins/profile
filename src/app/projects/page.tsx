@@ -1,47 +1,36 @@
 import type { Metadata } from "next";
+import { profile } from "../../../content/profile";
 import { personalProjects, personalProjectsIntro } from "../../../content/projects";
-import { GithubPlaceholder } from "@/components/github-placeholder";
+import { TrackLink } from "@/components/track-link";
 import { Frame, PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Personal and experimental projects. Repositories and demos are not published.",
+  description: "Public GitHub repositories for Allwins Rajaiah, excluding this site.",
   alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
   return (
     <Frame>
-      <PageIntro index="06" eyebrow="Projects" title="Personal experiments, labeled as such." lede={personalProjectsIntro} />
+      <PageIntro index="06" eyebrow="Projects" title="Public repositories." lede={personalProjectsIntro} />
+      <p className="mt-6 text-sm text-slate">
+        Profile:{" "}
+        <TrackLink event="github_click" href={profile.githubUrl} external>
+          github.com/rallwins
+        </TrackLink>
+      </p>
       <div className="mt-12 space-y-8">
         {personalProjects.map((project) => (
           <article key={project.slug} className="plate">
-            <p className="text-xs uppercase tracking-[0.04em] text-accent">Personal / experimental</p>
+            <p className="text-xs uppercase tracking-[0.04em] text-accent">{project.language}</p>
             <h2 className="mt-2 font-semibold tracking-tight text-3xl">{project.name}</h2>
-            <dl className="mt-4 grid gap-4 text-sm leading-relaxed md:grid-cols-2">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.04em] text-slate">Problem</dt>
-                <dd className="mt-1">{project.problem}</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.04em] text-slate">Architecture</dt>
-                <dd className="mt-1">{project.architecture}</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.04em] text-slate">Technology</dt>
-                <dd className="mt-1">
-                  {project.technology.join(", ")}. {project.technologyTodo}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.04em] text-slate">What I learned</dt>
-                <dd className="mt-1">{project.learnedTodo}</dd>
-              </div>
-            </dl>
-            <div className="mt-4 flex flex-col gap-2">
-              <GithubPlaceholder />
-              <p className="text-sm text-slate">Demo — TODO: a demo URL is not published.</p>
-            </div>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink">{project.label}</p>
+            <p className="mt-4">
+              <TrackLink event="github_click" href={project.url} external>
+                {project.url.replace("https://", "")}
+              </TrackLink>
+            </p>
           </article>
         ))}
       </div>

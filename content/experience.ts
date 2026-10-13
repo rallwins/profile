@@ -236,4 +236,4 @@ export const roles: Role[] = [
   },
 ];
 
-export const progression = [...roles].reverse();
+export const progression = roles;

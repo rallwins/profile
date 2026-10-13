@@ -10,6 +10,7 @@ The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé 
 | --- | --- |
 | Title line, 22+ years, professional summary | Résumé |
 | LinkedIn `https://www.linkedin.com/in/allwinsrajaiah/` | Résumé |
+| GitHub `https://github.com/rallwins` and the public repositories `local-slm-chat`, `rag_replit`, `rag_resume`, `voice_asst` | Public GitHub profile. `rallwins/profile` is this site and is not listed as a project. |
 | Skill inventory | Résumé “Core Technology”, plus technologies named on a role. Azure is published only as Azure Databricks in the current data-platform work. |
 | Employers, titles, locations, dates, responsibility bullets, technology lines, key achievements | Résumé, including early-career roles that list title, employer, and dates only |
 | Education | Résumé: B.E., Computer Science & Engineering, Amrita Institute, Bharathiar University, India. No years are printed on the résumé, so none are shown. |
@@ -35,10 +36,9 @@ The résumé lists no awards. Earlier award lines are not published.
 
 | Gap | How the UI treats it |
 | --- | --- |
-| GitHub profile URL | Control explains that the URL is not published. No href is invented. |
 | Recommendation texts beyond the two visible LinkedIn excerpts | “What colleagues say” quotes Anoop M. and Previn Kutty only. The page said 14 people recommended Allwins; the other texts were not visible. |
-| Early-career responsibilities, domains, and technology stacks | Title, employer, and dates only. Detail is marked omitted. |
-| Personal-project repositories, demos, unspecified stacks, and lessons learned | Placeholders. Projects are labeled personal/experimental. |
+| Early-career responsibilities, domains, and technology stacks | Title, employer, and dates only. On 13 Oct 2026 the LinkedIn experience details URL redirected to the public profile. The experience list showed Tekizma Inc. in clear text and masked the other lines. Pre-August 2010 employers, titles, dates, and achievements were not readable, so they stay omitted. |
+| Repository descriptions | The four public repositories other than this site have no GitHub description. Labels use the repository name and language. |
 | A separate numeric outcome for the AI case study | Stated as not on the résumé |
 | Locations for employers other than Marlabs (Piscataway, NJ) | Omitted |
 | Education years | Omitted. The résumé does not print them. |
@@ -47,6 +47,6 @@ The résumé lists no awards. Earlier award lines are not published.
 
 Production language is limited to the résumé: Generative AI, Agentic AI, AgentCore Runtime, Amazon Bedrock, RAG, MCP, knowledge bases, guardrails, governance, evaluation, Langfuse, and AI applied to data platforms and engineering workflow.
 
-Personal projects (local Llama-based SLM, a RAG system, an AI agent, grocery/product recognition, a voice/multimodal assistant) are a separate page and are not described as shipped client work.
+Public repositories other than this site (`local-slm-chat`, `rag_replit`, `rag_resume`, `voice_asst`) are a separate page and are not described as shipped client work.
 
 The Architecture Notes article is a sample draft written for this site. It is not described as previously published.

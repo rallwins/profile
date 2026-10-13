@@ -52,7 +52,7 @@ function Detail({ role }: { role: Role }) {
 }
 
 export function CareerProgression() {
-  const [active, setActive] = useState(progression[progression.length - 1]?.id ?? "");
+  const [active, setActive] = useState(progression[0]?.id ?? "");
   const role = progression.find((item) => item.id === active) ?? progression[0];
 
   return (

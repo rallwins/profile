@@ -46,7 +46,7 @@ export const routes: RouteItem[] = [
     href: "/projects",
     label: "Projects",
     index: "06",
-    description: "Personal and experimental work, with unpublished links left blank.",
+    description: "Public GitHub repositories, excluding this site.",
   },
   {
     href: "/certifications",
