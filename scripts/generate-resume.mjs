@@ -273,11 +273,11 @@ paragraph(
 
 heading("Additional experience");
 paragraph("The source résumé lists title, employer, and dates for these roles.");
-paragraph("Tech Lead, Mapview Geographical Solutions, Sep 2009 – Aug 2010.");
-paragraph("Tech Lead / Senior J2EE, Star4ce Technologies, Inc., Nov 2007 – Jun 2009.");
-paragraph("Team Lead, Amtex Systems, Inc., Apr 2007 – Oct 2007.");
-paragraph("Team Lead, 3i-Infotech, Apr 2004 – Feb 2007.");
-paragraph("Java Developer, Asic Infotech Pvt. Ltd., May 2003 – Feb 2004.");
+paragraph("J2EE Tech Lead, MapView Geographical Solutions (P) Ltd, Sep 2009 – Aug 2010.");
+paragraph("J2EE Tech Lead, Star4ce Technologies Inc, Nov 2007 – Sep 2009.");
+paragraph("Senior Programmer Analyst, Amtex Systems, Apr 2007 – Sep 2007.");
+paragraph("Senior Software Engineer, 3i Infotech, Apr 2004 – Jan 2007.");
+paragraph("Software engineer, Asic Infotech Pvt Ltd, May 2003 – Feb 2004.");
 
 heading("Education");
 paragraph("B.E., Computer Science & Engineering, Amrita Institute, Bharathiar University, India.");

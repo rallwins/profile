@@ -53,16 +53,20 @@ export default function AboutPage() {
       <section className="mt-16 border-t border-line pt-10">
         <h2 className="font-semibold tracking-tight text-3xl">What colleagues say</h2>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">{recommendationsNote}</p>
-        <ul className="mt-6 grid gap-3 lg:grid-cols-2">
+        <ol className="mt-6 space-y-4">
           {recommendations.map((item) => (
             <li key={item.id} className="plate">
               <blockquote>
-                <p className="text-base leading-relaxed text-ink">“{item.quote}”</p>
-                <footer className="mt-3 text-sm font-semibold text-slate">{item.attribution}</footer>
+                <p className="whitespace-pre-line text-base leading-relaxed text-ink">“{item.quote}”</p>
+                <footer className="mt-4 text-sm leading-relaxed text-slate">
+                  <p className="font-semibold text-ink">{item.name}</p>
+                  <p>{item.headline}</p>
+                  <p>{item.dated}</p>
+                </footer>
               </blockquote>
             </li>
           ))}
-        </ul>
+        </ol>
       </section>
     </Frame>
   );

@@ -36,8 +36,7 @@ The résumé lists no awards. Earlier award lines are not published.
 
 | Gap | How the UI treats it |
 | --- | --- |
-| Recommendation texts beyond the two visible LinkedIn excerpts | “What colleagues say” quotes Anoop M. and Previn Kutty only. The page said 14 people recommended Allwins; the other texts were not visible. |
-| Early-career responsibilities, domains, and technology stacks | Title, employer, and dates only. On 13 Oct 2026 the LinkedIn experience details URL redirected to the public profile. The experience list showed Tekizma Inc. in clear text and masked the other lines. Pre-August 2010 employers, titles, dates, and achievements were not readable, so they stay omitted. |
+| Star4ce work location | The record says on-site and does not name a city, so no location is shown. |
 | Repository descriptions | The four public repositories other than this site have no GitHub description. Labels use the repository name and language. |
 | A separate numeric outcome for the AI case study | Stated as not on the résumé |
 | Locations for employers other than Marlabs (Piscataway, NJ) | Omitted |

@@ -13,28 +13,28 @@ function Detail({ role }: { role: Role }) {
         {role.location ? ` · ${role.location}` : ""} · {role.start} – {role.end}
       </p>
       {role.omittedNote ? <p className="mt-4 text-sm leading-relaxed text-slate">{role.omittedNote}</p> : null}
-      <dl className="mt-6 grid gap-5 md:grid-cols-2">
-        <div>
-          <dt className="text-xs uppercase tracking-[0.04em] text-slate">Domain</dt>
-          <dd className="mt-2 text-sm leading-relaxed text-ink">
-            {role.domain ?? "TODO: domain is not stated on the résumé."}
-          </dd>
-        </div>
-        <div>
-          <dt className="text-xs uppercase tracking-[0.04em] text-slate">Architecture scope</dt>
-          <dd className="mt-2 text-sm leading-relaxed text-ink">
-            {role.architectureScope ?? "TODO: architecture scope is not stated on the résumé."}
-          </dd>
-        </div>
-        <div className="md:col-span-2">
-          <dt className="text-xs uppercase tracking-[0.04em] text-slate">Technology</dt>
-          <dd className="mt-2 text-sm leading-relaxed text-ink">
-            {role.technologies.length > 0
-              ? role.technologies.join(" · ")
-              : "TODO: a technology list is not stated for this role."}
-          </dd>
-        </div>
-      </dl>
+      {role.domain || role.architectureScope || role.technologies.length > 0 ? (
+        <dl className="mt-6 grid gap-5 md:grid-cols-2">
+          {role.domain ? (
+            <div>
+              <dt className="text-xs uppercase tracking-[0.04em] text-slate">Domain</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-ink">{role.domain}</dd>
+            </div>
+          ) : null}
+          {role.architectureScope ? (
+            <div>
+              <dt className="text-xs uppercase tracking-[0.04em] text-slate">Architecture scope</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-ink">{role.architectureScope}</dd>
+            </div>
+          ) : null}
+          {role.technologies.length > 0 ? (
+            <div className="md:col-span-2">
+              <dt className="text-xs uppercase tracking-[0.04em] text-slate">Technology</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-ink">{role.technologies.join(" · ")}</dd>
+            </div>
+          ) : null}
+        </dl>
+      ) : null}
       {role.responsibilities.length > 0 ? (
         <div className="mt-6">
           <h4 className="text-xs uppercase tracking-[0.04em] text-slate">Responsibility</h4>

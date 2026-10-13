@@ -30,36 +30,55 @@ describe("verified profile facts", () => {
     );
   });
 
-  it("uses the résumé employers and does not invent extras", () => {
+  it("uses the recorded employers and does not invent extras", () => {
     expect(roles.map((role) => role.employer)).toEqual([
       "Tekizma Inc.",
       "Advanced Software Design, Inc.",
       "Marlabs Software Pvt. Ltd.",
-      "Mapview Geographical Solutions",
-      "Star4ce Technologies, Inc.",
-      "Amtex Systems, Inc.",
-      "3i-Infotech",
-      "Asic Infotech Pvt. Ltd.",
+      "MapView Geographical Solutions (P) Ltd",
+      "Star4ce Technologies Inc",
+      "Amtex Systems",
+      "3i Infotech",
+      "Asic Infotech Pvt Ltd",
     ]);
+    expect(roles.find((role) => role.id === "star4ce")?.end).toBe("Sep 2009");
+    expect(roles.find((role) => role.id === "3i-infotech")?.end).toBe("Jan 2007");
+    expect(roles.find((role) => role.id === "amtex")?.title).toBe("Senior Programmer Analyst");
+    expect(roles.find((role) => role.id === "asic")?.title).toBe("Software engineer");
+    expect(roles.find((role) => role.id === "tekizma")?.start).toBe("Sep 2024");
+    expect(roles.find((role) => role.id === "marlabs")?.employer).toBe("Marlabs Software Pvt. Ltd.");
   });
 
-  it("leaves early-career responsibility blank", () => {
-    for (const role of roles.filter((item) => item.weight === "early")) {
-      expect(role.responsibilities).toEqual([]);
-      expect(role.omittedNote).toMatch(/Omitted/);
-    }
+  it("keeps the supplied early-career responsibilities", () => {
+    const mapview = roles.find((role) => role.id === "mapview");
+    expect(mapview?.achievements[0]).toBe(
+      "Implemented geographical solutions to replace Google Maps for Saudi Space Research Centre.",
+    );
+    expect(mapview?.responsibilities[0]).toContain("Saudi Space Research Centre");
+    expect(roles.find((role) => role.id === "star4ce")?.responsibilities[1]).toContain("Warner Brothers");
   });
 
-  it("publishes only the visible LinkedIn recommendation excerpts", () => {
-    expect(recommendations.map((item) => item.attribution)).toEqual(["Anoop M.", "Previn Kutty"]);
-    expect(recommendations[0]?.quote).toBe(
-      "Allwins is very proactive in his approach. His technical skills in multiple areas, along with his ability to understand expectations and deliver on time meeting the demands is commendable.",
-    );
-    expect(recommendations[1]?.quote).toBe(
-      "I know him as a very self-motivated individual, who took initiatives for making the Center of Excellence team in mobile.",
-    );
-    expect(recommendationsNote).toContain("14 people");
-    expect(recommendationsNote).toContain("not visible");
+  it("publishes the fourteen recommendations newest first", () => {
+    expect(recommendations.map((item) => item.name)).toEqual([
+      "Anoop Madhusudanan",
+      "Previn Kutty",
+      "Ramesh Kumar",
+      "Sarang Kanase",
+      "Banish K.K",
+      "Hari Kumar",
+      "Nitin Naithani",
+      "Patrick Rice",
+      "Mario Papi",
+      "Naresh Patti",
+      "Rajan Tawate",
+      "Ushasri P",
+      "B Narayana Bhat",
+      "Eric Violland",
+    ]);
+    expect(recommendations[0]?.quote.startsWith("Allwins is very proactive in his approach.")).toBe(true);
+    expect(recommendations[1]?.quote.startsWith("I know him as a very self-motivated individual")).toBe(true);
+    expect(recommendations.at(-1)?.quote).toContain("hundred percent effort");
+    expect(recommendationsNote).toContain("newest first");
     const completed = certifications.find((item) => item.status === "completed");
     expect(completed?.name).toBe("AWS Certified AI Practitioner");
     expect(completed?.issued).toBe("September 2026");
@@ -99,10 +118,20 @@ describe("verified profile facts", () => {
 
   it("lists latest roles first and links only the visible public repositories", () => {
     expect(roles[0]?.employer).toBe("Tekizma Inc.");
-    expect(roles.at(-1)?.employer).toBe("Asic Infotech Pvt. Ltd.");
+    expect(roles.at(-1)?.employer).toBe("Asic Infotech Pvt Ltd");
     expect(progression.map((role) => role.id)).toEqual(roles.map((role) => role.id));
-    expect(visualResume.roles[0]?.employer).toBe("Tekizma Inc.");
-    expect(visualResume.roles.at(-1)?.employer).toBe("Asic Infotech");
+    expect(visualResume.roles.map((role) => role.employer)).toEqual([
+      "Tekizma Inc.",
+      "Advanced Software Design",
+      "Marlabs Software",
+      "MapView Geographical Solutions (P) Ltd",
+      "Star4ce Technologies Inc",
+      "Amtex Systems",
+      "3i Infotech",
+      "Asic Infotech Pvt Ltd",
+    ]);
+    expect(visualResume.roles[4]?.end).toBe("Sep 2009");
+    expect(visualResume.roles[6]?.end).toBe("Jan 2007");
     expect(personalProjects.map((project) => project.url)).toEqual([
       "https://github.com/rallwins/local-slm-chat",
       "https://github.com/rallwins/rag_replit",
