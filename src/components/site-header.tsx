@@ -7,6 +7,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, X } from "lucide-react";
 import { profile } from "../../content/profile";
 import { routes } from "@/lib/routes";
+import { StyleSwitcher } from "@/components/style-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { TrackLink } from "@/components/track-link";
 import { cn } from "@/lib/utils";
@@ -64,11 +65,12 @@ export function SiteHeader() {
         >
           Skip to content
         </a>
-        <div className="flex items-center justify-between gap-3 px-5 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
           <Link href="/" className="text-lg font-semibold tracking-tight text-ink">
             {profile.name}
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <StyleSwitcher variant="menu" />
             <ThemeToggle />
             <Dialog.Root open={open} onOpenChange={setOpen}>
               <Dialog.Trigger asChild>
@@ -98,6 +100,9 @@ export function SiteHeader() {
                     onNavigate={() => setOpen(false)}
                     className="mt-8 flex flex-col gap-1"
                   />
+                  <div className="mt-6">
+                    <StyleSwitcher name="site-style-menu" />
+                  </div>
                   <div className="mt-8 flex flex-col gap-2">
                     <TrackLink
                       event="resume_download"
@@ -121,7 +126,7 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      <aside className="fixed bottom-3 left-3 top-3 z-40 hidden w-72 flex-col rounded-[1.5rem] bg-panel px-5 py-7 xl:flex">
+      <aside className="fixed bottom-3 left-3 top-3 z-40 hidden w-72 flex-col overflow-y-auto rounded-[1.5rem] bg-panel px-5 py-7 xl:flex">
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:mb-4 focus:rounded-full focus:bg-paper focus:px-3 focus:py-2"
@@ -136,6 +141,7 @@ export function SiteHeader() {
         </p>
         <NavLinks pathname={pathname} className="mt-8 flex flex-col gap-1" />
         <div className="mt-auto flex flex-col gap-4 pt-8">
+          <StyleSwitcher name="site-style-rail" />
           <ThemeToggle />
           <div className="flex flex-col gap-1.5">
             <TrackLink

@@ -135,6 +135,251 @@ body {
   box-shadow: none !important;
 }
 
+html[data-style="glass-dashboard"] {
+  --paper: rgba(255, 255, 255, 0.46);
+  --panel: rgba(255, 255, 255, 0.68);
+  --ink: #172033;
+  --slate: #3c4b61;
+  --line: rgba(255, 255, 255, 0.74);
+  --accent: #1e40af;
+  --accent-ink: #ffffff;
+  --radius: 1.35rem;
+  --glass-blur: 18px;
+  --glass-shadow: 0 10px 28px rgba(37, 64, 120, 0.1);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+html[data-style="glass-dashboard"].dark {
+  --paper: rgba(15, 23, 42, 0.42);
+  --panel: rgba(15, 23, 42, 0.68);
+  --ink: #f8fafc;
+  --slate: #d5deea;
+  --line: rgba(255, 255, 255, 0.16);
+  --accent: #dbeafe;
+  --accent-ink: #0f172a;
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+html[data-style="glass-dashboard"] body {
+  background-color: #d5e3f8;
+  background-image:
+    radial-gradient(880px 460px at 8% -10%, rgba(255, 255, 255, 0.92), transparent 58%),
+    radial-gradient(720px 420px at 100% 0%, rgba(196, 181, 253, 0.62), transparent 52%),
+    radial-gradient(640px 480px at 78% 100%, rgba(147, 197, 253, 0.5), transparent 48%),
+    linear-gradient(165deg, #e7eefb 0%, #d5e3f8 48%, #e4e0f6 100%);
+  background-attachment: fixed;
+}
+
+html[data-style="glass-dashboard"].dark body {
+  background-color: #0c1220;
+  background-image:
+    radial-gradient(820px 420px at 12% -8%, rgba(96, 165, 250, 0.28), transparent 55%),
+    radial-gradient(680px 380px at 100% 8%, rgba(167, 139, 250, 0.22), transparent 50%),
+    radial-gradient(620px 460px at 70% 100%, rgba(56, 189, 248, 0.16), transparent 48%),
+    linear-gradient(165deg, #12182a 0%, #0c1220 52%, #161326 100%);
+}
+
+html[data-style="glass-funnel"] {
+  --paper: rgba(244, 252, 255, 0.42);
+  --panel: rgba(236, 249, 252, 0.64);
+  --ink: #102833;
+  --slate: #34515c;
+  --line: rgba(255, 255, 255, 0.7);
+  --accent: #0c4a5e;
+  --accent-ink: #f4fcff;
+  --radius: 1.15rem;
+  --glass-blur: 16px;
+  --glass-shadow: 0 14px 28px rgba(16, 72, 88, 0.1);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+html[data-style="glass-funnel"].dark {
+  --paper: rgba(8, 32, 40, 0.45);
+  --panel: rgba(10, 36, 46, 0.7);
+  --ink: #f3fbfd;
+  --slate: #c9e4ea;
+  --line: rgba(198, 240, 248, 0.2);
+  --accent: #c8f4ff;
+  --accent-ink: #082028;
+  --glass-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+html[data-style="glass-funnel"] body {
+  background-color: #d4eef4;
+  background-image:
+    radial-gradient(78% 42% at 50% -12%, rgba(255, 255, 255, 0.95), transparent 60%),
+    radial-gradient(24% 58% at 50% 112%, rgba(72, 168, 188, 0.55), transparent 70%),
+    linear-gradient(180deg, #e8f8fb 0%, #d5eef5 46%, #c5e4ef 100%);
+  background-attachment: fixed;
+}
+
+html[data-style="glass-funnel"].dark body {
+  background-color: #07161c;
+  background-image:
+    radial-gradient(70% 36% at 50% -8%, rgba(125, 211, 232, 0.28), transparent 58%),
+    radial-gradient(18% 48% at 50% 108%, rgba(34, 120, 140, 0.45), transparent 70%),
+    linear-gradient(180deg, #0d242c 0%, #07161c 58%, #0a1e24 100%);
+}
+
+html[data-style="glass-funnel"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li),
+html[data-style="glass-dashboard"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li) {
+  border: 1px solid var(--line);
+  box-shadow: var(--glass-shadow), var(--glass-highlight);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.15);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.15);
+}
+
+html[data-style="glass-funnel"] :is(.plate, .vr-panel, .vr-timeline, aside) {
+  border-left: 3px solid color-mix(in oklab, var(--accent) 72%, white);
+}
+
+html[data-style="hire-sheet"] {
+  --paper: #e7e2d8;
+  --panel: #fbf8f3;
+  --ink: #1c1915;
+  --slate: #534c43;
+  --line: #d4cdc0;
+  --accent: #1e3a32;
+  --accent-ink: #fbf8f3;
+  --radius: 0.15rem;
+  --glass-blur: 0px;
+  --glass-shadow: none;
+  --glass-highlight: none;
+}
+
+html[data-style="hire-sheet"].dark {
+  --paper: #141311;
+  --panel: #221f1b;
+  --ink: #f6f1e8;
+  --slate: #cfc6b8;
+  --line: #3c362e;
+  --accent: #e4d2b0;
+  --accent-ink: #1a1612;
+}
+
+html[data-style="hire-sheet"] body {
+  background: #e7e2d8;
+  background-image: none;
+}
+
+html[data-style="hire-sheet"].dark body {
+  background: #141311;
+  background-image: none;
+}
+
+html[data-style="hire-sheet"] :is(
+  .bg-panel,
+  .bg-paper,
+  .plate,
+  .vr-panel,
+  .vr-timeline,
+  .vr-marks li,
+  .vr-achieve li,
+  aside,
+  header,
+  .rounded-full,
+  .rounded-2xl,
+  .rounded-\[1\.25rem\],
+  .rounded-\[1\.5rem\],
+  .rounded-\[1\.75rem\],
+  .rounded-l-\[1\.75rem\]
+) {
+  border-radius: 0.15rem;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+html[data-style="hire-sheet"] :is(.bg-panel, .plate, .vr-panel, .vr-timeline, aside, header) {
+  border: 1px solid var(--line);
+}
+
+html[data-style="hire-sheet"] main > div,
+html[data-style="hire-sheet"] .visual-resume {
+  border: 1px solid var(--line);
+  border-radius: 0.15rem;
+  background: var(--panel);
+}
+
+html[data-style="hire-sheet"] main > div {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+
+html[data-style="hire-sheet"] h1 {
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  letter-spacing: -0.03em;
+}
+
+html[data-style="hire-sheet"] .mt-16 {
+  margin-top: 2rem;
+}
+
+html[data-style="hire-sheet"] .plate {
+  padding: 0.85rem 1rem;
+}
+
+.style-switcher {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.style-switcher legend {
+  padding: 0;
+  color: var(--slate);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.style-switcher-options {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.45rem;
+}
+
+.style-switcher label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.15rem 0.75rem;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.style-switcher input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.style-switcher label:has(input:checked) {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.style-switcher label:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+html[data-style="hire-sheet"] .style-switcher label {
+  border-radius: 0.15rem;
+  border-color: var(--line);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -147,5 +392,59 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  html[data-style="glass-funnel"] body,
+  html[data-style="glass-dashboard"] body {
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html[data-style="glass-dashboard"] {
+    --paper: #f4f7fb;
+    --panel: #ffffff;
+    --line: #d5deea;
+  }
+
+  html[data-style="glass-dashboard"].dark {
+    --paper: #121820;
+    --panel: #1b2433;
+    --line: #334155;
+  }
+
+  html[data-style="glass-funnel"] {
+    --paper: #f3fbfd;
+    --panel: #ffffff;
+    --line: #c9e3ea;
+  }
+
+  html[data-style="glass-funnel"].dark {
+    --paper: #0c1c22;
+    --panel: #143039;
+    --line: #24525c;
+  }
+
+  html[data-style="glass-funnel"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li),
+  html[data-style="glass-dashboard"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media print {
+  html[data-style="glass-funnel"] body,
+  html[data-style="glass-dashboard"] body,
+  html[data-style="hire-sheet"] body {
+    background: #fff;
+    background-image: none;
+  }
+
+  html[data-style="glass-funnel"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li, aside, header),
+  html[data-style="glass-dashboard"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li, aside, header),
+  html[data-style="hire-sheet"] :is(.bg-panel, .bg-paper, .plate, .vr-panel, .vr-timeline, .vr-marks li, .vr-achieve li, aside, header) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
   }
 }

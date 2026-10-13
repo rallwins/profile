@@ -1,4 +1,6 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { awards } from "../content/awards";
 import { certifications } from "../content/certifications";
@@ -6,14 +8,14 @@ import { roles } from "../content/experience";
 import { expertiseGroups } from "../content/expertise";
 import { personalProjects } from "../content/projects";
 import { education, profile } from "../content/profile";
-import { recommendations } from "../content/recommendations";
+import { recommendations, recommendationsNote } from "../content/recommendations";
 import { radar } from "../content/radar";
 
 describe("verified profile facts", () => {
   it("keeps the public identity and contact that were supplied", () => {
     expect(profile.name).toBe("Allwins Rajaiah");
     expect(profile.fullName).toBe("Allwins Kannan Rajaiah");
-    expect(profile.email).toBe("allwins.rs@gmail.com");
+    expect("email" in profile).toBe(false);
     expect(profile.linkedin).toBe("https://www.linkedin.com/in/allwinsrajaiah/");
     expect(profile.canonical).toBe("https://allwinsrajaiah.com");
     expect(profile.title).toContain("AI | Cloud | Data | Full Stack");
@@ -47,11 +49,16 @@ describe("verified profile facts", () => {
     }
   });
 
-  it("does not invent recommendation quotes and records the published credential", () => {
-    for (const item of recommendations) {
-      expect(item.quote).toBeNull();
-      expect(item.attribution).toBeNull();
-    }
+  it("publishes only the visible LinkedIn recommendation excerpts", () => {
+    expect(recommendations.map((item) => item.attribution)).toEqual(["Anoop M.", "Previn Kutty"]);
+    expect(recommendations[0]?.quote).toBe(
+      "Allwins is very proactive in his approach. His technical skills in multiple areas, along with his ability to understand expectations and deliver on time meeting the demands is commendable.",
+    );
+    expect(recommendations[1]?.quote).toBe(
+      "I know him as a very self-motivated individual, who took initiatives for making the Center of Excellence team in mobile.",
+    );
+    expect(recommendationsNote).toContain("14 people");
+    expect(recommendationsNote).toContain("not visible");
     const completed = certifications.find((item) => item.status === "completed");
     expect(completed?.name).toBe("AWS Certified AI Practitioner");
     expect(completed?.issued).toBe("September 2026");
@@ -97,7 +104,7 @@ describe("verified profile facts", () => {
     }
   });
 
-  it("does not publish a phone number in content, the generator, or the PDF", () => {
+  it("does not publish a phone number or a public email address", () => {
     const pdf = readFileSync(new URL("../public/resume.pdf", import.meta.url));
     const generator = readFileSync(new URL("../scripts/generate-resume.mjs", import.meta.url), "utf8");
     const blob = Buffer.concat([
@@ -113,5 +120,22 @@ describe("verified profile facts", () => {
     expect(blob).not.toContain("Avishkar");
     expect(generator).toContain("Amrita Institute, Bharathiar University");
     expect(generator).toContain("cd4be8c7c3ea48aca09bc7a181355061");
+    const forbidden = ["allwins.rs", "gmail.com"].join("@");
+    expect(blob).not.toContain(forbidden);
+    const root = fileURLToPath(new URL("..", import.meta.url));
+    const hits: string[] = [];
+    const visit = (dir: string) => {
+      for (const entry of readdirSync(dir)) {
+        if (entry === "node_modules" || entry === ".git" || entry === ".next") continue;
+        const full = join(dir, entry);
+        if (statSync(full).isDirectory()) {
+          visit(full);
+          continue;
+        }
+        if (readFileSync(full).includes(Buffer.from(forbidden))) hits.push(full);
+      }
+    };
+    visit(root);
+    expect(hits).toEqual([]);
   });
 });

@@ -1,13 +1,13 @@
 # Architecture
 
-A static Next.js App Router site. Content lives in typed modules and one MDX note. Pages are server components. Client components are limited to theme, navigation chrome, the contact form, career selection, analytics clicks, and the React Flow canvas.
+A static Next.js App Router site. Content lives in typed modules and one MDX note. Pages are server components. Client components are limited to theme, the style switcher, navigation chrome, the contact form, career selection, analytics clicks, and the React Flow canvas.
 
 ## Routing
 
 | Route | Role |
 | --- | --- |
 | `/` | Executive hero, metadata, interactive operating model, proof points, report index |
-| `/about` | Narrative, timeline, education, and recommendation placeholders |
+| `/about` | Narrative, timeline, education, and the visible LinkedIn recommendation excerpts |
 | `/expertise` | Five expertise plates and the technology radar |
 | `/architecture` | Case studies, diagrams, ADRs |
 | `/experience` | Weighted roles and the career progression |
@@ -16,7 +16,7 @@ A static Next.js App Router site. Content lives in typed modules and one MDX not
 | `/certifications` | Completed certification and education |
 | `/writing` | Architecture Notes index |
 | `/writing/[slug]` | MDX article |
-| `/contact` | Mailto form |
+| `/contact` | Draft form. A public email address is not listed, so the note is not sent. |
 | `/resume` | In-browser PDF viewer |
 | `/visual-resume` | One-page HTML visual résumé. The PDF is not embedded. |
 
@@ -47,10 +47,11 @@ Next.js 16 Cache Components stay off, and `partialPrefetching` stays off with th
 | Client module | Why |
 | --- | --- |
 | `theme-provider.tsx` | Persists light, dark, or system |
-| `site-header.tsx` | Pathname, mobile dialog, theme control |
+| `style-provider.tsx` | Persists Glass Funnel, Glass Dashboard, or Hire Sheet |
+| `site-header.tsx` | Pathname, mobile dialog, theme and style controls |
 | `architecture-canvas.tsx` | React Flow |
 | `career-progression.tsx` | Selects one role |
-| `contact-form.tsx` | Sanitizes input and opens `mailto:` |
+| `contact-form.tsx` | Sanitizes input. Does not send, because no public address is listed. |
 | `track-link.tsx` | Vercel Analytics `track()` |
 
 Radix Dialog traps focus in the mobile nav. The career control is a tab list with `aria-selected`, not a fake quote widget.
@@ -63,4 +64,4 @@ Root metadata sets the canonical host, Open Graph, and Twitter card. `sitemap.ts
 
 ## Security
 
-`next.config.ts` sets `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, HSTS, and a Content-Security-Policy in production. The contact form strips control characters and length-limits fields before building a `mailto` URL. There is no server that stores messages.
+`next.config.ts` sets `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, HSTS, and a Content-Security-Policy in production. The contact form strips control characters and length-limits fields. It does not open a mail client. There is no server that stores messages.

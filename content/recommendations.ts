@@ -1,64 +1,29 @@
-export type RecommendationPlaceholder = {
+export type Recommendation = {
   id: string;
-  theme: string;
-  quote: null;
-  attribution: null;
-  note: string;
+  quote: string;
+  attribution: string;
 };
 
-const note =
-  "TODO: no verified public excerpt is available. This is a theme label, not a quotation.";
-
-export const recommendations: RecommendationPlaceholder[] = [
-  { id: "technical-depth", theme: "Technical depth", quote: null, attribution: null, note },
-  { id: "proactive", theme: "Proactive approach", quote: null, attribution: null, note },
+/**
+ * Short verbatim excerpts from the two recommendations visible on
+ * https://www.linkedin.com/in/allwinsrajaiah/details/recommendations/?detailScreenTabIndex=0
+ * on 13 Oct 2026. The page also said 14 people have recommended Allwins.
+ * The other recommendation texts were behind “Join now to view” and are not included.
+ */
+export const recommendations: Recommendation[] = [
   {
-    id: "expectations",
-    theme: "Understanding expectations",
-    quote: null,
-    attribution: null,
-    note,
+    id: "anoop-m",
+    attribution: "Anoop M.",
+    quote:
+      "Allwins is very proactive in his approach. His technical skills in multiple areas, along with his ability to understand expectations and deliver on time meeting the demands is commendable.",
   },
   {
-    id: "delivery",
-    theme: "Delivery reliability",
-    quote: null,
-    attribution: null,
-    note,
-  },
-  {
-    id: "mobile-coe",
-    theme: "Mobile Center of Excellence leadership",
-    quote: null,
-    attribution: null,
-    note,
-  },
-  {
-    id: "team-building",
-    theme: "Recruitment and team building",
-    quote: null,
-    attribution: null,
-    note,
-  },
-  {
-    id: "proposals",
-    theme: "Solution proposals",
-    quote: null,
-    attribution: null,
-    note,
-  },
-  {
-    id: "architecture-design",
-    theme: "Architecture and design",
-    quote: null,
-    attribution: null,
-    note,
-  },
-  {
-    id: "presentations",
-    theme: "Customer presentations",
-    quote: null,
-    attribution: null,
-    note,
+    id: "previn-kutty",
+    attribution: "Previn Kutty",
+    quote:
+      "I know him as a very self-motivated individual, who took initiatives for making the Center of Excellence team in mobile.",
   },
 ];
+
+export const recommendationsNote =
+  "Short excerpts from the recommendations visible on LinkedIn. The same page says 14 people have recommended Allwins; the other recommendation texts were not visible without signing in.";

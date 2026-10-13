@@ -19,9 +19,6 @@ export default function VisualResumePage() {
           <p className="vr-tagline">{visualResume.tagline}</p>
           <ul className="vr-contact">
             <li>
-              <a href={`mailto:${profile.email}`}>{visualResume.email}</a>
-            </li>
-            <li>
               <TrackLink event="linkedin_click" href={profile.linkedin} external>
                 {visualResume.linkedinLabel}
               </TrackLink>

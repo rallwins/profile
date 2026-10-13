@@ -16,7 +16,7 @@ export const routes: RouteItem[] = [
     href: "/about",
     label: "About",
     index: "01",
-    description: "Practice, timeline, education, and colleague themes.",
+    description: "Practice, timeline, education, and colleague recommendations.",
   },
   {
     href: "/expertise",

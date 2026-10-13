@@ -7,7 +7,6 @@ export const visualResume = {
   name: "Allwins Kannan Rajaiah",
   tagline:
     "SOLUTIONS ARCHITECT | DIRECTOR OF TECHNOLOGY | AI | CLOUD | DATA | FULL STACK",
-  email: "allwins.rs@gmail.com",
   linkedinLabel: "linkedin.com/in/allwinsrajaiah/",
   highlights: [
     "22+ Years of Experience",

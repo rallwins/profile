@@ -13,7 +13,6 @@ export const profile = {
     "Allwins Rajaiah is a Director of Technology and Solutions Architect with 22+ years of experience across AI, cloud, data engineering, enterprise architecture and full-stack systems.",
   canonical: "https://allwinsrajaiah.com",
   linkedin: "https://www.linkedin.com/in/allwinsrajaiah/",
-  email: "allwins.rs@gmail.com",
   githubUrl: null as string | null,
   githubTodo:
     "TODO: a public GitHub profile URL is not in the résumé or the brief.",

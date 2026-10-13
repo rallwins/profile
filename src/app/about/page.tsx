@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { progression } from "../../../content/experience";
 import { education, profile, summaryParagraphs } from "../../../content/profile";
-import { recommendations } from "../../../content/recommendations";
+import { recommendations, recommendationsNote } from "../../../content/recommendations";
 import { Frame, PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
@@ -52,14 +52,14 @@ export default function AboutPage() {
       </section>
       <section className="mt-16 border-t border-line pt-10">
         <h2 className="font-semibold tracking-tight text-3xl">What colleagues say</h2>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">
-          No recommendation text is published here. The labels below are themes only. They are not quotations, and they are not attributed.
-        </p>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">{recommendationsNote}</p>
+        <ul className="mt-6 grid gap-3 lg:grid-cols-2">
           {recommendations.map((item) => (
             <li key={item.id} className="plate">
-              <p className="text-ink">{item.theme}</p>
-              <p className="mt-2 text-xs leading-relaxed text-slate">{item.note}</p>
+              <blockquote>
+                <p className="text-base leading-relaxed text-ink">“{item.quote}”</p>
+                <footer className="mt-3 text-sm font-semibold text-slate">{item.attribution}</footer>
+              </blockquote>
             </li>
           ))}
         </ul>

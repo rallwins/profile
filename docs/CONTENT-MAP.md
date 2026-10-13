@@ -9,7 +9,6 @@ The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé 
 | Item | Source |
 | --- | --- |
 | Title line, 22+ years, professional summary | Résumé |
-| Email `allwins.rs@gmail.com` | Résumé header. Used for contact. |
 | LinkedIn `https://www.linkedin.com/in/allwinsrajaiah/` | Résumé |
 | Skill inventory | Résumé “Core Technology”, plus technologies named on a role. Azure is published only as Azure Databricks in the current data-platform work. |
 | Employers, titles, locations, dates, responsibility bullets, technology lines, key achievements | Résumé, including early-career roles that list title, employer, and dates only |
@@ -28,7 +27,7 @@ Résumé achievements are quoted:
 
 ## Withheld on purpose
 
-The résumé includes a mobile phone number. It is not printed on the site or in the generated PDF. The résumé has no street address, and none is added.
+The résumé includes a mobile phone number. It is not printed on the site or in the generated PDF. A public email address is not listed on the site, in JSON-LD, in the contact form, or in the generated PDF. The résumé has no street address, and none is added.
 
 The résumé lists no awards. Earlier award lines are not published.
 
@@ -37,7 +36,7 @@ The résumé lists no awards. Earlier award lines are not published.
 | Gap | How the UI treats it |
 | --- | --- |
 | GitHub profile URL | Control explains that the URL is not published. No href is invented. |
-| Recommendation quotes and who said them | “What Colleagues Say” shows theme labels only |
+| Recommendation texts beyond the two visible LinkedIn excerpts | “What colleagues say” quotes Anoop M. and Previn Kutty only. The page said 14 people recommended Allwins; the other texts were not visible. |
 | Early-career responsibilities, domains, and technology stacks | Title, employer, and dates only. Detail is marked omitted. |
 | Personal-project repositories, demos, unspecified stacks, and lessons learned | Placeholders. Projects are labeled personal/experimental. |
 | A separate numeric outcome for the AI case study | Stated as not on the résumé |

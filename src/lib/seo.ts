@@ -10,7 +10,6 @@ export function personJsonLd() {
     jobTitle: "Director of Technology and Solutions Architect",
     description: profile.seoDescription,
     url: profile.canonical,
-    email: profile.email,
     sameAs: [profile.linkedin],
     alumniOf: {
       "@type": "CollegeOrUniversity",

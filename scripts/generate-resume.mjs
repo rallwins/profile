@@ -99,7 +99,7 @@ paragraph(
   10,
   bold,
 );
-page.drawText("allwins.rs@gmail.com   ·   linkedin.com/in/allwinsrajaiah/", {
+page.drawText("linkedin.com/in/allwinsrajaiah/", {
   x: margin,
   y,
   size: 9,

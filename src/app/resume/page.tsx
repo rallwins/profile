@@ -16,7 +16,7 @@ export default function ResumePage() {
         index="10"
         eyebrow="Résumé"
         title="The record, without the gaps filled in."
-        lede="Generated from the résumé. Early-career roles keep the title, employer, and dates the résumé prints. Contact on this copy is email and LinkedIn."
+        lede="Generated from the résumé. Early-career roles keep the title, employer, and dates the résumé prints. Contact on this copy is LinkedIn."
       />
       <TrackLink
         event="resume_download"

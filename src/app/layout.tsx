@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { profile } from "../../content/profile";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
+import { StyleProvider } from "@/components/style-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,7 +16,7 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const themeScript = `(function(){try{var t=localStorage.getItem("ar-theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(d)document.documentElement.classList.add("dark");document.documentElement.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem("ar-theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(d)document.documentElement.classList.add("dark");document.documentElement.style.colorScheme=d?"dark":"light";var allowed={"glass-funnel":1,"glass-dashboard":1,"hire-sheet":1};var s=localStorage.getItem("ar-style");if(!allowed[s])s="glass-dashboard";document.documentElement.setAttribute("data-style",s);}catch(e){document.documentElement.setAttribute("data-style","glass-dashboard");}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.canonical),
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-style="glass-dashboard"
       className={`${jakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -55,13 +57,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <JsonLd data={personJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         <ThemeProvider>
-          <SiteHeader />
-          <div className="site-frame flex min-h-full flex-1 flex-col xl:pl-[19.5rem]">
-            <main id="content" className="flex-1">
-              {children}
-            </main>
-            <SiteFooter />
-          </div>
+          <StyleProvider>
+            <SiteHeader />
+            <div className="site-frame flex min-h-full flex-1 flex-col xl:pl-[19.5rem]">
+              <main id="content" className="flex-1">
+                {children}
+              </main>
+              <SiteFooter />
+            </div>
+          </StyleProvider>
         </ThemeProvider>
         <Analytics />
       </body>

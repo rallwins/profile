@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { track } from "@vercel/analytics";
-import { profile } from "../../content/profile";
 import { isPlausibleEmail, sanitizeText } from "@/lib/sanitize";
 
 const LIMITS = { name: 120, email: 254, message: 4000 };
@@ -29,18 +27,14 @@ export function ContactForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Architecture conversation from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    track("contact_cta");
     setError(null);
     setReady(true);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
   }
 
   return (
     <form onSubmit={onSubmit} className="mt-8 max-w-xl space-y-5" noValidate>
       <p className="text-sm leading-relaxed text-slate">
-        This opens your email program to {profile.email}. Nothing is stored on a server. Line breaks and control characters are removed before the message is attached.
+        A public email address is not listed. The fields stay so a note can be drafted. Nothing is sent, and nothing is stored on a server.
       </p>
       <div>
         <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.04em] text-slate">
@@ -89,11 +83,11 @@ export function ContactForm() {
       ) : null}
       {ready ? (
         <p role="status" className="text-sm text-slate">
-          Your email program should open with this note. If it does not, write to {profile.email}.
+          Nothing was sent. A public email address is not listed.
         </p>
       ) : null}
       <button type="submit" className="h-11 rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink">
-        Send via email
+        Submit note
       </button>
     </form>
   );
