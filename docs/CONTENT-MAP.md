@@ -37,7 +37,7 @@ The résumé lists no awards. Earlier award lines are not published.
 | Gap | How the UI treats it |
 | --- | --- |
 | Star4ce work location | The record says on-site and does not name a city, so no location is shown. |
-| Repository descriptions | The four public repositories other than this site have no GitHub description. Labels use the repository name and language. |
+| Repository descriptions | The four public repositories other than this site now have GitHub descriptions, and the projects page uses that text. |
 | A separate numeric outcome for the AI case study | Stated as not on the résumé |
 | Locations for employers other than Marlabs (Piscataway, NJ) | Omitted |
 | Education years | Omitted. The résumé does not print them. |

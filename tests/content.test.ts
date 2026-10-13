@@ -132,21 +132,19 @@ describe("verified profile facts", () => {
     ]);
     expect(visualResume.roles[4]?.end).toBe("Sep 2009");
     expect(visualResume.roles[6]?.end).toBe("Jan 2007");
-    expect(personalProjects.map((project) => project.url)).toEqual([
-      "https://github.com/rallwins/local-slm-chat",
-      "https://github.com/rallwins/rag_replit",
-      "https://github.com/rallwins/rag_resume",
-      "https://github.com/rallwins/voice_asst",
+    expect(personalProjects.map((project) => [project.name, project.url, project.language])).toEqual([
+      ["rag_replit", "https://github.com/rallwins/rag_replit", "TypeScript"],
+      ["voice_asst", "https://github.com/rallwins/voice_asst", "Python"],
+      ["local-slm-chat", "https://github.com/rallwins/local-slm-chat", "Python"],
+      ["rag_resume", "https://github.com/rallwins/rag_resume", "HTML"],
     ]);
-    expect(personalProjects.map((project) => project.language)).toEqual([
-      "Python",
-      "TypeScript",
-      "HTML",
-      "Python",
-    ]);
+    expect(personalProjects[0]?.description).toContain("workspace-scoped RAG");
+    expect(personalProjects[1]?.description).toContain("Python-powered voice assistant");
+    expect(personalProjects[2]?.description).toContain("served by Ollama");
+    expect(personalProjects[3]?.description).toContain("Retrieval-augmented resume application");
     for (const project of personalProjects) {
-      expect(project.description).toBeNull();
-      expect(project.label).toContain("no description");
+      expect(project.description).toBeTruthy();
+      expect(project.updated).toBe("2026-10-13");
       expect(project.url).not.toContain("/profile");
     }
   });

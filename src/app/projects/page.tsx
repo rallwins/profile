@@ -25,7 +25,13 @@ export default function ProjectsPage() {
           <article key={project.slug} className="plate">
             <p className="text-xs uppercase tracking-[0.04em] text-accent">{project.language}</p>
             <h2 className="mt-2 font-semibold tracking-tight text-3xl">{project.name}</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink">{project.label}</p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink">
+              {project.description ??
+                `${project.language} repository named ${project.name}. GitHub publishes no description.`}
+            </p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.04em] text-slate">
+              Updated {project.updated}
+            </p>
             <p className="mt-4">
               <TrackLink event="github_click" href={project.url} external>
                 {project.url.replace("https://", "")}

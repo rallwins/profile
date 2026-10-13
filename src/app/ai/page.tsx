@@ -55,7 +55,7 @@ export default function AiPage() {
       <section className="plate mt-12">
         <h2 className="font-semibold tracking-tight text-2xl">Personal / experimental</h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
-          The projects page lists the public GitHub repositories. GitHub does not publish a description for them, and they are not production claims.
+          The projects page lists the public GitHub repositories with the descriptions GitHub publishes. They are not production claims.
         </p>
         <Link href="/projects" className="mt-4 inline-block text-sm text-accent">
           Open personal projects
