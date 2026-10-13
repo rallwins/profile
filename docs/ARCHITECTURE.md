@@ -18,6 +18,7 @@ A static Next.js App Router site. Content lives in typed modules and one MDX not
 | `/writing/[slug]` | MDX article |
 | `/contact` | Mailto form |
 | `/resume` | In-browser PDF viewer |
+| `/visual-resume` | One-page HTML visual résumé. The PDF is not embedded. |
 
 `src/lib/routes.ts` is the single nav list. The header, footer, sitemap, and homepage index read it.
 

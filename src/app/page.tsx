@@ -39,6 +39,9 @@ export default function HomePage() {
         <TrackLink event="resume_download" href="/resume.pdf" download className={secondaryAction}>
           Download résumé
         </TrackLink>
+        <Link href="/visual-resume" className={secondaryAction}>
+          Visual résumé
+        </Link>
         <TrackLink event="linkedin_click" href={profile.linkedin} external className={secondaryAction}>
           LinkedIn
         </TrackLink>

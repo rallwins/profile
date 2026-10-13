@@ -66,6 +66,12 @@ export const routes: RouteItem[] = [
     index: "09",
     description: "A note about architecture, technology, and AI.",
   },
+  {
+    href: "/visual-resume",
+    label: "Visual résumé",
+    index: "10",
+    description: "One-page visual résumé.",
+  },
 ];
 
 export const primaryNav = routes.filter((route) => route.href !== "/");

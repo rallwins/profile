@@ -1,0 +1,613 @@
+.visual-resume {
+  color: var(--ink);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.visual-resume a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.vr-id {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.vr-name {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.vr-tagline {
+  margin-top: 0.2rem;
+  color: var(--slate);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+.vr-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.vr-contact li {
+  list-style: none;
+}
+
+.vr-marks {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+}
+
+.vr-marks li {
+  border-radius: 0.85rem;
+  background: var(--panel);
+  padding: 0.45rem 0.7rem;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.vr-band,
+.vr-close {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.vr-panel {
+  min-width: 0;
+  border-radius: 0.9rem;
+  background: var(--panel);
+  padding: 0.55rem 0.7rem 0.65rem;
+}
+
+.vr-panel h2,
+.vr-timeline h2 {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.vr-summary,
+.vr-tech,
+.vr-points,
+.vr-timeline ol,
+.vr-achieve,
+.vr-contact,
+.vr-marks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vr-summary {
+  margin-top: 0.35rem;
+}
+
+.vr-summary li,
+.vr-points li {
+  position: relative;
+  padding-left: 0.7rem;
+}
+
+.vr-summary li + li,
+.vr-points li + li {
+  margin-top: 0.28rem;
+}
+
+.vr-summary li::before,
+.vr-points li::before {
+  content: "";
+  position: absolute;
+  top: 0.42em;
+  left: 0;
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.vr-tech {
+  display: grid;
+  gap: 0.28rem;
+  margin-top: 0.35rem;
+}
+
+.vr-tech li {
+  display: grid;
+  gap: 0.05rem;
+}
+
+.vr-tech strong {
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.vr-tech span {
+  color: var(--slate);
+  font-size: 0.68rem;
+  line-height: 1.25;
+}
+
+.vr-timeline {
+  margin-top: 0.45rem;
+  border-radius: 0.9rem;
+  background: var(--panel);
+  padding: 0.55rem 0.55rem 0.6rem;
+}
+
+.vr-timeline ol {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.vr-role {
+  min-width: 0;
+  border-radius: 0.75rem;
+  background: var(--paper);
+  padding: 0.4rem 0.45rem 0.45rem;
+}
+
+.vr-when {
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.vr-role h3 {
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.vr-role p {
+  color: var(--slate);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.vr-role ul {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-size: 0.64rem;
+  line-height: 1.25;
+}
+
+.vr-role li + li {
+  margin-top: 0.08rem;
+}
+
+.vr-achieve {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.vr-achieve li {
+  border-radius: 0.75rem;
+  background: var(--paper);
+  padding: 0.4rem 0.5rem;
+}
+
+.vr-achieve strong {
+  display: block;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.vr-achieve span {
+  display: block;
+  margin-top: 0.12rem;
+  font-size: 0.66rem;
+  line-height: 1.25;
+}
+
+.vr-recent-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.6rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.3rem;
+  border-radius: 0.7rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.35rem 0.55rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.vr-recent-head p {
+  min-width: 0;
+}
+
+.vr-points {
+  margin-top: 0.35rem;
+  font-size: 0.66rem;
+  line-height: 1.28;
+}
+
+.vr-close .vr-panel p {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.vr-close .vr-panel p + p {
+  margin-top: 0.05rem;
+  color: var(--slate);
+  font-weight: 500;
+}
+
+@media (min-width: 64rem) {
+  .vr-id {
+    grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);
+    align-items: end;
+  }
+
+  .vr-marks {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vr-top {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .vr-timeline ol {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .vr-lower {
+    grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.3fr);
+  }
+
+  .vr-achieve {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vr-points {
+    columns: 2;
+    column-gap: 0.9rem;
+  }
+
+  .vr-points li {
+    break-inside: avoid;
+  }
+
+  .vr-close {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  body:has(.visual-resume) {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  body:has(.visual-resume) .site-frame {
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  body:has(.visual-resume) footer {
+    display: none;
+  }
+
+  body:has(.visual-resume) main {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .visual-resume {
+    display: grid;
+    flex: 1 1 auto;
+    grid-template-rows: auto minmax(0, 1.02fr) auto minmax(0, 1.08fr) auto;
+    gap: 0.28rem;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0.4rem 0.55rem 0.4rem;
+    font-size: 0.68rem;
+  }
+
+  .vr-id,
+  .vr-band,
+  .vr-close,
+  .vr-timeline {
+    margin-top: 0;
+  }
+
+  .vr-name {
+    font-size: 1.28rem;
+  }
+
+  .vr-tagline,
+  .vr-contact {
+    font-size: 0.62rem;
+  }
+
+  .vr-marks {
+    gap: 0.25rem;
+  }
+
+  .vr-marks li {
+    padding: 0.28rem 0.45rem;
+    font-size: 0.6rem;
+  }
+
+  .vr-panel,
+  .vr-timeline {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0.38rem 0.5rem 0.42rem;
+  }
+
+  .vr-summary,
+  .vr-tech,
+  .vr-points,
+  .vr-achieve,
+  .vr-timeline ol {
+    min-height: 0;
+  }
+
+  .vr-summary {
+    font-size: 0.62rem;
+    line-height: 1.22;
+  }
+
+  .vr-summary li + li {
+    margin-top: 0.16rem;
+  }
+
+  .vr-tech {
+    flex: 1;
+    align-content: space-between;
+    gap: 0.04rem;
+  }
+
+  .vr-tech strong {
+    font-size: 0.62rem;
+  }
+
+  .vr-tech span,
+  .vr-points,
+  .vr-role ul,
+  .vr-achieve span {
+    font-size: 0.58rem;
+    line-height: 1.2;
+  }
+
+  .vr-timeline ol {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+
+  .vr-role {
+    padding: 0.28rem 0.32rem 0.32rem;
+  }
+
+  .vr-role h3,
+  .vr-role p,
+  .vr-when {
+    font-size: 0.56rem;
+  }
+
+  .vr-achieve {
+    flex: 1;
+    grid-template-columns: 1fr 1fr;
+    align-content: stretch;
+  }
+
+  .vr-achieve li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vr-achieve strong {
+    font-size: 0.66rem;
+  }
+
+  .vr-recent-head {
+    margin-top: 0.22rem;
+    padding: 0.22rem 0.45rem;
+    font-size: 0.56rem;
+  }
+
+  .vr-points li + li {
+    margin-top: 0.12rem;
+  }
+
+  .vr-close .vr-panel {
+    overflow: visible;
+  }
+
+  .vr-close .vr-panel p {
+    font-size: 0.64rem;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 4mm;
+  }
+
+  body:has(.visual-resume) {
+    height: auto;
+    overflow: visible;
+    background: #fff;
+  }
+
+  body:has(.visual-resume) > header,
+  body:has(.visual-resume) > aside,
+  body:has(.visual-resume) .site-frame > footer {
+    display: none !important;
+  }
+
+  body:has(.visual-resume) .site-frame {
+    display: block;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    padding-left: 0 !important;
+  }
+
+  body:has(.visual-resume) main {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+
+  .visual-resume {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto minmax(0, 1.05fr) auto;
+    gap: 1.4mm;
+    height: 200mm;
+    max-height: 200mm;
+    overflow: hidden;
+    padding: 0;
+    background: #fff;
+    color: #1c1e21;
+    font-size: 7.4pt;
+    line-height: 1.2;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .visual-resume,
+  .vr-panel,
+  .vr-timeline,
+  .vr-role,
+  .vr-marks li,
+  .vr-achieve li {
+    break-inside: avoid;
+  }
+
+  .vr-id {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.8fr);
+    align-items: end;
+    gap: 2mm;
+  }
+
+  .vr-name {
+    font-size: 16pt;
+  }
+
+  .vr-tagline,
+  .vr-contact {
+    font-size: 7pt;
+  }
+
+  .vr-marks {
+    grid-template-columns: 1fr 1fr;
+    gap: 1mm;
+  }
+
+  .vr-marks li,
+  .vr-role,
+  .vr-achieve li {
+    background: #f2f4f7;
+  }
+
+  .vr-panel,
+  .vr-timeline {
+    background: #fff;
+    border: 1px solid #e3e6eb;
+  }
+
+  .vr-top,
+  .vr-lower,
+  .vr-close {
+    display: grid;
+    gap: 1.4mm;
+    margin: 0;
+  }
+
+  .vr-top {
+    grid-template-columns: 0.92fr 1.08fr;
+  }
+
+  .vr-lower {
+    grid-template-columns: 0.62fr 1.38fr;
+  }
+
+  .vr-close {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vr-timeline {
+    margin: 0;
+  }
+
+  .vr-timeline ol {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 1mm;
+  }
+
+  .vr-summary,
+  .vr-tech span,
+  .vr-points,
+  .vr-role ul {
+    font-size: 6.6pt;
+    line-height: 1.18;
+  }
+
+  .vr-points {
+    columns: 2;
+    column-gap: 3mm;
+  }
+
+  .vr-achieve {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vr-recent-head {
+    background: #1b4fbf;
+    color: #fff;
+  }
+
+  .vr-panel h2,
+  .vr-timeline h2,
+  .vr-when,
+  .vr-achieve strong,
+  .visual-resume a {
+    color: #1b4fbf;
+  }
+}

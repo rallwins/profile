@@ -56,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <JsonLd data={websiteJsonLd()} />
         <ThemeProvider>
           <SiteHeader />
-          <div className="flex min-h-full flex-1 flex-col xl:pl-[19.5rem]">
+          <div className="site-frame flex min-h-full flex-1 flex-col xl:pl-[19.5rem]">
             <main id="content" className="flex-1">
               {children}
             </main>

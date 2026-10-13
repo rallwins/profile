@@ -98,14 +98,23 @@ export function SiteHeader() {
                     onNavigate={() => setOpen(false)}
                     className="mt-8 flex flex-col gap-1"
                   />
-                  <TrackLink
-                    event="resume_download"
-                    href="/resume.pdf"
-                    download
-                    className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink"
-                  >
-                    Download résumé
-                  </TrackLink>
+                  <div className="mt-8 flex flex-col gap-2">
+                    <TrackLink
+                      event="resume_download"
+                      href="/resume.pdf"
+                      download
+                      className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink"
+                    >
+                      Download résumé
+                    </TrackLink>
+                    <Link
+                      href="/visual-resume"
+                      onClick={() => setOpen(false)}
+                      className="text-center text-sm font-semibold text-accent"
+                    >
+                      Visual résumé
+                    </Link>
+                  </div>
                 </Dialog.Content>
               </Dialog.Portal>
             </Dialog.Root>
@@ -128,14 +137,19 @@ export function SiteHeader() {
         <NavLinks pathname={pathname} className="mt-8 flex flex-col gap-1" />
         <div className="mt-auto flex flex-col gap-4 pt-8">
           <ThemeToggle />
-          <TrackLink
-            event="resume_download"
-            href="/resume.pdf"
-            download
-            className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink"
-          >
-            Download résumé
-          </TrackLink>
+          <div className="flex flex-col gap-1.5">
+            <TrackLink
+              event="resume_download"
+              href="/resume.pdf"
+              download
+              className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink"
+            >
+              Download résumé
+            </TrackLink>
+            <Link href="/visual-resume" className="text-center text-sm font-semibold text-accent">
+              Visual résumé
+            </Link>
+          </div>
           <p className="text-xs text-slate">{profile.canonical.replace("https://", "")}</p>
         </div>
       </aside>

@@ -19,6 +19,9 @@ export function SiteFooter() {
             <Link href="/resume" className="hover:text-accent">
               View résumé
             </Link>
+            <Link href="/visual-resume" className="hover:text-accent">
+              Visual résumé
+            </Link>
             <TrackLink event="contact_cta" href="/contact">
               {profile.contactHeadline}
             </TrackLink>
