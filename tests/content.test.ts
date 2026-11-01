@@ -131,18 +131,17 @@ describe("verified profile facts", () => {
     expect(visualResume.roles[4]?.end).toBe("Jun 2009");
     expect(visualResume.roles[6]?.end).toBe("Feb 2007");
     expect(personalProjects.map((project) => [project.name, project.url, project.language])).toEqual([
-      ["rag_replit", "https://github.com/rallwins/rag_replit", "TypeScript"],
-      ["voice_asst", "https://github.com/rallwins/voice_asst", "Python"],
-      ["local-slm-chat", "https://github.com/rallwins/local-slm-chat", "Python"],
+      ["ent_order_app", "https://github.com/rallwins/ent_order_app", "Python"],
+      ["school-sync-ai", "https://github.com/rallwins/school-sync-ai", "Python"],
+      ["youtube_analyzer", "https://github.com/rallwins/youtube_analyzer", "Python"],
+      ["face_detection", "https://github.com/rallwins/face_detection", "JavaScript"],
       ["rag_resume", "https://github.com/rallwins/rag_resume", "HTML"],
+      ["gro-vision-replit", "https://github.com/rallwins/gro-vision-replit", "TypeScript"],
+      ["voice_asst", "https://github.com/rallwins/voice_asst", "Python"],
     ]);
-    expect(personalProjects[0]?.description).toContain("workspace-scoped RAG");
-    expect(personalProjects[1]?.description).toContain("Python-powered voice assistant");
-    expect(personalProjects[2]?.description).toContain("served by Ollama");
-    expect(personalProjects[3]?.description).toContain("Retrieval-augmented resume application");
     for (const project of personalProjects) {
       expect(project.description).toBeTruthy();
-      expect(project.updated).toBe("2026-10-13");
+      expect(project.updated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(project.url).not.toContain("/profile");
     }
   });

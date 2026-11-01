@@ -11,7 +11,7 @@ The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé 
 | Title line, 20+ years, professional summary | Résumé |
 | Home headline "I build and lead the teams that build enterprise platforms." | Public LinkedIn About |
 | LinkedIn `https://www.linkedin.com/in/allwinsrajaiah/` | Résumé |
-| GitHub `https://github.com/rallwins` and the public repositories `local-slm-chat`, `rag_replit`, `rag_resume`, `voice_asst` | Public GitHub profile. `rallwins/profile` is this site and is not listed as a project. |
+| GitHub `https://github.com/rallwins` and the public repositories `ent_order_app`, `school-sync-ai`, `youtube_analyzer`, `face_detection`, `rag_resume`, `gro-vision-replit`, `voice_asst` | Public GitHub profile. Summaries follow each README where it is more precise than the repository description. `rallwins/profile` is this site and is not listed as a project. |
 | Skill inventory | Résumé "Core Technology", in its ten groups. GCP is working knowledge. Azure appears only as Databricks on Azure. |
 | Employers, titles, locations, dates, bullets, technology lines, key achievements | Résumé |
 | Bullets and technologies for the five earlier roles | The site's earlier record. The résumé prints only title, employer, and dates for these roles and does not contradict them. |

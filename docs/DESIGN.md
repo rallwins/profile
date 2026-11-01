@@ -6,23 +6,24 @@ Tokens live in `src/app/globals.css`. `ar-theme` is `light`, `dark`, or unset (s
 
 ## Color
 
-Navy matches the résumé, so the PDF and the site read as one brand. Every text pair meets WCAG 2.2 AA.
+The structure follows a design-board idea: white sheets on a light canvas with a faint grid. One cobalt accent marks the emphasis in headlines. Every text pair meets WCAG 2.2 AA. The résumé PDF and the printed visual résumé stay navy.
 
 | Token | Light | Dark |
 | --- | --- | --- |
-| paper | `#ffffff` | `#0f1720` |
-| panel | `#f5f7fa` | `#18222e` |
-| ink | `#14202e` | `#eef2f6` |
-| slate | `#4a5868` | `#a9b6c4` |
-| line | `#dde3ea` | `#2b3846` |
-| accent | `#1a365d` | `#9cc2f0` |
-| accent ink | `#ffffff` | `#0f1720` |
+| canvas | `#fbfbfb` | `#111114` |
+| paper | `#ffffff` | `#18181c` |
+| panel | `#f6f6f3` | `#212126` |
+| ink | `#18181c` | `#f2f2ef` |
+| slate | `#4a4a52` | `#b6b6bc` |
+| line | ink at 13% | white at 14% |
+| accent | `#1f4bb8` | `#a3b8ff` |
+| accent ink | `#ffffff` | `#111114` |
 
 ## Type and structure
 
-Source Serif 4 sets `h1` and `h2`. Inter sets everything else, with a 17px body and a measure near 65 characters. The container is 70rem. Surfaces use 1px hairlines rather than shadows, with an 8–12px radius.
+Young Serif sets `h1`, `h2`, and card titles. Figtree sets everything else, with a 17px body and a measure near 65 characters. Dates use the system monospace. The container is 75.5rem. Page intros sit on the canvas, and each `Section` is a white sheet.
 
-Shared utilities: `plate` (card), `eyebrow`, `tag`, `text-link`, `.bullets`, and `.disclosure` for `<details>`. `buttonVariants` in `src/components/ui/button.tsx` holds the two button styles. Each screen has one filled button as its main action.
+Shared utilities: `sheet` (section surface), `plate` (card), `eyebrow`, `meta` (monospace detail), `tag`, `text-link`, `.note` with `.note-label` (accent-outlined highlight box), `.bullets`, and `.disclosure` for `<details>`. `CompanyLogo` shows employer logos from `public/logos`. The ASIC, 3i Infotech, Star4ce, and ASD files are HD redraws of low-resolution originals, so replace them if official artwork becomes available. `buttonVariants` in `src/components/ui/button.tsx` holds the two button styles. Each screen has one filled button as its main action.
 
 ## Interaction
 

@@ -3,6 +3,7 @@ import { certifications } from "../../../content/certifications";
 import { roles } from "../../../content/experience";
 import { education, profile, summaryParagraphs } from "../../../content/profile";
 import { recommendations, recommendationsNote } from "../../../content/recommendations";
+import { CompanyLogo } from "@/components/company-logo";
 import { ExpandableQuote } from "@/components/expandable-quote";
 import { Frame, PageIntro, Section } from "@/components/page-intro";
 import { TrackLink } from "@/components/track-link";
@@ -50,20 +51,19 @@ export default function AboutPage() {
       </Section>
 
       <Section title="Career timeline">
-        <ol className="max-w-3xl border-l-2 border-line pl-6">
+        <ol className="divide-y divide-line border-y border-line">
           {roles.map((role) => (
-            <li key={role.id} className="relative pb-6 last:pb-0">
-              <span
-                className="absolute -left-[1.95rem] top-2 h-2.5 w-2.5 rounded-full bg-accent"
-                aria-hidden="true"
-              />
-              <p className="text-[0.9375rem] text-slate">
-                {role.start} – {role.end}
-              </p>
-              <p className="text-ink">
-                <span className="font-medium">{role.title}</span>
-                <span className="text-slate"> · {role.employer}</span>
-              </p>
+            <li key={role.id} className="flex items-center gap-4 py-4 sm:gap-6">
+              <CompanyLogo id={role.id} />
+              <div className="min-w-0">
+                <p className="meta">
+                  {role.start} – {role.end}
+                </p>
+                <p className="text-ink">
+                  <span className="font-medium">{role.title}</span>
+                  <span className="text-slate"> · {role.employer}</span>
+                </p>
+              </div>
             </li>
           ))}
         </ol>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Figtree, Young_Serif } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { profile } from "../../content/profile";
 import { personJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -9,15 +9,16 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-figtree",
   display: "swap",
 });
 
-const sourceSerif = Source_Serif_4({
+const youngSerif = Young_Serif({
   subsets: ["latin"],
-  variable: "--font-source-serif",
+  weight: "400",
+  variable: "--font-young-serif",
   display: "swap",
 });
 
@@ -51,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sourceSerif.variable} h-full antialiased`}
+      className={`${figtree.variable} ${youngSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

@@ -6,7 +6,7 @@ import { Frame, PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Personal AI projects by Allwins Rajaiah on GitHub: local models, retrieval, and voice interfaces.",
+  description: "Personal projects by Allwins Rajaiah on GitHub: platform engineering, retrieval, computer vision, and voice interfaces.",
   alternates: { canonical: "/projects" },
 };
 
@@ -25,9 +25,15 @@ export default function ProjectsPage() {
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         {personalProjects.map((project) => (
           <article key={project.slug} className="plate flex flex-col">
-            <p className="eyebrow">{project.language}</p>
-            <h2 className="mt-2 font-sans text-lg font-semibold tracking-normal text-ink">{project.name}</h2>
+            <h2 className="font-sans text-lg font-semibold tracking-normal text-ink">{project.name}</h2>
             <p className="mt-2 flex-1 leading-relaxed text-slate">{project.summary}</p>
+            <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">
+              {project.tags.map((tag) => (
+                <li key={tag} className="tag">
+                  {tag}
+                </li>
+              ))}
+            </ul>
             <TrackLink
               event="github_click"
               href={project.url}

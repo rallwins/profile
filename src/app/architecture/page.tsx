@@ -60,9 +60,9 @@ export default function ArchitecturePage() {
       {caseStudies.map((study) => {
         const diagram = diagrams.find((item) => item.id === study.diagramId);
         return (
-          <section key={study.slug} id={study.slug} className="mt-14 border-t border-line pt-10 md:mt-16">
+          <section key={study.slug} id={study.slug} className="sheet mt-12 md:mt-16">
             <p className="eyebrow">Case study</p>
-            <h2 className="mt-2 text-3xl leading-tight text-ink md:text-[2.5rem]">{study.title}</h2>
+            <h2 className="mt-3 text-[clamp(1.625rem,2.75vw,2.125rem)] leading-[1.15] text-ink">{study.title}</h2>
             <p className="mt-4 max-w-[65ch] leading-relaxed text-slate">{study.context}</p>
             <dl className="mt-8 grid gap-4 lg:grid-cols-3">
               {[
@@ -70,8 +70,8 @@ export default function ArchitecturePage() {
                 ["Approach", study.architecture],
                 ["Outcome", study.outcome],
               ].map(([label, value]) => (
-                <div key={label} className="plate">
-                  <dt className="eyebrow">{label}</dt>
+                <div key={label} className={label === "Outcome" ? "note" : "plate"}>
+                  <dt className={label === "Outcome" ? "note-label" : "eyebrow"}>{label}</dt>
                   <dd className="mt-2 text-[0.9375rem] leading-relaxed text-ink">{value}</dd>
                 </div>
               ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -56,16 +57,20 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper">
+    <header className="sticky top-0 z-40 border-b border-line bg-canvas/90 backdrop-blur">
       <a href="#content" className="skip-link">
         Skip to content
       </a>
-      <div className="mx-auto flex h-[4.25rem] w-full max-w-[70rem] items-center justify-between gap-4 px-4 md:px-8">
-        <Link href="/" className="font-serif text-xl font-medium tracking-tight text-ink">
-          {profile.name}
-        </Link>
-        <NavLinks pathname={pathname} className="hidden items-center gap-0.5 lg:flex" />
+      <div className="flex h-[3.75rem] w-full items-center justify-between gap-4 px-[clamp(1rem,4vw,3.5rem)]">
+        <div className="flex min-w-0 items-center gap-3">
+          <Link href="/" className="flex items-center gap-2.5 font-semibold whitespace-nowrap text-ink">
+            <Image src="/avatar.png" alt="" width={32} height={32} className="h-8 w-8 rounded-full bg-white" />
+            {profile.name}
+          </Link>
+          <p className="meta hidden whitespace-nowrap xl:block">/ {profile.role}</p>
+        </div>
         <div className="flex items-center gap-2">
+          <NavLinks pathname={pathname} className="mr-2 hidden items-center gap-0.5 xl:flex" />
           <ThemeToggle />
           <TrackLink
             event="resume_download"
@@ -79,7 +84,7 @@ export function SiteHeader() {
             <Dialog.Trigger asChild>
               <button
                 type="button"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink lg:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink xl:hidden"
                 aria-label="Open menu"
               >
                 <Menu aria-hidden="true" size={20} />

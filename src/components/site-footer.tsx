@@ -7,7 +7,7 @@ const linkClass = "inline-flex min-h-11 items-center font-medium text-slate tran
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-line">
-      <div className="mx-auto flex w-full max-w-[70rem] flex-col gap-4 px-4 py-8 text-[0.9375rem] md:flex-row md:items-center md:justify-between md:px-8">
+      <div className="mx-auto flex w-full max-w-[75.5rem] flex-col gap-4 px-4 py-8 text-[0.9375rem] md:flex-row md:items-center md:justify-between md:px-8">
         <div>
           <p className="font-serif text-lg font-medium text-ink">{profile.name}</p>
           <p className="text-slate">
