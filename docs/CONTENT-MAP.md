@@ -1,51 +1,42 @@
 # Content map
 
-Source of truth: `Allwins_Rajaiah.pdf` (Allwins Kannan Rajaiah). If the résumé does not state a fact, the site does not invent it. A public LinkedIn / Credly value is kept only where the résumé is silent, and the page says so.
+Source of truth: `Allwins_Rajaiah_Director_of_Technology.pdf` (Allwins Kannan Rajaiah). If the résumé does not state a fact, the site does not invent it. A public LinkedIn, GitHub, or Credly value is kept only where the résumé is silent.
 
-The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé header prints **Allwins Kannan Rajaiah**. Both appear: the longer form on the résumé and the about page, the shorter form in navigation and the SEO title.
+The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé header prints **Allwins Kannan Rajaiah**. The longer form appears on the résumé and visual résumé, the shorter form everywhere else.
 
 ## Verified and published
 
 | Item | Source |
 | --- | --- |
-| Title line, 22+ years, professional summary | Résumé |
+| Title line, 20+ years, professional summary | Résumé |
+| Home headline "I build and lead the teams that build enterprise platforms." | Public LinkedIn About |
 | LinkedIn `https://www.linkedin.com/in/allwinsrajaiah/` | Résumé |
 | GitHub `https://github.com/rallwins` and the public repositories `local-slm-chat`, `rag_replit`, `rag_resume`, `voice_asst` | Public GitHub profile. `rallwins/profile` is this site and is not listed as a project. |
-| Skill inventory | Résumé “Core Technology”, plus technologies named on a role. Azure is published only as Azure Databricks in the current data-platform work. |
-| Employers, titles, locations, dates, responsibility bullets, technology lines, key achievements | Résumé, including early-career roles that list title, employer, and dates only |
-| Education | Résumé: B.E., Computer Science & Engineering, Amrita Institute, Bharathiar University, India. No years are printed on the résumé, so none are shown. |
+| Skill inventory | Résumé "Core Technology", in its ten groups. GCP is working knowledge. Azure appears only as Databricks on Azure. |
+| Employers, titles, locations, dates, bullets, technology lines, key achievements | Résumé |
+| Bullets and technologies for the five earlier roles | The site's earlier record. The résumé prints only title, employer, and dates for these roles and does not contradict them. |
+| Education | Résumé. No years are printed, so none are shown. |
 | AWS Certified AI Practitioner, exam AIF-C01 | Résumé |
-| Credential ID `cd4be8c7c3ea48aca09bc7a181355061`, Credly verification URL, issued September 2026 | Public LinkedIn / Credly. The résumé does not print an ID or an issue date, and it does not contradict these values. |
-| Technology radar | Grouped from the résumé inventory. GCP is Core, with AWS. Exploring holds the résumé’s emerging tools. |
-| Case-study flows and ADR topics | Written so they stay consistent with the résumé’s Tekizma and modernization work |
-| Canonical host `https://allwinsrajaiah.com` | Production domain. `www.allwinsrajaiah.com` redirects to the apex when DNS is attached. |
+| Credential ID, Credly verification URL, issued September 2026 | Public LinkedIn / Credly |
+| Case-study flows and decision notes | Written to stay consistent with the résumé's Tekizma and modernization work |
+| Recommendations | LinkedIn, quoted as written. Home excerpts are cut verbatim, and a test checks this. |
 
 Résumé achievements are quoted:
 
 - Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.
 - Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.
-- Official Health Plan Marketplace for New York State of Health, processing 5 million enrollments for 2020.
+- Delivered the official Health Plan Marketplace for New York State of Health, supporting 5 million enrollments in 2020.
 
 ## Withheld on purpose
 
-The résumé includes a mobile phone number. It is not printed on the site or in the generated PDF. A public email address is not listed on the site, in JSON-LD, in the contact form, or in the generated PDF. The résumé has no street address, and none is added.
+The résumé prints a phone number and an email address. Neither appears on the site, in JSON-LD, or in the generated PDF, and tests enforce this. LinkedIn is the contact route. The attached résumé PDF must not be copied to `public/`; run `npm run resume` instead.
 
-The résumé lists no awards. Earlier award lines are not published.
+The résumé lists no awards, so none are published.
 
-## TODO — unknown, so not invented
+## Hidden
 
-| Gap | How the UI treats it |
-| --- | --- |
-| Star4ce work location | The record says on-site and does not name a city, so no location is shown. |
-| Repository descriptions | The four public repositories other than this site now have GitHub descriptions, and the projects page uses that text. |
-| A separate numeric outcome for the AI case study | Stated as not on the résumé |
-| Locations for employers other than Marlabs (Piscataway, NJ) | Omitted |
-| Education years | Omitted. The résumé does not print them. |
+Writing holds one sample draft, so `/writing` redirects to `/` and is out of the navigation and sitemap. The MDX file and `src/lib/writing.ts` remain. To bring it back, remove the redirects in `next.config.ts` and add the route to `src/lib/routes.ts`.
 
-## Production AI versus experiments
+## AI versus experiments
 
-Production language is limited to the résumé: Generative AI, Agentic AI, AgentCore Runtime, Amazon Bedrock, RAG, MCP, knowledge bases, guardrails, governance, evaluation, Langfuse, and AI applied to data platforms and engineering workflow.
-
-Public repositories other than this site (`local-slm-chat`, `rag_replit`, `rag_resume`, `voice_asst`) are a separate page and are not described as shipped client work.
-
-The Architecture Notes article is a sample draft written for this site. It is not described as previously published.
+The AI page stays within the résumé's AI inventory and the uses named under Tekizma: natural-language data interaction, automated documentation, and AI-assisted engineering. Public repositories are labelled personal projects and are not described as client work.
