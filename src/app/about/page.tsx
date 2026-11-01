@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { progression } from "../../../content/experience";
+import { certifications } from "../../../content/certifications";
+import { roles } from "../../../content/experience";
 import { education, profile, summaryParagraphs } from "../../../content/profile";
 import { recommendations, recommendationsNote } from "../../../content/recommendations";
-import { Frame, PageIntro } from "@/components/page-intro";
+import { ExpandableQuote } from "@/components/expandable-quote";
+import { Frame, PageIntro, Section } from "@/components/page-intro";
+import { TrackLink } from "@/components/track-link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,64 +13,109 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+const approach = [
+  {
+    title: "Teams",
+    text: "Team structure, hiring, and mentoring across development and QA, with clear ownership from requirements through production.",
+  },
+  {
+    title: "Delivery",
+    text: "Agile execution, sprint planning, test strategy, and release readiness, so quality is planned into delivery.",
+  },
+  {
+    title: "Governance",
+    text: "Standards, design reviews, security, observability, and risk management, in partnership with business and technology stakeholders.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <Frame>
-      <PageIntro
-        index="01"
-        eyebrow="About"
-        title="Director of Technology and Solutions Architect."
-        lede={profile.aboutShort}
-      />
-      <p className="mt-6 text-sm text-slate">Résumé name: {profile.fullName}.</p>
-      <div className="mt-10 max-w-3xl space-y-4 text-lg leading-relaxed text-ink">
-        {summaryParagraphs.map((paragraph) => (
+      <PageIntro eyebrow="About" title="Engineering leader and hands-on architect." lede={profile.aboutShort} />
+      <div className="mt-10 max-w-[65ch] space-y-4 leading-relaxed text-ink">
+        {summaryParagraphs.slice(1).map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>
-      <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-semibold tracking-tight text-3xl">Timeline</h2>
-        <ol className="mt-6 max-w-3xl border-l border-line pl-6">
-          {progression.map((role) => (
-            <li key={role.id} className="relative pb-6">
-              <span className="absolute -left-[1.7rem] top-1.5 h-2.5 w-2.5 rounded-full bg-accent" aria-hidden="true" />
-              <p className="text-xs uppercase tracking-[0.04em] text-slate">
+
+      <Section title="How I lead">
+        <div className="grid gap-4 md:grid-cols-3">
+          {approach.map((item) => (
+            <article key={item.title} className="plate">
+              <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
+              <p className="mt-2 leading-relaxed text-slate">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Career timeline">
+        <ol className="max-w-3xl border-l-2 border-line pl-6">
+          {roles.map((role) => (
+            <li key={role.id} className="relative pb-6 last:pb-0">
+              <span
+                className="absolute -left-[1.95rem] top-2 h-2.5 w-2.5 rounded-full bg-accent"
+                aria-hidden="true"
+              />
+              <p className="text-[0.9375rem] text-slate">
                 {role.start} – {role.end}
               </p>
-              <p className="mt-1 text-ink">
-                {role.title}
+              <p className="text-ink">
+                <span className="font-medium">{role.title}</span>
                 <span className="text-slate"> · {role.employer}</span>
               </p>
             </li>
           ))}
         </ol>
-      </section>
-      <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-semibold tracking-tight text-3xl">Education</h2>
-        <p className="mt-4 text-ink">{education.degree}</p>
-        <p className="mt-1 text-sm text-slate">
-          {education.school}
-          {education.years ? <span> · {education.years}</span> : null}
-        </p>
-      </section>
-      <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-semibold tracking-tight text-3xl">What colleagues say</h2>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate">{recommendationsNote}</p>
-        <ol className="mt-6 space-y-4">
+      </Section>
+
+      <Section id="credentials" title="Education and credentials">
+        <div className="grid gap-4 md:grid-cols-2">
+          <article className="plate">
+            <h3 className="text-lg font-semibold text-ink">{education.degree}</h3>
+            <p className="mt-2 text-slate">
+              {education.school}
+              {education.years ? ` · ${education.years}` : ""}
+            </p>
+          </article>
+          {certifications.map((item) => (
+            <article key={item.id} className="plate">
+              <h3 className="text-lg font-semibold text-ink">{item.name}</h3>
+              <p className="mt-2 text-slate">
+                {item.examCode} · Issued {item.issued}
+              </p>
+              <p className="mt-1 break-all text-sm text-slate">Credential ID {item.credentialId}</p>
+              {item.verificationUrl ? (
+                <TrackLink
+                  event="credential_verify"
+                  href={item.verificationUrl}
+                  external
+                  className="text-link mt-1 inline-flex min-h-11 items-center text-[0.9375rem]"
+                >
+                  Verify on Credly
+                </TrackLink>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="recommendations" title="What colleagues say" intro={recommendationsNote}>
+        <ol className="gap-4 md:columns-2">
           {recommendations.map((item) => (
-            <li key={item.id} className="plate">
+            <li key={item.id} className="plate mb-4 break-inside-avoid">
               <blockquote>
-                <p className="whitespace-pre-line text-base leading-relaxed text-ink">“{item.quote}”</p>
-                <footer className="mt-4 text-sm leading-relaxed text-slate">
+                <ExpandableQuote quote={item.quote} />
+                <footer className="mt-4 border-t border-line pt-4 text-[0.9375rem] leading-snug">
                   <p className="font-semibold text-ink">{item.name}</p>
-                  <p>{item.headline}</p>
-                  <p>{item.dated}</p>
+                  <p className="mt-0.5 text-slate">{item.headline}</p>
+                  <p className="mt-1 text-sm text-slate">{item.dated}</p>
                 </footer>
               </blockquote>
             </li>
           ))}
         </ol>
-      </section>
+      </Section>
     </Frame>
   );
 }

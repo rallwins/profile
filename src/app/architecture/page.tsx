@@ -1,112 +1,124 @@
 import type { Metadata } from "next";
 import { adrs, caseStudies, diagrams } from "../../../content/architecture";
-import { ArchitectureCanvasLoader } from "@/components/architecture-canvas-loader";
+import { DiagramDisclosure } from "@/components/diagram-disclosure";
 import { DiagramReading } from "@/components/diagram-reading";
-import { Frame, PageIntro } from "@/components/page-intro";
-import { TrackLink } from "@/components/track-link";
+import { Frame, PageIntro, Section } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Architecture",
-  description: "Case studies, architecture diagrams, and decision notes for data platforms and application modernization.",
+  description: "Case studies, architecture diagrams, and decision notes for data platforms, application modernization, and AI on enterprise data.",
   alternates: { canonical: "/architecture" },
 };
 
-export default function ArchitecturePage() {
-  const figures = diagrams.filter((diagram) => diagram.id !== "operating-model" && diagram.id !== "ai-action");
+function DetailList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <h3 className="font-semibold text-ink">{title}</h3>
+      <ul className="bullets mt-2 text-[0.9375rem] leading-relaxed text-ink">
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
+function DetailText({ title, text }: { title: string; text: string }) {
+  return (
+    <div>
+      <h3 className="font-semibold text-ink">{title}</h3>
+      <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink">{text}</p>
+    </div>
+  );
+}
+
+export default function ArchitecturePage() {
   return (
     <Frame>
       <PageIntro
-        index="03"
         eyebrow="Architecture"
         title="Systems, drawn as decisions."
-        lede="Three case studies from the current data, modernization, and AI work. Numbers appear only where the résumé states them."
+        lede="Three case studies from my data, modernization, and AI work. Client details are withheld; these describe the patterns used."
       />
-      <div className="mt-12 space-y-16">
-        {caseStudies.map((study) => {
-          const diagram = figures.find((item) => item.id === study.diagramId);
-          return (
-            <article key={study.slug} id={study.slug} className="border-t border-line pt-10">
-              <p className="text-xs uppercase tracking-[0.04em] text-accent">Case study</p>
-              <h2 className="mt-2 font-semibold tracking-tight text-4xl text-ink">{study.title}</h2>
-              <p className="mt-4 max-w-3xl text-slate">{study.context}</p>
-              <TrackLink event="case_study_opened" href={`#${study.slug}`} className="mt-3 inline-block text-sm text-accent">
-                Open this case
-              </TrackLink>
-              <dl className="mt-8 grid gap-6 md:grid-cols-2">
-                {[
-                  ["Business problem", study.businessProblem],
-                  ["Architecture", study.architecture],
-                  ["Security", study.security],
-                  ["Scalability", study.scalability],
-                  ["Data flow", study.dataFlow],
-                  ["Outcome", study.outcome],
-                ].map(([label, value]) => (
-                  <div key={label}>
-                    <dt className="text-xs uppercase tracking-[0.04em] text-slate">{label}</dt>
-                    <dd className="mt-2 text-sm leading-relaxed text-ink">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-              <h3 className="mt-8 text-xs uppercase tracking-[0.04em] text-slate">Technology choices</h3>
-              <p className="mt-2 text-sm text-ink">{study.technologyChoices.join(" · ")}</p>
-              <h3 className="mt-6 text-xs uppercase tracking-[0.04em] text-slate">Design decisions</h3>
-              <ul className="mt-2 space-y-2 text-sm leading-relaxed text-ink">
-                {study.designDecisions.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <h3 className="mt-6 text-xs uppercase tracking-[0.04em] text-slate">Trade-offs</h3>
-              <ul className="mt-2 space-y-2 text-sm leading-relaxed text-ink">
-                {study.tradeoffs.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+      <nav aria-label="Case studies" className="mt-6">
+        <ul className="flex flex-col gap-x-6 sm:flex-row sm:flex-wrap">
+          {caseStudies.map((study) => (
+            <li key={study.slug}>
+              <a href={`#${study.slug}`} className="text-link inline-flex min-h-11 items-center text-[0.9375rem]">
+                {study.title}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="#decisions" className="text-link inline-flex min-h-11 items-center text-[0.9375rem]">
+              Decision notes
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      {caseStudies.map((study) => {
+        const diagram = diagrams.find((item) => item.id === study.diagramId);
+        return (
+          <section key={study.slug} id={study.slug} className="mt-14 border-t border-line pt-10 md:mt-16">
+            <p className="eyebrow">Case study</p>
+            <h2 className="mt-2 text-3xl leading-tight text-ink md:text-[2.5rem]">{study.title}</h2>
+            <p className="mt-4 max-w-[65ch] leading-relaxed text-slate">{study.context}</p>
+            <dl className="mt-8 grid gap-4 lg:grid-cols-3">
+              {[
+                ["Problem", study.businessProblem],
+                ["Approach", study.architecture],
+                ["Outcome", study.outcome],
+              ].map(([label, value]) => (
+                <div key={label} className="plate">
+                  <dt className="eyebrow">{label}</dt>
+                  <dd className="mt-2 text-[0.9375rem] leading-relaxed text-ink">{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Technologies">
+              {study.technologyChoices.map((item) => (
+                <li key={item} className="tag">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 border-b border-line">
+              <details className="disclosure">
+                <summary>Decisions, trade-offs, and security</summary>
+                <div className="grid gap-6 pb-6 md:grid-cols-2">
+                  <DetailList title="Design decisions" items={study.designDecisions} />
+                  <DetailList title="Trade-offs" items={study.tradeoffs} />
+                  <DetailText title="Security" text={study.security} />
+                  <DetailText title="Scalability" text={study.scalability} />
+                </div>
+              </details>
               {diagram ? (
-                <>
-                  <ArchitectureCanvasLoader diagram={diagram} />
+                <DiagramDisclosure diagram={diagram}>
                   <DiagramReading diagram={diagram} />
-                </>
+                </DiagramDisclosure>
               ) : null}
-            </article>
-          );
-        })}
-      </div>
-      <section className="mt-16 border-t border-line pt-10">
-        <h2 className="font-semibold tracking-tight text-3xl">Architecture decision notes</h2>
-        <p className="mt-3 max-w-2xl text-sm text-slate">
-          Reasoning consistent with the case studies. These are not signed client records and they do not add results beyond the résumé.
-        </p>
-        <div className="mt-8 space-y-10">
+            </div>
+          </section>
+        );
+      })}
+
+      <Section id="decisions" title="Decision notes" intro="The reasoning behind two choices that recur in this work.">
+        <div className="border-b border-line">
           {adrs.map((adr) => (
-            <article key={adr.slug} id={adr.slug} className="plate">
-              <h3 className="font-semibold tracking-tight text-2xl">{adr.title}</h3>
-              <dl className="mt-4 space-y-4 text-sm leading-relaxed">
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Context</dt>
-                  <dd className="mt-1">{adr.context}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Decision</dt>
-                  <dd className="mt-1">{adr.decision}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Alternatives</dt>
-                  <dd className="mt-1">{adr.alternatives.join(" ")}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Trade-offs</dt>
-                  <dd className="mt-1">{adr.tradeoffs.join(" ")}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.04em] text-slate">Outcome</dt>
-                  <dd className="mt-1">{adr.outcome}</dd>
-                </div>
-              </dl>
-            </article>
+            <details key={adr.slug} id={adr.slug} className="disclosure">
+              <summary>{adr.title}</summary>
+              <div className="grid gap-6 pb-6 md:grid-cols-2">
+                <DetailText title="Context" text={adr.context} />
+                <DetailText title="Decision" text={adr.decision} />
+                <DetailList title="Alternatives considered" items={adr.alternatives} />
+                <DetailList title="Trade-offs" items={adr.tradeoffs} />
+                <DetailText title="Outcome" text={adr.outcome} />
+              </div>
+            </details>
           ))}
         </div>
-      </section>
+      </Section>
     </Frame>
   );
 }

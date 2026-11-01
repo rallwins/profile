@@ -36,6 +36,14 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  async redirects() {
+    return [
+      { source: "/certifications", destination: "/about#credentials", permanent: true },
+      // Temporary: Writing returns when there are published articles.
+      { source: "/writing", destination: "/", permanent: false },
+      { source: "/writing/:slug", destination: "/", permanent: false },
+    ];
+  },
   async headers() {
     if (process.env.NODE_ENV !== "production") return [];
     return [{ source: "/:path*", headers: securityHeaders }];

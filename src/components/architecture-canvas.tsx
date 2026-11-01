@@ -28,7 +28,7 @@ function ArchNode({ data }: NodeProps<Node<ArchData>>) {
   const title = data.mode === "logical" ? data.logical : data.physical;
   return (
     <div
-      className={`w-48 rounded-2xl border bg-panel px-4 py-3 text-left ${
+      className={`w-48 rounded-lg border bg-panel px-4 py-3 text-left ${
         data.selected ? "border-accent" : "border-line"
       }`}
     >
@@ -107,37 +107,41 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
 
   return (
     <figure id={`diagram-${diagram.id}`} className="mt-8">
-      <figcaption className="flex flex-wrap items-baseline justify-between gap-3">
-        <span className="text-xs uppercase tracking-[0.04em] text-slate">
-          {diagram.figure} — {diagram.title}
-        </span>
-        <span className="max-w-xl text-sm text-slate">{diagram.caption}</span>
+      <figcaption className="max-w-[65ch] text-[0.9375rem] text-slate">
+        <span className="font-semibold text-ink">{diagram.figure}.</span> {diagram.caption}
       </figcaption>
-      <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Diagram labels">
-        {(["logical", "physical"] as const).map((value) => (
+      {wide ? (
+        <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Diagram labels">
+          {(
+            [
+              ["logical", "Concepts"],
+              ["physical", "Technology"],
+            ] as const
+          ).map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={mode === value}
+              className={`h-11 rounded-lg border border-line px-4 text-sm font-semibold ${
+                mode === value ? "bg-accent text-accent-ink" : "bg-paper text-ink"
+              }`}
+              onClick={() => setMode(value)}
+            >
+              {label}
+            </button>
+          ))}
           <button
-            key={value}
             type="button"
-            aria-pressed={mode === value}
-            className={`h-9 rounded-full px-4 text-xs font-semibold ${
-              mode === value ? "bg-accent text-accent-ink" : "bg-panel text-ink"
+            aria-pressed={highlight}
+            className={`h-11 rounded-lg border border-line px-4 text-sm font-semibold ${
+              highlight ? "bg-accent text-accent-ink" : "bg-paper text-ink"
             }`}
-            onClick={() => setMode(value)}
+            onClick={() => setHighlight((value) => !value)}
           >
-            {value}
+            Highlight flow
           </button>
-        ))}
-        <button
-          type="button"
-          aria-pressed={highlight}
-          className={`h-9 rounded-full px-4 text-xs font-semibold ${
-            highlight ? "bg-accent text-accent-ink" : "bg-panel text-ink"
-          }`}
-          onClick={() => setHighlight((value) => !value)}
-        >
-          Highlight flow
-        </button>
-      </div>
+        </div>
+      ) : null}
       {wide ? (
         <div className="plate mt-4 h-[32rem] overflow-hidden p-0">
           <ReactFlow
@@ -155,17 +159,11 @@ export function ArchitectureCanvas({ diagram }: { diagram: Diagram }) {
             <Controls showInteractive={false} />
           </ReactFlow>
         </div>
-      ) : (
-        <p className="plate mt-4 text-sm text-slate lg:hidden">
-          On a small screen the canvas is replaced by the plain-language flow below. Widen the window for pan, zoom, and the logical or physical labels.
-        </p>
-      )}
-      {current ? (
+      ) : null}
+      {wide && current ? (
         <div className="plate mt-4" aria-live="polite">
-          <h3 className="font-semibold tracking-tight text-2xl text-ink">
-            {mode === "logical" ? current.logical : current.physical}
-          </h3>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate">{current.description}</p>
+          <h3 className="font-semibold text-ink">{mode === "logical" ? current.logical : current.physical}</h3>
+          <p className="mt-1 max-w-[65ch] text-[0.9375rem] leading-relaxed text-slate">{current.description}</p>
         </div>
       ) : null}
     </figure>

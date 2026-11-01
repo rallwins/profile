@@ -6,37 +6,36 @@ import { Frame, PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Public GitHub repositories for Allwins Rajaiah, excluding this site.",
+  description: "Personal AI projects by Allwins Rajaiah on GitHub: local models, retrieval, and voice interfaces.",
   alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
   return (
     <Frame>
-      <PageIntro index="06" eyebrow="Projects" title="Public repositories." lede={personalProjectsIntro} />
-      <p className="mt-6 text-sm text-slate">
-        Profile:{" "}
-        <TrackLink event="github_click" href={profile.githubUrl} external>
-          github.com/rallwins
-        </TrackLink>
-      </p>
-      <div className="mt-12 space-y-8">
+      <PageIntro eyebrow="Projects" title="Personal projects, built in the open." lede={personalProjectsIntro} />
+      <TrackLink
+        event="github_click"
+        href={profile.githubUrl}
+        external
+        className="text-link mt-4 inline-flex min-h-11 items-center text-[0.9375rem]"
+      >
+        See my GitHub profile
+      </TrackLink>
+      <div className="mt-10 grid gap-4 md:grid-cols-2">
         {personalProjects.map((project) => (
-          <article key={project.slug} className="plate">
-            <p className="text-xs uppercase tracking-[0.04em] text-accent">{project.language}</p>
-            <h2 className="mt-2 font-semibold tracking-tight text-3xl">{project.name}</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink">
-              {project.description ??
-                `${project.language} repository named ${project.name}. GitHub publishes no description.`}
-            </p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.04em] text-slate">
-              Updated {project.updated}
-            </p>
-            <p className="mt-4">
-              <TrackLink event="github_click" href={project.url} external>
-                {project.url.replace("https://", "")}
-              </TrackLink>
-            </p>
+          <article key={project.slug} className="plate flex flex-col">
+            <p className="eyebrow">{project.language}</p>
+            <h2 className="mt-2 font-sans text-lg font-semibold tracking-normal text-ink">{project.name}</h2>
+            <p className="mt-2 flex-1 leading-relaxed text-slate">{project.summary}</p>
+            <TrackLink
+              event="github_click"
+              href={project.url}
+              external
+              className="text-link mt-2 inline-flex min-h-11 items-center self-start text-[0.9375rem]"
+            >
+              View {project.name} on GitHub
+            </TrackLink>
           </article>
         ))}
       </div>

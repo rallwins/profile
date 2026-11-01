@@ -1,30 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { aiActionDiagram } from "../../../content/architecture";
+import { expertiseGroups } from "../../../content/expertise";
 import { ArchitectureCanvasLoader } from "@/components/architecture-canvas-loader";
 import { DiagramReading } from "@/components/diagram-reading";
-import { Frame, PageIntro } from "@/components/page-intro";
+import { Frame, PageIntro, Section } from "@/components/page-intro";
 
-const production = [
-  "Generative AI",
-  "Agentic AI",
-  "AgentCore Runtime",
-  "Amazon Bedrock",
-  "RAG",
-  "MCP",
-  "LLM applications",
-  "Knowledge bases",
-  "AI-assisted engineering",
-  "Natural-language data interaction",
-  "AI governance",
-  "Evaluation",
-  "Guardrails",
-  "Langfuse",
+const uses = [
+  {
+    title: "Natural-language data interaction",
+    text: "People ask questions of enterprise data directly, with retrieval and guardrails in the path.",
+  },
+  {
+    title: "Automated documentation",
+    text: "Generative AI integrated with data platforms to keep documentation produced as part of the work.",
+  },
+  {
+    title: "AI-assisted engineering",
+    text: "AI in the engineering workflow, which together with reusable dbt/Databricks frameworks reduced development effort by 40%.",
+  },
 ];
+
+function skillsFor(id: string) {
+  return expertiseGroups.find((group) => group.id === id)?.skills ?? [];
+}
 
 export const metadata: Metadata = {
   title: "AI",
-  description: "How AI is applied to enterprise engineering, data platforms, and application modernization.",
+  description: "How Generative and Agentic AI are applied to enterprise engineering, data platforms, and application modernization.",
   alternates: { canonical: "/ai" },
 };
 
@@ -32,35 +35,52 @@ export default function AiPage() {
   return (
     <Frame>
       <PageIntro
-        index="05"
         eyebrow="AI"
-        title="AI applied to the estate you already run."
-        lede="The production practice is enterprise engineering, data platforms, and application modernization. Personal experiments are a different page and are not described as shipped work."
+        title="AI applied to the systems you already run."
+        lede="I treat AI as part of enterprise engineering: integrated with trusted data, governed, and evaluated. Retrieval and context come first, and agents act only inside a defined boundary."
       />
-      <section className="mt-12">
-        <h2 className="font-semibold tracking-tight text-3xl">Production experience</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate">
-          Taken from the current role and the résumé summary: AI and data modernization, integration of AI/ML with enterprise data for intelligent processing, natural-language interaction, automated documentation, and AI-assisted engineering.
-        </p>
-        <ul className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-          {production.map((item) => (
-            <li key={item} className="border-b border-line">
+
+      <Section title="Where I apply it">
+        <div className="grid gap-4 lg:grid-cols-3">
+          {uses.map((use) => (
+            <article key={use.title} className="plate">
+              <h3 className="text-lg font-semibold text-ink">{use.title}</h3>
+              <p className="mt-2 leading-relaxed text-slate">{use.text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section title={aiActionDiagram.title}>
+        <ArchitectureCanvasLoader diagram={aiActionDiagram} />
+        <DiagramReading diagram={aiActionDiagram} />
+      </Section>
+
+      <Section title="Platforms and practices">
+        <h3 className="font-semibold text-ink">AI & GenAI</h3>
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {skillsFor("ai").map((item) => (
+            <li key={item} className="tag">
               {item}
             </li>
           ))}
         </ul>
-      </section>
-      <ArchitectureCanvasLoader diagram={aiActionDiagram} />
-      <DiagramReading diagram={aiActionDiagram} />
-      <section className="plate mt-12">
-        <h2 className="font-semibold tracking-tight text-2xl">Personal / experimental</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate">
-          The projects page lists the public GitHub repositories with the descriptions GitHub publishes. They are not production claims.
+        <h3 className="mt-6 font-semibold text-ink">AI-assisted development</h3>
+        <ul className="mt-3 flex flex-wrap gap-1.5">
+          {skillsFor("ai-assisted").map((item) => (
+            <li key={item} className="tag">
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 max-w-[65ch] text-slate">
+          I also build personal AI experiments in the open.{" "}
+          <Link href="/projects" className="text-link">
+            See my projects
+          </Link>
+          .
         </p>
-        <Link href="/projects" className="mt-4 inline-block text-sm text-accent">
-          Open personal projects
-        </Link>
-      </section>
+      </Section>
     </Frame>
   );
 }

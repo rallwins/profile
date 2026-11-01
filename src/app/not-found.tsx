@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { Frame } from "@/components/page-intro";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
     <Frame>
-      <p className="text-xs uppercase tracking-[0.04em] text-accent">404</p>
-      <h1 className="mt-4 font-semibold tracking-tight text-4xl">That page is not in the profile.</h1>
-      <Link href="/" className="mt-6 inline-block text-accent">
-        Return home
+      <p className="eyebrow">Page not found</p>
+      <h1 className="mt-3 text-4xl leading-tight text-ink">This page doesn&apos;t exist.</h1>
+      <Link href="/" className={`${buttonVariants({ variant: "primary" })} mt-6`}>
+        Go to the home page
       </Link>
     </Frame>
   );

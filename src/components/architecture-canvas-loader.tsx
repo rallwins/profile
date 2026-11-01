@@ -7,7 +7,7 @@ const Canvas = dynamic(
   () => import("@/components/architecture-canvas").then((mod) => mod.ArchitectureCanvas),
   {
     ssr: false,
-    loading: () => <p className="mt-4 text-sm text-slate">Loading the diagram canvas…</p>,
+    loading: () => <p className="mt-4 text-sm text-slate">Loading the diagram…</p>,
   },
 );
 

@@ -8,7 +8,8 @@ type EventName =
   | "linkedin_click"
   | "github_click"
   | "case_study_opened"
-  | "contact_cta";
+  | "contact_cta"
+  | "credential_verify";
 
 type Props = {
   event: EventName;

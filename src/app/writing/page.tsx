@@ -15,7 +15,6 @@ export default function WritingPage() {
   return (
     <Frame>
       <PageIntro
-        index="08"
         eyebrow="Architecture notes"
         title="Notes from the practice."
         lede="One sample draft is on this site. It was written for the profile and has not been published before. Empty categories stay empty."

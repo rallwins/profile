@@ -6,14 +6,13 @@ import { usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, X } from "lucide-react";
 import { profile } from "../../content/profile";
-import { routes } from "@/lib/routes";
-import { StyleSwitcher } from "@/components/style-switcher";
+import { primaryNav } from "@/lib/routes";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { TrackLink } from "@/components/track-link";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 function isCurrent(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -21,14 +20,16 @@ function NavLinks({
   pathname,
   onNavigate,
   className,
+  linkClassName,
 }: {
   pathname: string;
   onNavigate?: () => void;
   className?: string;
+  linkClassName?: string;
 }) {
   return (
     <nav className={className} aria-label={onNavigate ? "Mobile" : "Primary"}>
-      {routes.map((route) => {
+      {primaryNav.map((route) => {
         const current = isCurrent(pathname, route.href);
         return (
           <Link
@@ -37,13 +38,11 @@ function NavLinks({
             aria-current={current ? "page" : undefined}
             onClick={onNavigate}
             className={cn(
-              "rounded-2xl px-3 py-2 text-sm font-medium",
-              current ? "bg-accent text-accent-ink" : "text-slate hover:bg-paper hover:text-ink",
+              "inline-flex min-h-11 items-center rounded-lg px-3 text-[0.9375rem] font-medium transition-colors",
+              current ? "text-accent underline decoration-2 underline-offset-8" : "text-slate hover:text-ink",
+              linkClassName,
             )}
           >
-            <span className={cn("mr-2 text-xs font-semibold", current ? "text-accent-ink" : "text-accent")}>
-              {route.index}
-            </span>
             {route.label}
           </Link>
         );
@@ -57,108 +56,69 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <header className="sticky top-0 z-40 border-b border-line bg-panel xl:hidden">
-        <a
-          href="#content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-paper focus:px-3 focus:py-2"
-        >
-          Skip to content
-        </a>
-        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
-          <Link href="/" className="text-lg font-semibold tracking-tight text-ink">
-            {profile.name}
-          </Link>
-          <div className="flex flex-wrap items-center justify-end gap-2">
-            <StyleSwitcher variant="menu" />
-            <ThemeToggle />
-            <Dialog.Root open={open} onOpenChange={setOpen}>
-              <Dialog.Trigger asChild>
-                <button
-                  type="button"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-paper text-ink"
-                  aria-label="Open menu"
-                >
-                  <Menu aria-hidden="true" size={18} />
-                </button>
-              </Dialog.Trigger>
-              <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 z-50 bg-ink/45" />
-                <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-[min(100%,22rem)] flex-col rounded-l-[1.75rem] bg-panel p-6 outline-none">
-                  <div className="flex items-center justify-between">
-                    <Dialog.Title className="text-2xl font-semibold tracking-tight">Menu</Dialog.Title>
-                    <Dialog.Close
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-paper"
-                      aria-label="Close menu"
-                    >
-                      <X aria-hidden="true" size={18} />
-                    </Dialog.Close>
-                  </div>
-                  <Dialog.Description className="sr-only">Profile sections</Dialog.Description>
-                  <NavLinks
-                    pathname={pathname}
-                    onNavigate={() => setOpen(false)}
-                    className="mt-8 flex flex-col gap-1"
-                  />
-                  <div className="mt-6">
-                    <StyleSwitcher name="site-style-menu" />
-                  </div>
-                  <div className="mt-8 flex flex-col gap-2">
-                    <TrackLink
-                      event="resume_download"
-                      href="/resume.pdf"
-                      download
-                      className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink"
-                    >
-                      Download résumé
-                    </TrackLink>
-                    <Link
-                      href="/visual-resume"
-                      onClick={() => setOpen(false)}
-                      className="text-center text-sm font-semibold text-accent"
-                    >
-                      Visual résumé
-                    </Link>
-                  </div>
-                </Dialog.Content>
-              </Dialog.Portal>
-            </Dialog.Root>
-          </div>
-        </div>
-      </header>
-      <aside className="fixed bottom-3 left-3 top-3 z-40 hidden w-72 flex-col overflow-y-auto rounded-[1.5rem] bg-panel px-5 py-7 xl:flex">
-        <a
-          href="#content"
-          className="sr-only focus:not-sr-only focus:mb-4 focus:rounded-full focus:bg-paper focus:px-3 focus:py-2"
-        >
-          Skip to content
-        </a>
-        <Link href="/" className="text-[1.65rem] font-semibold leading-none tracking-tight text-ink">
+    <header className="sticky top-0 z-40 border-b border-line bg-paper">
+      <a href="#content" className="skip-link">
+        Skip to content
+      </a>
+      <div className="mx-auto flex h-[4.25rem] w-full max-w-[70rem] items-center justify-between gap-4 px-4 md:px-8">
+        <Link href="/" className="font-serif text-xl font-medium tracking-tight text-ink">
           {profile.name}
         </Link>
-        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.06em] text-slate">
-          Director of Technology
-        </p>
-        <NavLinks pathname={pathname} className="mt-8 flex flex-col gap-1" />
-        <div className="mt-auto flex flex-col gap-4 pt-8">
-          <StyleSwitcher name="site-style-rail" />
+        <NavLinks pathname={pathname} className="hidden items-center gap-0.5 lg:flex" />
+        <div className="flex items-center gap-2">
           <ThemeToggle />
-          <div className="flex flex-col gap-1.5">
-            <TrackLink
-              event="resume_download"
-              href="/resume.pdf"
-              download
-              className="inline-flex h-11 items-center justify-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink"
-            >
-              Download résumé
-            </TrackLink>
-            <Link href="/visual-resume" className="text-center text-sm font-semibold text-accent">
-              Visual résumé
-            </Link>
-          </div>
-          <p className="text-xs text-slate">{profile.canonical.replace("https://", "")}</p>
+          <TrackLink
+            event="resume_download"
+            href="/resume.pdf"
+            download
+            className={cn(buttonVariants({ variant: "primary", size: "small" }), "hidden sm:inline-flex")}
+          >
+            Download résumé
+          </TrackLink>
+          <Dialog.Root open={open} onOpenChange={setOpen}>
+            <Dialog.Trigger asChild>
+              <button
+                type="button"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink lg:hidden"
+                aria-label="Open menu"
+              >
+                <Menu aria-hidden="true" size={20} />
+              </button>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+              <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40" />
+              <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-[min(100%,22rem)] flex-col overflow-y-auto border-l border-line bg-paper p-6 outline-none">
+                <div className="flex items-center justify-between">
+                  <Dialog.Title className="font-serif text-2xl font-medium tracking-tight text-ink">
+                    Menu
+                  </Dialog.Title>
+                  <Dialog.Close
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink"
+                    aria-label="Close menu"
+                  >
+                    <X aria-hidden="true" size={20} />
+                  </Dialog.Close>
+                </div>
+                <Dialog.Description className="sr-only">Site sections</Dialog.Description>
+                <NavLinks
+                  pathname={pathname}
+                  onNavigate={() => setOpen(false)}
+                  className="mt-6 flex flex-col gap-1"
+                  linkClassName="text-lg"
+                />
+                <TrackLink
+                  event="resume_download"
+                  href="/resume.pdf"
+                  download
+                  className={cn(buttonVariants({ variant: "primary" }), "mt-6")}
+                >
+                  Download résumé
+                </TrackLink>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
         </div>
-      </aside>
-    </>
+      </div>
+    </header>
   );
 }
