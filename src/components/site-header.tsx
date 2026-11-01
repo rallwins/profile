@@ -64,7 +64,7 @@ export function SiteHeader() {
       <div className="flex h-[3.75rem] w-full items-center justify-between gap-4 px-[clamp(1rem,4vw,3.5rem)]">
         <div className="flex min-w-0 items-center gap-3">
           <Link href="/" className="flex items-center gap-2.5 font-semibold whitespace-nowrap text-ink">
-            <Image src="/avatar.png" alt="" width={32} height={32} className="h-8 w-8 rounded-full bg-white" />
+            <Image src="/avatar.png" alt="" width={32} height={32} className="h-8 w-8" />
             {profile.name}
           </Link>
           <p className="meta hidden whitespace-nowrap xl:block">/ {profile.role}</p>
