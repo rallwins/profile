@@ -7,7 +7,7 @@ export type Recommendation = {
 };
 
 export const recommendationsNote =
-  "Fourteen recommendations, newest first. Each quote is the recommendation text, including the original spelling.";
+  "Fourteen recommendations from managers, peers, and clients on LinkedIn, newest first, quoted as written.";
 
 export const recommendations: Recommendation[] = [
   {
@@ -126,3 +126,20 @@ export const recommendations: Recommendation[] = [
       "Allwins always gave a hundred percent effort while working on our software development project. He was self directed and very creative. The quality of the code he created was very clean and organized.",
   },
 ];
+
+export const featuredRecommendations = [
+  {
+    id: "anoop-madhusudanan",
+    excerpt:
+      "His technical skills in multiple areas, along with his ability to understand expectations and deliver on time meeting the demands is commendable.",
+  },
+  {
+    id: "hari-kumar",
+    excerpt:
+      "…his biggest strength to the software department was his ability to make everyone around him a better software engineer.",
+  },
+  {
+    id: "nitin-naithani",
+    excerpt: "He is a rock solid technologist and I consider him as best of the breed in the IT Industry.",
+  },
+] as const;

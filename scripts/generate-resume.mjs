@@ -1,9 +1,9 @@
 import { writeFileSync } from "node:fs";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 
-const ink = rgb(0.08, 0.13, 0.16);
+const ink = rgb(0.08, 0.13, 0.18);
 const slate = rgb(0.24, 0.3, 0.34);
-const accent = rgb(0.12, 0.31, 0.37);
+const accent = rgb(0.1, 0.21, 0.36);
 
 const doc = await PDFDocument.create();
 doc.setTitle("Allwins Kannan Rajaiah — résumé");
@@ -90,103 +90,88 @@ function role(title, meta) {
   y -= 14;
 }
 
-page.drawText("Allwins Kannan Rajaiah", { x: margin, y, size: 22, font: bold, color: ink });
-y -= 16;
-page.drawText("Allwins Rajaiah", { x: margin, y, size: 11, font, color: slate });
+page.drawText("Allwins Kannan Rajaiah", { x: margin, y, size: 22, font: bold, color: accent });
 y -= 18;
+paragraph("Director of Technology | Engineering Leadership & Solutions Architecture", 10, bold);
 paragraph(
-  "Solutions Architect | Director of Technology | AI | Cloud | Data | Full Stack",
-  10,
-  bold,
-);
-page.drawText("linkedin.com/in/allwinsrajaiah/", {
-  x: margin,
-  y,
-  size: 9,
+  "Full-Stack & Cloud-Native Platforms  ·  AI / GenAI  ·  Data Platforms  ·  Development & QA Team Leadership",
+  9,
   font,
-  color: slate,
-});
+  slate,
+);
+page.drawText("linkedin.com/in/allwinsrajaiah/", { x: margin, y, size: 9, font, color: slate });
 y -= 20;
 
 heading("Professional summary");
 bullet(
-  "Director of Technology and Solutions Architect with 22+ years of experience leading technology strategy, enterprise architecture, engineering, and delivery across Cloud, AI/GenAI, Data, Microservices, and Full-Stack platforms.",
+  "Director of Technology with 20+ years of experience leading engineering, architecture, and delivery of full-stack, cloud-native, data, and AI platforms.",
 );
 bullet(
-  "Architect end-to-end enterprise and cloud solutions, translating business requirements into scalable, secure, resilient, and cost-effective architectures across AWS and GCP.",
+  "Engineering leadership: own team structure, delivery planning, quality strategy, hiring, and mentoring, driving Agile execution and release quality from requirements through production.",
 );
 bullet(
-  "Lead AI and data modernization initiatives spanning Generative AI, Agentic AI, AgentCore Runtime, Amazon Bedrock, RAG, MCP, AI Governance, Data Engineering, Databricks, PySpark, and dbt.",
+  "Hands-on architect in Java, Spring Boot, Angular, React, microservices and AWS, translating business goals into scalable, secure, and cost-effective solutions.",
 );
 bullet(
-  "Hands-on engineering leader with strong expertise in Java, Spring Boot, Angular, Kubernetes, Docker, Terraform, and CI/CD, with a focus on cloud-native application delivery.",
+  "AI and data modernization with Generative AI, Agentic AI, Amazon Bedrock, AgentCore Runtime, RAG, and MCP, and Databricks, PySpark, and dbt data platforms.",
 );
 bullet(
-  "Drive architecture governance, engineering excellence, Agile delivery, and cross-functional technical leadership, partnering with business and technology stakeholders to deliver enterprise-scale solutions.",
+  "Architecture governance and engineering excellence: standards, design reviews, CI/CD, and observability partnering with business and technology stakeholders.",
 );
 
 heading("Core technology");
 paragraph(
-  "Architecture and technology leadership: Solution and Cloud Architecture, Technology Strategy, Architecture Governance, Enterprise Modernization, Microservices, Distributed Systems, Event-Driven Architecture, API Design.",
+  "Leadership & Architecture: Engineering Leadership, Multi-Team Management (Dev & QA), Technology Strategy, Architecture Governance, Agile Delivery, Hiring & Mentoring, Stakeholder Management, Enterprise Modernization.",
 );
 paragraph(
-  "AI and GenAI: AIDLC, Generative AI, Agentic AI, AgentCore Runtime, Bedrock, RAG, MCP, LLM Applications, Knowledge Bases, AI Guardrails, AI Governance, AI Evaluation, Langfuse.",
+  "Full Stack & Application: Java, Spring Boot, Hibernate, Angular, React, Node.js, REST APIs, JavaScript, HTML, OAuth, SAML, JWT.",
 );
 paragraph(
-  "Cloud and platform: AWS, GCP, Kubernetes, Docker, Terraform, Serverless, Cloud Security, Scalability, Reliability and Cost Optimization.",
+  "Distributed Systems & Messaging: Microservices, Event-Driven Architecture, Apache Kafka, Redis (Caching, Pub/Sub), API Design, Integration Patterns.",
 );
 paragraph(
-  "Data architecture: Data Architecture, Data Pipelines, Data Modeling, Spark, Databricks, Data Quality, Data Governance.",
+  "Cloud & Platform: AWS (EC2, ECS, Fargate, Lambda, VPC, ALB/NLB, S3, CloudFront, IAM, KMS, Cognito, WAF), Kubernetes, Docker, Terraform, CloudFormation, Serverless, Cloud Security & Cost Optimization, GCP (working knowledge).",
 );
-paragraph("DevOps: CI/CD, GitHub Actions, Jenkins, Automated Testing, Release Engineering.");
 paragraph(
-  "Full stack and application: Java, Spring Boot, Hibernate, Angular, React, Node.js, REST APIs, JavaScript, HTML, OAuth, SAML, JWT.",
+  "AI & GenAI: Generative AI, Agentic AI, Amazon Bedrock, AgentCore Runtime, RAG, MCP, LLM Applications, Knowledge Bases, AI Guardrails, AI Governance, AI Evaluation, Langfuse.",
 );
-paragraph("Databases and search: Oracle, PostgreSQL, MySQL, DB2, MongoDB, DynamoDB, Elasticsearch.");
-paragraph("Mobile and emerging tech: Flutter, Android, iOS, Replit, Cursor, GitHub Copilot.");
+paragraph(
+  "Data Engineering: Databricks (on Azure), Spark, PySpark, dbt, SQL, Data Pipelines, Data Modeling, Data Quality, Data Governance.",
+);
+paragraph(
+  "DevOps & Observability: CI/CD, AWS CodePipeline, GitHub Actions, Jenkins, CloudWatch, Prometheus, Automated Testing, Release Engineering.",
+);
+paragraph("Databases & Search: Oracle, PostgreSQL, MySQL, DB2, MongoDB, DynamoDB, Elasticsearch.");
+paragraph("Mobile: Flutter, Android, iOS.");
+paragraph("AI-Assisted Development: Claude Code, GitHub Copilot, Cursor, Replit.");
 
 heading("Professional experience");
-role(
-  "Director of Technology | Data and Application Engineering & Solution Architecture",
-  "Tekizma Inc.  ·  Sep 2024 – Present",
+role("Director of Technology", "Tekizma Inc.  ·  Sep 2024 – Present");
+bullet(
+  "Lead engineering teams across application, data, and AI workstreams, owning team structure, sprint planning, hiring, mentoring, and delivery from requirements through production release.",
 );
 bullet(
-  "Define technology strategy, solution architecture, and technical roadmaps for enterprise data, cloud, and AI platforms, aligning architecture decisions with business outcomes and engineering priorities.",
+  "Define technology strategy, solution architecture, and technical roadmaps for enterprise application, data, cloud, and AI platforms, aligning architecture decisions with business outcomes.",
 );
 bullet(
-  "Lead architecture and solution design across data platforms, cloud services, microservices, APIs, and AI/ML capabilities, ensuring scalable, secure, maintainable, and resilient solutions.",
+  "Led the modernization and AWS migration of a Spring/JSP enterprise application to Spring Boot, Angular, REST APIs, Hibernate, and MySQL, decomposing legacy components into modern application and API layers with automated deployments.",
 );
 bullet(
-  "Establish architecture governance, engineering standards, and design patterns covering scalability, security, data quality, observability, maintainability, and operational resilience.",
+  "Direct the QA function, aligning test strategy, release readiness, and defect management with the development teams' Agile delivery.",
 );
 bullet(
-  "Architect Azure Databricks data platforms covering data ingestion, transformation, modeling, orchestration, validation, and reusable data products for analytics and downstream applications.",
+  "Architect Databricks data platforms on Azure with PySpark, SQL, and dbt, covering ingestion, transformation, modeling, orchestration, and reusable data products for analytics and ML workloads.",
 );
 bullet(
-  "Design and optimize data engineering pipelines using PySpark, SQL, dbt, and Databricks, with emphasis on data quality, performance, reliability, and reusable data assets.",
+  "Design reconciliation (Recon) architecture, defining source-to-target mappings, validation rules, data quality controls, and exception handling.",
 );
 bullet(
-  "Design reconciliation architecture and data flows, defining source-to-target mappings, validation rules, data quality controls, exception handling, and scalable processing patterns.",
+  "Integrate Generative AI capabilities with enterprise data platforms for natural-language data interaction, automated documentation, and AI-assisted engineering workflows.",
 );
 bullet(
-  "Design cloud architectures in AWS, covering compute, storage, networking, security, monitoring, availability, scalability, and cost optimization.",
+  "Establish architecture governance and engineering standards, including design reviews, security, observability, risk and dependency management, and stakeholder communication.",
 );
-bullet(
-  "Lead legacy application modernization and cloud migration, migrating a Spring/JSP-based enterprise application to a modern Spring Boot, Angular, REST API, Hibernate, and MySQL architecture on AWS.",
-);
-bullet(
-  "Drive decomposition of legacy application components into modern application and API layers, improving scalability, maintainability, deployment automation, and integration capabilities.",
-);
-bullet(
-  "Integrate AI/ML capabilities with enterprise data platforms for intelligent data processing, natural-language data interaction, automated documentation, and AI-assisted engineering workflows.",
-);
-bullet(
-  "Lead architecture reviews, technical decisions, dependency and risk management, and stakeholder communication from requirements and solution design through implementation and production release.",
-);
-bullet(
-  "Provide technical leadership and mentoring across data engineering, application development, QA, and cross-functional engineering teams, driving engineering excellence and Agile delivery.",
-);
-paragraph("Key achievement", 10, bold);
+paragraph("Key achievements", 10, bold);
 bullet(
   "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.",
 );
@@ -194,43 +179,34 @@ bullet(
   "Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.",
 );
 paragraph(
-  "Technologies: Databricks, PySpark, dbt, SQL, AWS, Spring Boot, Angular, REST APIs, Hibernate, MySQL, Microservices, AI/ML, Data Engineering.",
+  "Technologies: Databricks (Azure), PySpark, dbt, SQL, AWS, Spring Boot, Angular, REST APIs, Hibernate, MySQL, Microservices, Generative AI, Data Engineering.",
   9,
   font,
   slate,
 );
 
-role("Solutions Architect / Application Designer", "Advanced Software Design, Inc.  ·  Sep 2013 – Aug 2024");
+role("Solutions Architect", "Advanced Software Design, Inc.  ·  Sep 2013 – Aug 2024");
 bullet(
-  "Architected scalable multi-tier enterprise applications using Spring Boot, Angular, microservices, REST APIs, and AWS, applying cloud-native and distributed application patterns.",
+  "Architected multi-tier enterprise applications using Spring Boot, Angular, microservices, REST APIs, and AWS, applying cloud-native and distributed design patterns.",
 );
 bullet(
-  "Designed application and integration architectures for complex enterprise workflows, defining service boundaries, API contracts, integration patterns, and technology components.",
+  "Defined service boundaries, API contracts, and integration patterns for complex enterprise workflows, translating business requirements into architecture specifications and roadmaps.",
 );
 bullet(
-  "Designed secure, resilient, and high-performance REST APIs and microservices, addressing authentication, authorization, scalability, maintainability, and operational readiness.",
+  "Designed secure, high-performance REST APIs and microservices, addressing authentication, authorization, and operational readiness.",
 );
 bullet(
-  "Designed AWS-based application solutions covering compute, storage, databases, security, deployment, and availability, aligning cloud services with application requirements.",
+  "Led application modernization, evaluating legacy components and defining target-state architectures and incremental migration strategies.",
 );
 bullet(
-  "Led application modernization initiatives, evaluating legacy application components and defining target-state architectures and incremental modernization strategies.",
+  "Established reusable design patterns and technical components, improving consistency and development efficiency across enterprise applications.",
 );
 bullet(
-  "Established application design patterns and reusable technical components to improve consistency, maintainability, scalability, and development efficiency across enterprise applications.",
-);
-bullet(
-  "Translated complex business requirements into technical designs, architecture specifications, integration solutions, and implementation roadmaps.",
-);
-bullet(
-  "Collaborated with development, QA, business analysis, and delivery teams to resolve complex technical issues, architectural dependencies, and integration challenges throughout the application lifecycle.",
-);
-bullet(
-  "Contributed to technical estimation, solution planning, release readiness, and production issue resolution, ensuring successful delivery of enterprise applications.",
+  "Partnered with development, QA, business analysis, and delivery teams on estimation, release readiness, and resolution of complex production and integration issues.",
 );
 paragraph("Key achievement", 10, bold);
 bullet(
-  "Orchestrated the official Health Plan Marketplace for New York State of Health, processing 5 million enrollments for 2020.",
+  "Delivered the official Health Plan Marketplace for New York State of Health, supporting 5 million enrollments in 2020.",
 );
 paragraph(
   "Technologies: Spring Boot, Angular, REST APIs, Microservices, AWS, Hibernate, Oracle, DB2, DynamoDB, Docker, Kubernetes, Jenkins, Git.",
@@ -265,26 +241,25 @@ bullet(
   "Presented cross-platform architecture capabilities and technology solutions to customers and leadership, supporting solution positioning, client engagement, and revenue growth.",
 );
 paragraph(
-  "Technologies: iOS, Android, PhoneGap, REST APIs, Java, Mobile Architecture, Enterprise Integration, ERP Integration, Payment Gateway Integration, Security and Authentication.",
+  "Technologies: iOS, Android, PhoneGap, REST APIs, Java, Mobile Architecture, Enterprise Integration, ERP Integration, Payment Gateway Integration, Security & Authentication.",
   9,
   font,
   slate,
 );
 
 heading("Additional experience");
-paragraph("The source résumé lists title, employer, and dates for these roles.");
-paragraph("J2EE Tech Lead, MapView Geographical Solutions (P) Ltd, Sep 2009 – Aug 2010.");
-paragraph("J2EE Tech Lead, Star4ce Technologies Inc, Nov 2007 – Sep 2009.");
-paragraph("Senior Programmer Analyst, Amtex Systems, Apr 2007 – Sep 2007.");
-paragraph("Senior Software Engineer, 3i Infotech, Apr 2004 – Jan 2007.");
-paragraph("Software engineer, Asic Infotech Pvt Ltd, May 2003 – Feb 2004.");
+paragraph("Tech Lead, Mapview Geographical Solutions, Sep 2009 – Aug 2010.");
+paragraph("Tech Lead / Senior J2EE, Star4ce Technologies, Inc., Nov 2007 – Jun 2009.");
+paragraph("Team Lead, Amtex Systems, Inc., Apr 2007 – Oct 2007.");
+paragraph("Team Lead, 3i-Infotech, Apr 2004 – Feb 2007.");
+paragraph("Java Developer, Asic Infotech Pvt. Ltd., May 2003 – Feb 2004.");
 
 heading("Education");
 paragraph("B.E., Computer Science & Engineering, Amrita Institute, Bharathiar University, India.");
 
 heading("Certification");
 paragraph(
-  "AWS Certified AI Practitioner (AIF-C01). Issued September 2026. Credential ID cd4be8c7c3ea48aca09bc7a181355061. Verification: https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5. The source résumé names the certification and exam code. The credential ID, verification link, and issue month are the public LinkedIn and Credly values.",
+  "AWS Certified AI Practitioner (AIF-C01). Issued September 2026. Credential ID cd4be8c7c3ea48aca09bc7a181355061. Verification: https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5.",
 );
 
 const bytes = await doc.save();

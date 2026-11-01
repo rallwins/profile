@@ -4,13 +4,13 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { awards } from "../content/awards";
 import { certifications } from "../content/certifications";
-import { progression, roles } from "../content/experience";
+import { roles } from "../content/experience";
 import { expertiseGroups } from "../content/expertise";
 import { personalProjects } from "../content/projects";
 import { visualResume } from "../content/visual-resume";
 import { education, profile } from "../content/profile";
-import { recommendations, recommendationsNote } from "../content/recommendations";
-import { radar } from "../content/radar";
+import { featuredRecommendations, recommendations, recommendationsNote } from "../content/recommendations";
+import { primaryNav, routes } from "../src/lib/routes";
 
 describe("verified profile facts", () => {
   it("keeps the public identity and contact that were supplied", () => {
@@ -19,14 +19,15 @@ describe("verified profile facts", () => {
     expect("email" in profile).toBe(false);
     expect(profile.linkedin).toBe("https://www.linkedin.com/in/allwinsrajaiah/");
     expect(profile.canonical).toBe("https://allwinsrajaiah.com");
-    expect(profile.title).toContain("AI | Cloud | Data | Full Stack");
+    expect(profile.title).toBe("Director of Technology | Engineering Leadership & Solutions Architecture");
+    expect(profile.supporting).toContain("20+ years");
     expect(education.school).toBe("Amrita Institute, Bharathiar University, India");
     expect(education.degree).toBe("B.E., Computer Science & Engineering");
     expect(education.years).toBeNull();
     expect(awards).toEqual([]);
     expect(profile.githubUrl).toBe("https://github.com/rallwins");
     expect(profile.seoTitle).toBe(
-      "Allwins Rajaiah | Solutions Architect | Director of Technology | AI | Cloud | Data",
+      "Allwins Rajaiah | Director of Technology | Engineering Leadership & Solutions Architecture",
     );
   });
 
@@ -35,16 +36,20 @@ describe("verified profile facts", () => {
       "Tekizma Inc.",
       "Advanced Software Design, Inc.",
       "Marlabs Software Pvt. Ltd.",
-      "MapView Geographical Solutions (P) Ltd",
-      "Star4ce Technologies Inc",
-      "Amtex Systems",
-      "3i Infotech",
-      "Asic Infotech Pvt Ltd",
+      "Mapview Geographical Solutions",
+      "Star4ce Technologies, Inc.",
+      "Amtex Systems, Inc.",
+      "3i-Infotech",
+      "Asic Infotech Pvt. Ltd.",
     ]);
-    expect(roles.find((role) => role.id === "star4ce")?.end).toBe("Sep 2009");
-    expect(roles.find((role) => role.id === "3i-infotech")?.end).toBe("Jan 2007");
-    expect(roles.find((role) => role.id === "amtex")?.title).toBe("Senior Programmer Analyst");
-    expect(roles.find((role) => role.id === "asic")?.title).toBe("Software engineer");
+    expect(roles.find((role) => role.id === "star4ce")?.end).toBe("Jun 2009");
+    expect(roles.find((role) => role.id === "3i-infotech")?.end).toBe("Feb 2007");
+    expect(roles.find((role) => role.id === "amtex")?.end).toBe("Oct 2007");
+    expect(roles.find((role) => role.id === "amtex")?.title).toBe("Team Lead");
+    expect(roles.find((role) => role.id === "asic")?.title).toBe("Java Developer");
+    expect(roles.find((role) => role.id === "asd")?.achievements[0]).toBe(
+      "Delivered the official Health Plan Marketplace for New York State of Health, supporting 5 million enrollments in 2020.",
+    );
     expect(roles.find((role) => role.id === "tekizma")?.start).toBe("Sep 2024");
     expect(roles.find((role) => role.id === "marlabs")?.employer).toBe("Marlabs Software Pvt. Ltd.");
   });
@@ -92,46 +97,39 @@ describe("verified profile facts", () => {
     );
   });
 
-  it("keeps the radar aligned with the résumé inventory", () => {
-    expect(radar.filter((item) => item.band === "Core").map((item) => item.name)).toEqual([
-      "AWS",
-      "GCP",
-      "Databricks",
-      "Java",
-      "Spring Boot",
-      "SQL",
-      "PySpark",
-    ]);
-    expect(radar.find((item) => item.name === "GCP")?.band).toBe("Core");
-    expect(radar.some((item) => item.name === "Azure")).toBe(false);
+  it("keeps the expertise aligned with the résumé inventory", () => {
     const tekizma = roles.find((role) => role.id === "tekizma");
     expect(tekizma?.technologies).not.toContain("Azure");
-    expect(tekizma?.responsibilities.join(" ")).toContain("Design cloud architectures in AWS");
+    expect(tekizma?.responsibilities.join(" ")).toContain("modernization and AWS migration");
+    expect(tekizma?.responsibilities.join(" ")).toContain("Direct the QA function");
     expect(tekizma?.achievements[0]).toBe(
       "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.",
     );
     const skills = expertiseGroups.flatMap((group) => group.skills);
     expect(skills).toContain("Langfuse");
-    expect(skills).toContain("GCP");
+    expect(skills).toContain("GCP (working knowledge)");
+    expect(skills).toContain("Databricks (on Azure)");
+    expect(skills).toContain("Apache Kafka");
+    expect(skills).toContain("Claude Code");
+    expect(skills).not.toContain("GCP");
     expect(skills).not.toContain("Azure");
   });
 
   it("lists latest roles first and links only the visible public repositories", () => {
     expect(roles[0]?.employer).toBe("Tekizma Inc.");
-    expect(roles.at(-1)?.employer).toBe("Asic Infotech Pvt Ltd");
-    expect(progression.map((role) => role.id)).toEqual(roles.map((role) => role.id));
+    expect(roles.at(-1)?.employer).toBe("Asic Infotech Pvt. Ltd.");
     expect(visualResume.roles.map((role) => role.employer)).toEqual([
       "Tekizma Inc.",
       "Advanced Software Design",
       "Marlabs Software",
-      "MapView Geographical Solutions (P) Ltd",
-      "Star4ce Technologies Inc",
-      "Amtex Systems",
-      "3i Infotech",
-      "Asic Infotech Pvt Ltd",
+      "Mapview Geographical Solutions",
+      "Star4ce Technologies, Inc.",
+      "Amtex Systems, Inc.",
+      "3i-Infotech",
+      "Asic Infotech Pvt. Ltd.",
     ]);
-    expect(visualResume.roles[4]?.end).toBe("Sep 2009");
-    expect(visualResume.roles[6]?.end).toBe("Jan 2007");
+    expect(visualResume.roles[4]?.end).toBe("Jun 2009");
+    expect(visualResume.roles[6]?.end).toBe("Feb 2007");
     expect(personalProjects.map((project) => [project.name, project.url, project.language])).toEqual([
       ["rag_replit", "https://github.com/rallwins/rag_replit", "TypeScript"],
       ["voice_asst", "https://github.com/rallwins/voice_asst", "Python"],
@@ -147,6 +145,22 @@ describe("verified profile facts", () => {
       expect(project.updated).toBe("2026-10-13");
       expect(project.url).not.toContain("/profile");
     }
+  });
+
+  it("cuts featured recommendation excerpts verbatim from the full quotes", () => {
+    for (const featured of featuredRecommendations) {
+      const person = recommendations.find((item) => item.id === featured.id);
+      expect(person?.quote).toContain(featured.excerpt.replace(/^…/, ""));
+    }
+  });
+
+  it("keeps the retired routes out of navigation and the stale claims off the site", () => {
+    expect(routes.map((route) => route.href)).not.toContain("/writing");
+    expect(routes.map((route) => route.href)).not.toContain("/certifications");
+    expect(primaryNav.length).toBeLessThanOrEqual(7);
+    const published = JSON.stringify({ profile, roles, visualResume });
+    expect(published).not.toContain("22+");
+    expect(published).not.toContain("AWS and GCP");
   });
 
   it("does not publish a phone number or a public email address", () => {
