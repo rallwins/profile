@@ -1,23 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import type { Diagram } from "../../content/architecture";
-import { ArchitectureCanvasLoader } from "@/components/architecture-canvas-loader";
+import { DiagramFlow } from "@/components/diagram-flow";
 
 export function DiagramDisclosure({ diagram, children }: { diagram: Diagram; children: React.ReactNode }) {
-  // The canvas measures its container, so it mounts only once the panel is open.
-  const [opened, setOpened] = useState(false);
-
   return (
-    <details
-      className="disclosure"
-      onToggle={(event) => {
-        if (event.currentTarget.open) setOpened(true);
-      }}
-    >
+    <details className="disclosure">
       <summary>Diagram: {diagram.title}</summary>
-      <div className="pb-6">
-        {opened ? <ArchitectureCanvasLoader diagram={diagram} /> : null}
+      <div className="grid gap-6 pt-2 pb-6 lg:grid-cols-2 lg:items-start">
+        <DiagramFlow diagram={diagram} />
         {children}
       </div>
     </details>

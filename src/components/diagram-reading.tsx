@@ -2,7 +2,7 @@ import type { Diagram } from "../../content/architecture";
 
 export function DiagramReading({ diagram }: { diagram: Diagram }) {
   return (
-    <div className="plate mt-6">
+    <div className="plate min-w-0">
       <h3 className="font-semibold text-ink">Step by step</h3>
       <ol className="mt-4 space-y-3">
         {diagram.nodes.map((node, index) => (

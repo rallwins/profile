@@ -37,9 +37,8 @@ Next.js 16 Cache Components stay off, and `partialPrefetching` stays off with th
 
 `content/architecture.ts` describes nodes and edges. Each node has a logical label, a physical label, and a description.
 
-- Wide screens mount `@xyflow/react` for pan, zoom, node selection, a concepts/technology toggle, and a flow highlight.
-- Every diagram also renders an ordered HTML list, so the same descriptions exist without the canvas, including on small screens.
-- On `/architecture` the canvas mounts only when its `<details>` opens (`diagram-disclosure.tsx`), because React Flow has to measure a visible container.
+- `diagram-flow.tsx` draws a static top-to-bottom flow in HTML and SVG at every screen size. Rows come from the edges, so branches stay accurate, and colour marks each node's role.
+- Every diagram also renders an ordered HTML list with the same descriptions.
 
 ## Interaction boundaries
 
@@ -47,8 +46,6 @@ Next.js 16 Cache Components stay off, and `partialPrefetching` stays off with th
 | --- | --- |
 | `theme-provider.tsx` | Persists light, dark, or system |
 | `site-header.tsx` | Pathname and mobile dialog |
-| `architecture-canvas.tsx` | React Flow |
-| `diagram-disclosure.tsx` | Mounts the canvas on first open |
 | `expandable-quote.tsx` | Clamps long recommendations |
 | `track-link.tsx` | Vercel Analytics `track()` |
 

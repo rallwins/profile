@@ -259,32 +259,88 @@ h2 {
   list-style: disc;
 }
 
-.react-flow__node {
-  box-shadow: none;
+.flow-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--tone-line);
+  border-radius: 0.625rem;
+  background-color: var(--tone-fill);
+  padding-inline: 0.5rem;
+  text-align: center;
 }
 
-.react-flow__controls {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  box-shadow: none;
+.flow-swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1px solid var(--tone-line);
+  border-radius: 0.1875rem;
+  background-color: var(--tone-fill);
 }
 
-.react-flow__controls-button {
-  border-bottom: 1px solid var(--line);
-  background: var(--panel);
-  fill: var(--ink);
-  box-shadow: none;
+.flow-tone-source {
+  --tone-fill: var(--paper);
+  --tone-line: rgba(24, 24, 28, 0.32);
 }
 
-.react-flow__attribution {
-  background: transparent !important;
-  color: var(--slate) !important;
-  box-shadow: none !important;
+.flow-tone-build {
+  --tone-fill: #eaf0fd;
+  --tone-line: #aebff0;
 }
 
-.react-flow__attribution a {
-  color: var(--slate) !important;
+.flow-tone-control {
+  --tone-fill: #fdf4dc;
+  --tone-line: #e6cc86;
+}
+
+.flow-tone-intelligence {
+  --tone-fill: #f1edfc;
+  --tone-line: #c9bbf1;
+}
+
+.flow-tone-outcome {
+  --tone-fill: #e6f6ee;
+  --tone-line: #9fd5b9;
+}
+
+.dark .flow-tone-source {
+  --tone-line: rgba(255, 255, 255, 0.36);
+}
+
+.dark .flow-tone-build {
+  --tone-fill: #1d2740;
+  --tone-line: #41598f;
+}
+
+.dark .flow-tone-control {
+  --tone-fill: #2f2813;
+  --tone-line: #7a6426;
+}
+
+.dark .flow-tone-intelligence {
+  --tone-fill: #271f3d;
+  --tone-line: #5d4b94;
+}
+
+.dark .flow-tone-outcome {
+  --tone-fill: #15301f;
+  --tone-line: #3a7a58;
+}
+
+.flow-edge {
+  stroke: var(--accent);
+  stroke-dasharray: 4 4;
+  stroke-width: 1.5;
+  animation: flow-dash 1s linear infinite;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -8;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

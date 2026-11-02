@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { aiActionDiagram } from "../../../content/architecture";
 import { expertiseGroups } from "../../../content/expertise";
-import { ArchitectureCanvasLoader } from "@/components/architecture-canvas-loader";
+import { DiagramFlow } from "@/components/diagram-flow";
 import { DiagramReading } from "@/components/diagram-reading";
 import { Frame, PageIntro, Section } from "@/components/page-intro";
 
@@ -52,8 +52,10 @@ export default function AiPage() {
       </Section>
 
       <Section title={aiActionDiagram.title}>
-        <ArchitectureCanvasLoader diagram={aiActionDiagram} />
-        <DiagramReading diagram={aiActionDiagram} />
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+          <DiagramFlow diagram={aiActionDiagram} />
+          <DiagramReading diagram={aiActionDiagram} />
+        </div>
       </Section>
 
       <Section title="Platforms and practices">
