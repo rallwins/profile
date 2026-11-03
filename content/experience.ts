@@ -1,5 +1,12 @@
 export type RoleWeight = "recent" | "early";
 
+export type RoleProject = {
+  title: string;
+  responsibilities: string[];
+  achievement: string;
+  technologies: string[];
+};
+
 export type Role = {
   id: string;
   employer: string;
@@ -12,104 +19,138 @@ export type Role = {
   responsibilities: string[];
   technologies: string[];
   achievements: string[];
+  projects?: RoleProject[];
 };
 
 export const roles: Role[] = [
   {
     id: "tekizma",
-    employer: "Tekizma Inc.",
-    location: null,
+    employer: "Tekizma",
+    location: "India",
     start: "Sep 2024",
     end: "Present",
-    title: "Director of Technology",
+    title: "Director of Technology | AI Solutions Architect",
     weight: "recent",
     summary:
-      "Leading engineering teams across application, data, and AI workstreams, and setting the technology strategy and architecture they build on.",
-    responsibilities: [
-      "Lead engineering teams across application, data, and AI workstreams, owning team structure, sprint planning, hiring, mentoring, and delivery from requirements through production release.",
-      "Define technology strategy, solution architecture, and technical roadmaps for enterprise application, data, cloud, and AI platforms, aligning architecture decisions with business outcomes.",
-      "Led the modernization and AWS migration of a Spring/JSP enterprise application to Spring Boot, Angular, REST APIs, Hibernate, and MySQL, decomposing legacy components into modern application and API layers with automated deployments.",
-      "Direct the QA function, aligning test strategy, release readiness, and defect management with the development teams' Agile delivery.",
-      "Architect Databricks data platforms on Azure with PySpark, SQL, and dbt, covering ingestion, transformation, modeling, orchestration, and reusable data products for analytics and ML workloads.",
-      "Design reconciliation (Recon) architecture, defining source-to-target mappings, validation rules, data quality controls, and exception handling.",
-      "Integrate Generative AI capabilities with enterprise data platforms for natural-language data interaction, automated documentation, and AI-assisted engineering workflows.",
-      "Establish architecture governance and engineering standards, including design reviews, security, observability, risk and dependency management, and stakeholder communication.",
-    ],
-    technologies: [
-      "Databricks (Azure)",
-      "PySpark",
-      "dbt",
-      "SQL",
-      "AWS",
-      "Spring Boot",
-      "Angular",
-      "REST APIs",
-      "Hibernate",
-      "MySQL",
-      "Microservices",
-      "Generative AI",
-      "Data Engineering",
-    ],
+      "Lead enterprise technology direction by defining solution architecture, target-state roadmaps, and design standards for application, data, cloud, and AI platforms, while overseeing architecture governance across development and QA teams.",
+    responsibilities: [],
+    technologies: [],
     achievements: [
-      "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.",
-      "Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.",
+      "Improved reconciliation accuracy by 50% through automated validation, standardized exception handling, and AI-assisted exception investigation.",
+      "Accelerated engineering productivity using Claude Code, Agentic AI, MCP, and RAG to streamline code development, enable intelligent workflows, and improve contextual access to enterprise knowledge.",
+    ],
+    projects: [
+      {
+        title: "Enterprise Application Modernization",
+        responsibilities: [
+          "Led the modernization of a legacy Spring/JSP enterprise application into a cloud-native platform built on Spring Boot, Angular, REST APIs, Hibernate, MySQL, and Redis, delivered with Docker containerization, Terraform-based infrastructure provisioning, AWS CodePipeline CI/CD, and end-to-end observability using OpenTelemetry, Datadog, and Splunk.",
+          "Defined the target AWS architecture across EC2, ECS/Fargate, and Lambda, with VPC networking, ALB/NLB, and CloudFront for delivery, secured through IAM, KMS, Secrets Manager, Cognito, and WAF, and monitored centrally via CloudWatch.",
+          "Developed AI-powered application capabilities using Agentic AI and Amazon Bedrock AgentCore, enabling intelligent, task-oriented workflows integrated with enterprise application services and business processes.",
+          "Designed secure AI agent integration using the Model Context Protocol (MCP), enabling AI agents to interact with application tools, APIs, and enterprise services through controlled, standardized interfaces.",
+          "Implemented RAG-based AI workflows with an enterprise knowledge base, leveraging enterprise knowledge retrieval and Claude Code to support intelligent information access, contextual responses, and AI-assisted application functionality.",
+          "Established AI-Driven Development Life Cycle (AIDLC) practices across requirements analysis, solution design, implementation, testing, and validation, incorporating structured human review and quality gates to improve delivery consistency, maintainability, and engineering governance.",
+        ],
+        achievement:
+          "Accelerated engineering productivity using Claude Code, Agentic AI, MCP, and RAG to streamline code development, enable intelligent workflows, and improve contextual access to enterprise knowledge.",
+        technologies: [
+          "Spring Boot",
+          "Angular",
+          "Hibernate",
+          "MySQL",
+          "Redis",
+          "Docker",
+          "Terraform",
+          "AWS CodePipeline",
+          "OpenTelemetry",
+          "Datadog",
+          "Splunk",
+          "Amazon Bedrock",
+          "AgentCore (Runtime, Gateway, Identity)",
+          "Strands Agents",
+          "MCP",
+          "RAG",
+          "Bedrock Knowledge Bases",
+          "Claude Code",
+        ],
+      },
+      {
+        title: "Databricks Data Engineering & Reconciliation",
+        responsibilities: [
+          "Built a scalable Databricks data engineering platform supporting incremental data ingestion through Auto Loader and Lakeflow, data modeling using PySpark, SQL, and dbt, and workflow orchestration through Databricks Workflows.",
+          "Established data governance and reusable data-product capabilities using Unity Catalog, enabling governed data access and natural-language interaction with enterprise data, while leveraging GitHub Copilot to accelerate engineering productivity.",
+          "Designed the end-to-end data reconciliation architecture, defining source-to-target mappings, data quality and validation rules, exception-handling mechanisms, and reconciliation controls across ingestion and transformation layers; implemented continuous delivery workflows using GitHub Actions.",
+          "Developed an AI reconciliation agent to investigate Databricks pipeline exceptions, correlate failures with source-to-target mappings and operational runbooks, and recommend corrective actions for analyst review and approval. Integrated Langfuse for execution tracing and evaluation.",
+        ],
+        achievement:
+          "Improved reconciliation accuracy by 50% through automated validation, standardized exception handling, and AI-assisted exception investigation.",
+        technologies: [
+          "Databricks",
+          "Auto Loader",
+          "Delta Live Tables",
+          "Databricks Workflows",
+          "Unity Catalog",
+          "PySpark",
+          "SQL",
+          "dbt",
+          "Langfuse",
+          "GitHub Actions",
+          "GitHub Copilot",
+        ],
+      },
     ],
   },
   {
     id: "asd",
     employer: "Advanced Software Design, Inc.",
-    location: null,
+    location: "USA",
     start: "Sep 2013",
     end: "Aug 2024",
     title: "Solutions Architect",
     weight: "recent",
     summary:
-      "Architecting multi-tier enterprise applications and leading their modernization, from service boundaries and API contracts through release readiness.",
+      "Delivering multi-tier enterprise applications on AWS and directing their modernization, from service boundaries and API contracts through release readiness.",
     responsibilities: [
-      "Architected multi-tier enterprise applications using Spring Boot, Angular, microservices, REST APIs, and AWS, applying cloud-native and distributed design patterns.",
-      "Defined service boundaries, API contracts, and integration patterns for complex enterprise workflows, translating business requirements into architecture specifications and roadmaps.",
-      "Designed secure, high-performance REST APIs and microservices, addressing authentication, authorization, and operational readiness.",
-      "Led application modernization, evaluating legacy components and defining target-state architectures and incremental migration strategies.",
-      "Established reusable design patterns and technical components, improving consistency and development efficiency across enterprise applications.",
-      "Partnered with development, QA, business analysis, and delivery teams on estimation, release readiness, and resolution of complex production and integration issues.",
+      "Delivered multi-tier enterprise applications using Spring Boot, Angular, microservices, REST APIs, and AWS, with secure, high-performance APIs covering authentication, authorization, and operational readiness.",
+      "Designed AWS deployments on EC2, ECS, Lambda, and Amazon RDS, using VPC, ELB, IAM, S3, and CloudFront for networking, load balancing, access control, storage, and content delivery.",
+      "Defined service boundaries, API contracts, and integration patterns for complex enterprise workflows.",
+      "Directed application modernization, assessing legacy components and defining incremental migration strategies.",
+      "Introduced reusable design patterns and technical components, improving consistency and development efficiency.",
+      "Collaborated with development, QA, business analysis, and delivery teams on estimation, release readiness, and resolution of complex production issues.",
     ],
     technologies: [
       "Spring Boot",
       "Angular",
       "REST APIs",
       "Microservices",
-      "AWS",
+      "AWS (EC2, ECS, Lambda, S3, RDS, VPC, ELB, IAM, CloudFront)",
       "Hibernate",
       "Oracle",
       "DB2",
-      "DynamoDB",
       "Docker",
       "Kubernetes",
       "Jenkins",
       "Git",
     ],
     achievements: [
-      "Delivered the official Health Plan Marketplace for New York State of Health, supporting 5 million enrollments in 2020.",
+      "Delivered the official Health Plan Marketplace for New York State of Health as Solutions Architect, supporting 5 million enrollments in 2020 at a peak load of concurrent users.",
     ],
   },
   {
     id: "marlabs",
     employer: "Marlabs Software Pvt. Ltd.",
-    location: "Piscataway, NJ",
+    location: null,
     start: "Sep 2010",
     end: "Sep 2013",
-    title: "Technical Manager | Solutions Architecture & Mobile Platforms",
+    title: "Technical Manager | Mobile Solutions Architecture",
     weight: "recent",
     summary:
-      "Leading the Mobile Center of Excellence and defining cross-platform architecture and enterprise integration for client and internal products.",
+      "Leading the Mobile Centre of Excellence and defining cross-platform mobile architecture and enterprise integration for client and internal initiatives.",
     responsibilities: [
-      "Defined cross-platform mobile solution architecture for iOS, Android, and PhoneGap applications, covering security, authentication, REST APIs, logging, and platform standards.",
-      "Translated business and technical requirements into mobile solution architecture, application designs, wireframes, SDLC plans, and delivery roadmaps for client and internal products.",
-      "Architected eFleetPro enterprise integration solutions connecting construction-equipment manufacturers, dealers, and rental fleets with ERP systems, punch-out integrations, and payment gateways.",
-      "Designed mobile-to-enterprise integration patterns for secure communication between mobile applications, backend services, ERP platforms, and external systems.",
-      "Led the Mobile Center of Excellence, defining reusable architecture patterns, platform standards, and technical practices for cross-platform application development.",
-      "Managed solution design, development planning, team formation, hiring, and delivery across client and internal mobile initiatives.",
-      "Presented cross-platform architecture capabilities and technology solutions to customers and leadership, supporting solution positioning, client engagement, and revenue growth.",
+      "Defined cross-platform mobile solution architecture for iOS, Android, and PhoneGap, covering security, authentication, REST APIs, and logging, and produced application designs, SDLC plans, and delivery roadmaps.",
+      "Delivered eFleetPro enterprise integration solutions connecting construction-equipment manufacturers, dealers, and rental fleets with ERP systems, punch-out integrations, and payment gateways.",
+      "Established signed mobile-to-enterprise integration patterns for secure communication with backend services and external systems.",
+      "Led the Mobile Centre of Excellence, setting platform standards and managing team formation, hiring, and delivery across client and internal initiatives.",
+      "Presented cross-platform capabilities and technology solutions to customers and leadership, supporting client engagement and revenue growth.",
     ],
     technologies: [
       "iOS",

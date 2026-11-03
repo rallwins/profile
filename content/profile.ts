@@ -1,35 +1,35 @@
 export const profile = {
   name: "Allwins Rajaiah",
   fullName: "Allwins Kannan Rajaiah",
-  title: "Director of Technology | Engineering Leadership & Solutions Architecture",
-  role: "Director of Technology",
+  title: "AI Solutions Architect",
+  role: "AI Solutions Architect",
   headline: "I build and lead the teams that build enterprise platforms.",
   supporting:
-    "Director of Technology with 20+ years of experience leading engineering, architecture, and delivery of full-stack, cloud-native, data, and AI platforms.",
+    "AI Solutions Architect with 20+ years of experience in delivering enterprise applications, cloud-native platforms, and AI-enabled solutions.",
   aboutShort:
-    "I lead engineering, architecture, and delivery of full-stack, cloud-native, data, and AI platforms, and I stay hands-on in Java, Spring Boot, Angular, React, microservices, and AWS.",
-  seoTitle: "Allwins Rajaiah | Director of Technology | Engineering Leadership & Solutions Architecture",
+    "I translate business challenges into scalable, secure, production-ready architectures, and I stay hands-on in AI, AWS, Java, Spring Boot, Angular, React, microservices, and REST APIs.",
+  seoTitle: "Allwins Rajaiah | AI Solutions Architect",
   seoDescription:
-    "Allwins Rajaiah is a Director of Technology with 20+ years of experience leading engineering, architecture, and delivery of full-stack, cloud-native, data, and AI platforms.",
+    "Allwins Rajaiah is an AI Solutions Architect with 20+ years of experience in delivering enterprise applications, cloud-native platforms, and AI-enabled solutions.",
   canonical: "https://allwinsrajaiah.com",
   linkedin: "https://www.linkedin.com/in/allwinsrajaiah/",
   githubUrl: "https://github.com/rallwins",
-  contactHeadline: "Let's talk about engineering leadership, architecture, and AI.",
+  contactHeadline: "Let's talk about AI, architecture, and engineering leadership.",
 } as const;
 
 export const summaryParagraphs = [
-  "I am a Director of Technology with 20+ years of experience leading engineering, architecture, and delivery of full-stack, cloud-native, data, and AI platforms.",
-  "As an engineering leader I own team structure, delivery planning, quality strategy, hiring, and mentoring, and I drive Agile execution and release quality from requirements through production.",
-  "I remain a hands-on architect in Java, Spring Boot, Angular, React, microservices, and AWS, translating business goals into scalable, secure, and cost-effective solutions.",
-  "My modernization work spans AI and data: Generative AI, Agentic AI, Amazon Bedrock, AgentCore Runtime, RAG, and MCP, alongside Databricks, PySpark, and dbt data platforms.",
-  "I establish architecture governance and engineering excellence through standards, design reviews, CI/CD, and observability, in partnership with business and technology stakeholders.",
+  "I am an AI Solutions Architect with 20+ years of experience in delivering enterprise applications, cloud-native platforms, and AI-enabled solutions, translating business challenges into scalable, secure, and production-ready architectures.",
+  "I design end-to-end AI and cloud architectures on AWS, integrating Generative AI, Agentic AI, Java, Spring Boot, Angular, React, microservices, REST APIs, and enterprise systems to deliver business-aligned solutions.",
+  "I build agentic AI solutions using Amazon Bedrock AgentCore, Strands Agents, Model Context Protocol (MCP), Retrieval-Augmented Generation (RAG), and human-in-the-loop controls, incorporating secure tool integration, observability, and evaluation.",
+  "I lead cloud-native application architecture and AI-enabled data engineering, combining enterprise application modernization with Databricks, Auto Loader, Lakeflow, PySpark, SQL, dbt, and Unity Catalog to deliver scalable data platforms, governed data products, automated reconciliation, and AI-powered exception investigation.",
+  "I drive technology strategy and engineering excellence through governance, solution design reviews, technology roadmaps, security standards, and cross-functional leadership of development and QA teams, using AI to improve engineering productivity and operational outcomes.",
 ] as const;
 
 export const impactMetrics = [
   {
     figure: "20+",
-    label: "years leading engineering",
-    context: "Across full-stack, cloud-native, data, and AI platforms",
+    label: "years of experience",
+    context: "Delivering enterprise applications, cloud-native platforms, and AI-enabled solutions",
   },
   {
     figure: "5M",
@@ -39,12 +39,12 @@ export const impactMetrics = [
   {
     figure: "50%",
     label: "better reconciliation accuracy",
-    context: "Automated validation and exception-handling frameworks",
+    context: "Automated validation, standardized exception handling, and AI-assisted exception investigation",
   },
   {
-    figure: "40%",
-    label: "less development effort",
-    context: "Reusable dbt/Databricks frameworks and AI-assisted engineering",
+    figure: "AIF-C01",
+    label: "AWS Certified AI Practitioner",
+    context: "Issued September 2026, verifiable on Credly",
   },
 ] as const;
 
@@ -52,28 +52,28 @@ export const practices = [
   {
     title: "Engineering leadership",
     summary:
-      "Application, data, AI, and QA teams: team structure, sprint planning, hiring, mentoring, and delivery from requirements through production release.",
+      "Cross-functional leadership of development and QA teams, with architecture governance, design reviews, estimation, and release readiness.",
     href: "/experience",
     linkLabel: "See experience",
   },
   {
     title: "Architecture & modernization",
     summary:
-      "Technology strategy, solution architecture, and governance, including moving a Spring/JSP enterprise application to Spring Boot, Angular, and AWS.",
-    href: "/architecture",
-    linkLabel: "See architecture",
+      "Solution architecture, target-state roadmaps, and design standards, including taking a legacy Spring/JSP application to a cloud-native architecture on AWS.",
+    href: "/architecture#legacy-modernization",
+    linkLabel: "See the modernization",
   },
   {
     title: "AI & GenAI",
     summary:
-      "Generative and agentic AI on enterprise data, with Amazon Bedrock, AgentCore Runtime, RAG, MCP, guardrails, and evaluation.",
+      "Agentic AI on Amazon Bedrock AgentCore with Strands Agents, MCP, RAG, and human-in-the-loop controls, delivered through AI-Driven Development Life Cycle (AIDLC) practices.",
     href: "/ai",
     linkLabel: "See AI practice",
   },
   {
     title: "Data platforms",
     summary:
-      "Databricks on Azure with PySpark, SQL, and dbt, covering ingestion, modeling, orchestration, reconciliation, and reusable data products.",
+      "Databricks with Auto Loader, Lakeflow, PySpark, SQL, dbt, and Unity Catalog, covering ingestion, modeling, reconciliation, and governed data products.",
     href: "/architecture#enterprise-data-platform",
     linkLabel: "See the data platform",
   },
@@ -81,6 +81,6 @@ export const practices = [
 
 export const education = {
   degree: "B.E., Computer Science & Engineering",
-  school: "Amrita Institute, Bharathiar University, India",
+  school: "Bharathiar University, India",
   years: null as string | null,
 } as const;

@@ -7,6 +7,7 @@ import { certifications } from "../content/certifications";
 import { roles } from "../content/experience";
 import { expertiseGroups } from "../content/expertise";
 import { personalProjects } from "../content/projects";
+import { projectArchitecture } from "../content/project-diagrams";
 import { visualResume } from "../content/visual-resume";
 import { education, profile } from "../content/profile";
 import { featuredRecommendations, recommendations, recommendationsNote } from "../content/recommendations";
@@ -19,21 +20,20 @@ describe("verified profile facts", () => {
     expect("email" in profile).toBe(false);
     expect(profile.linkedin).toBe("https://www.linkedin.com/in/allwinsrajaiah/");
     expect(profile.canonical).toBe("https://allwinsrajaiah.com");
-    expect(profile.title).toBe("Director of Technology | Engineering Leadership & Solutions Architecture");
+    expect(profile.title).toBe("AI Solutions Architect");
+    expect(profile.role).toBe("AI Solutions Architect");
     expect(profile.supporting).toContain("20+ years");
-    expect(education.school).toBe("Amrita Institute, Bharathiar University, India");
+    expect(education.school).toBe("Bharathiar University, India");
     expect(education.degree).toBe("B.E., Computer Science & Engineering");
     expect(education.years).toBeNull();
     expect(awards).toEqual([]);
     expect(profile.githubUrl).toBe("https://github.com/rallwins");
-    expect(profile.seoTitle).toBe(
-      "Allwins Rajaiah | Director of Technology | Engineering Leadership & Solutions Architecture",
-    );
+    expect(profile.seoTitle).toBe("Allwins Rajaiah | AI Solutions Architect");
   });
 
   it("uses the recorded employers and does not invent extras", () => {
     expect(roles.map((role) => role.employer)).toEqual([
-      "Tekizma Inc.",
+      "Tekizma",
       "Advanced Software Design, Inc.",
       "Marlabs Software Pvt. Ltd.",
       "Mapview Geographical Solutions",
@@ -48,9 +48,11 @@ describe("verified profile facts", () => {
     expect(roles.find((role) => role.id === "amtex")?.title).toBe("Team Lead");
     expect(roles.find((role) => role.id === "asic")?.title).toBe("Java Developer");
     expect(roles.find((role) => role.id === "asd")?.achievements[0]).toBe(
-      "Delivered the official Health Plan Marketplace for New York State of Health, supporting 5 million enrollments in 2020.",
+      "Delivered the official Health Plan Marketplace for New York State of Health as Solutions Architect, supporting 5 million enrollments in 2020 at a peak load of concurrent users.",
     );
     expect(roles.find((role) => role.id === "tekizma")?.start).toBe("Sep 2024");
+    expect(roles.find((role) => role.id === "tekizma")?.title).toBe("Director of Technology | AI Solutions Architect");
+    expect(roles.find((role) => role.id === "marlabs")?.title).toBe("Technical Manager | Mobile Solutions Architecture");
     expect(roles.find((role) => role.id === "marlabs")?.employer).toBe("Marlabs Software Pvt. Ltd.");
   });
 
@@ -99,27 +101,33 @@ describe("verified profile facts", () => {
 
   it("keeps the expertise aligned with the résumé inventory", () => {
     const tekizma = roles.find((role) => role.id === "tekizma");
-    expect(tekizma?.technologies).not.toContain("Azure");
-    expect(tekizma?.responsibilities.join(" ")).toContain("modernization and AWS migration");
-    expect(tekizma?.responsibilities.join(" ")).toContain("Direct the QA function");
-    expect(tekizma?.achievements[0]).toBe(
-      "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks.",
+    expect(tekizma?.projects?.map((project) => project.title)).toEqual([
+      "Enterprise Application Modernization",
+      "Databricks Data Engineering & Reconciliation",
+    ]);
+    expect(tekizma?.projects?.[0]?.achievement).toBe(
+      "Accelerated engineering productivity using Claude Code, Agentic AI, MCP, and RAG to streamline code development, enable intelligent workflows, and improve contextual access to enterprise knowledge.",
+    );
+    expect(tekizma?.projects?.[1]?.achievement).toBe(
+      "Improved reconciliation accuracy by 50% through automated validation, standardized exception handling, and AI-assisted exception investigation.",
     );
     const skills = expertiseGroups.flatMap((group) => group.skills);
     expect(skills).toContain("Langfuse");
-    expect(skills).toContain("GCP (working knowledge)");
-    expect(skills).toContain("Databricks (on Azure)");
-    expect(skills).toContain("Apache Kafka");
+    expect(skills).toContain("Strands Agents");
+    expect(skills).toContain("Unity Catalog");
+    expect(skills).toContain("Datadog");
+    expect(skills).not.toContain("Team Leadership (20 members, 4 pods)");
     expect(skills).toContain("Claude Code");
-    expect(skills).not.toContain("GCP");
-    expect(skills).not.toContain("Azure");
+    const published = JSON.stringify({ roles, expertiseGroups, visualResume });
+    expect(published).not.toContain("Azure");
+    expect(published).not.toContain("GCP");
   });
 
   it("lists latest roles first and links only the visible public repositories", () => {
-    expect(roles[0]?.employer).toBe("Tekizma Inc.");
+    expect(roles[0]?.employer).toBe("Tekizma");
     expect(roles.at(-1)?.employer).toBe("Asic Infotech Pvt. Ltd.");
     expect(visualResume.roles.map((role) => role.employer)).toEqual([
-      "Tekizma Inc.",
+      "Tekizma",
       "Advanced Software Design",
       "Marlabs Software",
       "Mapview Geographical Solutions",
@@ -143,6 +151,9 @@ describe("verified profile facts", () => {
       expect(project.description).toBeTruthy();
       expect(project.updated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(project.url).not.toContain("/profile");
+      const architecture = projectArchitecture[project.slug];
+      expect(architecture?.source).toContain(project.url);
+      expect(architecture?.diagram.edges.every((edge) => architecture.diagram.nodes.some((n) => n.id === edge.target))).toBe(true);
     }
   });
 
@@ -158,6 +169,8 @@ describe("verified profile facts", () => {
     expect(routes.map((route) => route.href)).not.toContain("/certifications");
     expect(primaryNav.length).toBeLessThanOrEqual(7);
     const published = JSON.stringify({ profile, roles, visualResume });
+    expect(published).not.toContain("40%");
+    expect(published).not.toContain("4 pods");
     expect(published).not.toContain("22+");
     expect(published).not.toContain("AWS and GCP");
   });
@@ -171,12 +184,13 @@ describe("verified profile facts", () => {
       Buffer.from(generator),
     ]).toString("latin1");
     expect(pdf.subarray(0, 5).toString("utf8")).toBe("%PDF-");
-    expect(generator).toContain("Tekizma Inc.");
+    expect(generator).toContain("Tekizma, India");
     expect(blob).not.toContain("95666");
     expect(blob).not.toContain("87576");
     expect(blob).not.toContain("1998");
     expect(blob).not.toContain("Avishkar");
-    expect(generator).toContain("Amrita Institute, Bharathiar University");
+    expect(generator).toContain("Bharathiar University, India");
+    expect(blob).not.toContain("Coimbatore");
     expect(generator).toContain("cd4be8c7c3ea48aca09bc7a181355061");
     const forbidden = ["allwins.rs", "gmail.com"].join("@");
     expect(blob).not.toContain(forbidden);

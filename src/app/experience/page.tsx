@@ -7,9 +7,50 @@ import { Frame, PageIntro, Section } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Experience",
-  description: `${profile.supporting} Career history from Director of Technology back to the first engineering roles.`,
+  description: `${profile.supporting} Career history from AI Solutions Architect back to the first engineering roles.`,
   alternates: { canonical: "/experience" },
 };
+
+function WorkDetail({
+  achievements,
+  responsibilities,
+  technologies,
+}: {
+  achievements: string[];
+  responsibilities: string[];
+  technologies: string[];
+}) {
+  return (
+    <>
+      {achievements.length > 0 ? (
+        <div className="note mt-5">
+          <p className="note-label">{achievements.length > 1 ? "Key achievements" : "Key achievement"}</p>
+          <ul className="mt-3 space-y-2 font-medium leading-snug text-ink">
+            {achievements.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {responsibilities.length > 0 ? (
+        <ul className="bullets mt-5 max-w-[65ch] text-[0.9375rem] leading-relaxed text-ink">
+          {responsibilities.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      ) : null}
+      {technologies.length > 0 ? (
+        <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">
+          {technologies.map((item) => (
+            <li key={item} className="tag">
+              {item}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </>
+  );
+}
 
 export default function ExperiencePage() {
   const recent = roles.filter((role) => role.weight === "recent");
@@ -19,8 +60,8 @@ export default function ExperiencePage() {
     <Frame>
       <PageIntro
         eyebrow="Experience"
-        title="From engineer to Director of Technology."
-        lede="20+ years of building enterprise platforms and leading the teams behind them, across application, cloud, data, mobile, and AI."
+        title="From Java developer to AI Solutions Architect."
+        lede="20+ years of delivering enterprise applications, cloud-native platforms, and AI-enabled solutions, and leading the teams behind them."
       />
       <Link href="/resume" className="text-link mt-4 inline-flex min-h-11 items-center text-[0.9375rem]">
         View the résumé
@@ -44,28 +85,24 @@ export default function ExperiencePage() {
               <h2 className="text-[clamp(1.625rem,2.75vw,2.125rem)] leading-[1.15] text-ink">{role.title}</h2>
               <p className="mt-1 text-lg text-slate">{role.employer}</p>
               {role.summary ? <p className="mt-4 max-w-[65ch] leading-relaxed text-ink">{role.summary}</p> : null}
-              {role.achievements.length > 0 ? (
-                <div className="note mt-5">
-                  <h3 className="note-label">{role.achievements.length > 1 ? "Key achievements" : "Key achievement"}</h3>
-                  <ul className="mt-3 space-y-2 font-medium leading-snug text-ink">
-                    {role.achievements.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              <ul className="bullets mt-5 max-w-[65ch] text-[0.9375rem] leading-relaxed text-ink">
-                {role.responsibilities.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">
-                {role.technologies.map((item) => (
-                  <li key={item} className="tag">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              {role.projects ? (
+                role.projects.map((project) => (
+                  <section key={project.title} className="mt-8 border-t border-line pt-6">
+                    <h3 className="font-serif text-xl leading-tight text-ink">{project.title}</h3>
+                    <WorkDetail
+                      achievements={[project.achievement]}
+                      responsibilities={project.responsibilities}
+                      technologies={project.technologies}
+                    />
+                  </section>
+                ))
+              ) : (
+                <WorkDetail
+                  achievements={role.achievements}
+                  responsibilities={role.responsibilities}
+                  technologies={role.technologies}
+                />
+              )}
             </div>
           </article>
         ))}

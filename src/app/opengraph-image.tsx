@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { impactMetrics, profile } from "../../content/profile";
 
-export const alt = "Allwins Rajaiah, Director of Technology";
+export const alt = "Allwins Rajaiah, AI Solutions Architect";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

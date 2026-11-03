@@ -17,15 +17,15 @@ export const metadata: Metadata = {
 const approach = [
   {
     title: "Teams",
-    text: "Team structure, hiring, and mentoring across development and QA, with clear ownership from requirements through production.",
+    text: "Cross-functional leadership of development and QA teams, using AI to raise engineering productivity and operational outcomes.",
   },
   {
     title: "Delivery",
-    text: "Agile execution, sprint planning, test strategy, and release readiness, so quality is planned into delivery.",
+    text: "Estimation, automated testing, CI/CD, and release readiness, so quality is planned into delivery.",
   },
   {
     title: "Governance",
-    text: "Standards, design reviews, security, observability, and risk management, in partnership with business and technology stakeholders.",
+    text: "Solution design reviews, technology roadmaps, and security standards, with architecture governance across application, data, cloud, and AI.",
   },
 ];
 

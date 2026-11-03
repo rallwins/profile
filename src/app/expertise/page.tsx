@@ -4,7 +4,7 @@ import { Frame, PageIntro } from "@/components/page-intro";
 
 export const metadata: Metadata = {
   title: "Expertise",
-  description: "Leadership, architecture, full-stack, distributed systems, cloud, AI, data, DevOps, database, and mobile expertise.",
+  description: "Architecture and leadership, AI and GenAI, cloud, data engineering, application and integration, DevOps, databases, and AI-assisted development.",
   alternates: { canonical: "/expertise" },
 };
 
@@ -14,7 +14,7 @@ export default function ExpertisePage() {
       <PageIntro
         eyebrow="Expertise"
         title="Breadth to lead, depth to stay hands-on."
-        lede="The technologies and practices I work with, from team leadership and architecture through application, cloud, data, and AI."
+        lede="The technologies and practices I work with, from architecture and team leadership through AI, cloud, data, and application engineering."
       />
       <div className="mt-12 grid gap-4 lg:grid-cols-2">
         {expertiseGroups.map((group) => (

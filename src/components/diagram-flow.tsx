@@ -3,7 +3,7 @@ import type { Diagram } from "../../content/architecture";
 const boxHeight = 64;
 const rowPitch = 96;
 
-const tones = {
+export const tones = {
   source: "Starting point",
   build: "Build",
   control: "Control",
@@ -11,38 +11,37 @@ const tones = {
   outcome: "Delivered",
 } as const;
 
-type Tone = keyof typeof tones;
+export type Tone = keyof typeof tones;
 
 const nodeTones: Record<string, Tone> = {
   sources: "source",
   legacy: "source",
   edata: "source",
+  request: "source",
   ingestion: "build",
   transform: "build",
   model: "build",
   decompose: "build",
   rest: "build",
   services: "build",
-  eng: "build",
   retrieval: "build",
   context: "build",
   validation: "control",
   recon: "control",
+  gateway: "control",
   knowledge: "intelligence",
-  rag: "intelligence",
   llm: "intelligence",
   agent: "intelligence",
+  "recon-agent": "intelligence",
   products: "outcome",
   analytics: "outcome",
   ui: "outcome",
   mysql: "outcome",
   aws: "outcome",
-  nli: "outcome",
-  user: "outcome",
   action: "outcome",
 };
 
-const toneOf = (id: string): Tone => nodeTones[id] ?? "build";
+const toneOf = (node: Diagram["nodes"][number]): Tone => node.tone ?? nodeTones[node.id] ?? "build";
 
 // Each node sits one row below its furthest upstream node, so branches share a row.
 function rankNodes(diagram: Diagram) {
@@ -75,7 +74,7 @@ export function DiagramFlow({ diagram }: { diagram: Diagram }) {
   };
   const markerId = `flow-arrow-${diagram.id}`;
   const usedTones = (Object.keys(tones) as Tone[]).filter((tone) =>
-    diagram.nodes.some((node) => toneOf(node.id) === tone),
+    diagram.nodes.some((node) => toneOf(node) === tone),
   );
 
   return (
@@ -120,7 +119,7 @@ export function DiagramFlow({ diagram }: { diagram: Diagram }) {
                   height: boxHeight,
                 }}
               >
-                <div className={`flow-card flow-tone-${toneOf(node.id)}`}>
+                <div className={`flow-card flow-tone-${toneOf(node)}`}>
                   <p className="text-[0.8125rem] font-semibold leading-tight text-ink">{node.logical}</p>
                   {node.physical !== node.logical ? (
                     <p className="mt-0.5 text-[0.6875rem] leading-tight text-slate">{node.physical}</p>
@@ -132,7 +131,8 @@ export function DiagramFlow({ diagram }: { diagram: Diagram }) {
         </div>
       </div>
       <figcaption className="mt-3 text-[0.9375rem] leading-relaxed text-slate">
-        <span className="font-semibold text-ink">{diagram.figure}.</span> {diagram.caption}
+        {diagram.figure ? <span className="font-semibold text-ink">{diagram.figure}. </span> : null}
+        {diagram.caption}
       </figcaption>
       <ul className="meta mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs" aria-label="Diagram key">
         {usedTones.map((tone) => (

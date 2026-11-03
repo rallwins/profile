@@ -1,6 +1,6 @@
 # Allwins Rajaiah — technology leadership profile
 
-A static Next.js profile for Allwins Rajaiah, Director of Technology. Content comes from the supplied résumé. Facts the résumé does not state are not added.
+A static Next.js profile for Allwins Rajaiah, AI Solutions Architect. Content comes from the supplied résumé. Facts the résumé does not state are not added.
 
 ## Run
 

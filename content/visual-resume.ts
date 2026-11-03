@@ -1,95 +1,84 @@
 /**
- * Wording from Allwins_Rajaiah_Director_of_Technology.pdf.
- * The résumé prints a phone number and an email address; both are omitted here.
+ * Wording from Allwins_Rajaiah_AI_Solutions_Architect.pdf.
+ * The résumé prints a phone number, an email address, and a city; all are omitted here.
  */
 
 export const visualResume = {
   name: "Allwins Kannan Rajaiah",
-  tagline: "DIRECTOR OF TECHNOLOGY | ENGINEERING LEADERSHIP & SOLUTIONS ARCHITECTURE",
+  tagline: "AI SOLUTIONS ARCHITECT",
   linkedinLabel: "linkedin.com/in/allwinsrajaiah/",
   highlights: [
     "20+ Years of Experience",
-    "Engineering Leadership & Delivery",
-    "Full-Stack & Cloud-Native Platforms",
-    "AI / GenAI & Data Platforms",
+    "Agentic AI on AWS",
+    "AI-Driven Modernization",
+    "Data Platforms & Governance",
   ],
   summary: [
-    "Director of Technology with 20+ years of experience leading engineering, architecture, and delivery of full-stack, cloud-native, data, and AI platforms.",
-    "Engineering leadership: own team structure, delivery planning, quality strategy, hiring, and mentoring, driving Agile execution and release quality from requirements through production.",
-    "Hands-on architect in Java, Spring Boot, Angular, React, microservices and AWS, translating business goals into scalable, secure, and cost-effective solutions.",
-    "AI and data modernization with Generative AI, Agentic AI, Amazon Bedrock, AgentCore Runtime, RAG, and MCP, and Databricks, PySpark, and dbt data platforms.",
-    "Architecture governance and engineering excellence: standards, design reviews, CI/CD, and observability partnering with business and technology stakeholders.",
+    "AI Solutions Architect with 20+ years of experience in delivering enterprise applications, cloud-native platforms, and AI-enabled solutions.",
+    "End-to-end AI and cloud architectures on AWS, integrating Generative AI, Agentic AI, Java, Spring Boot, Angular, React, microservices, and REST APIs.",
+    "Agentic AI with Amazon Bedrock AgentCore, Strands Agents, MCP, RAG, and human-in-the-loop controls, with secure tool integration, observability, and evaluation.",
+    "Cloud-native application architecture and AI-enabled data engineering with Databricks, Auto Loader, Lakeflow, PySpark, SQL, dbt, and Unity Catalog.",
+    "Technology strategy and engineering excellence: governance, design reviews, roadmaps, security standards, and cross-functional leadership of development and QA teams.",
   ],
   technologies: [
     {
-      name: "Leadership & Architecture",
+      name: "Architecture & Leadership",
       detail:
-        "Engineering Leadership, Multi-Team Management (Dev & QA), Technology Strategy, Architecture Governance, Agile Delivery, Hiring & Mentoring, Stakeholder Management, Enterprise Modernization",
-    },
-    {
-      name: "Full Stack & Application",
-      detail:
-        "Java, Spring Boot, Hibernate, Angular, React, Node.js, REST APIs, JavaScript, HTML, OAuth, SAML, JWT",
-    },
-    {
-      name: "Distributed Systems & Messaging",
-      detail:
-        "Microservices, Event-Driven Architecture, Apache Kafka, Redis (Caching, Pub/Sub), API Design, Integration Patterns",
-    },
-    {
-      name: "Cloud & Platform",
-      detail:
-        "AWS (EC2, ECS, Fargate, Lambda, VPC, ALB/NLB, S3, CloudFront, IAM, KMS, Cognito, WAF), Kubernetes, Docker, Terraform, CloudFormation, Serverless, Cloud Security & Cost Optimization, GCP (working knowledge)",
+        "Solution Architecture, Cloud Architecture, Architecture Governance, Design Reviews, Enterprise Modernization, Team Leadership, Estimation & Release Readiness",
     },
     {
       name: "AI & GenAI",
       detail:
-        "Generative AI, Agentic AI, Amazon Bedrock, AgentCore Runtime, RAG, MCP, LLM Applications, Knowledge Bases, AI Guardrails, AI Governance, AI Evaluation, Langfuse",
+        "Generative AI, Agentic AI, Amazon Bedrock, AgentCore, Strands Agents, MCP, RAG, Bedrock Knowledge Bases, LLM Applications, AI Governance, AI Evaluation, Langfuse",
+    },
+    {
+      name: "Cloud & Platform",
+      detail: "AWS, Docker, Kubernetes, Terraform, Serverless, Cloud Security, Scalability & Cost Optimization",
     },
     {
       name: "Data Engineering",
       detail:
-        "Databricks (on Azure), Spark, PySpark, dbt, SQL, Data Pipelines, Data Modeling, Data Quality, Data Governance",
+        "Databricks, Lakeflow, Auto Loader, Databricks Workflows, Unity Catalog, PySpark, dbt, SQL, Data Pipelines",
+    },
+    {
+      name: "Application & Integration",
+      detail:
+        "Java, Spring Boot, Hibernate, Angular, Microservices, REST APIs, Redis, OAuth, JWT, Node.js, HTML, CSS, JavaScript, TypeScript",
     },
     {
       name: "DevOps & Observability",
-      detail:
-        "CI/CD, AWS CodePipeline, GitHub Actions, Jenkins, CloudWatch, Prometheus, Automated Testing, Release Engineering",
+      detail: "CI/CD, Git, Jenkins, AWS CodePipeline, Prometheus, Splunk, Datadog, OpenTelemetry",
     },
     {
-      name: "Databases & Search",
-      detail: "Oracle, PostgreSQL, MySQL, DB2, MongoDB, DynamoDB, Elasticsearch",
-    },
-    {
-      name: "Mobile",
-      detail: "Flutter, Android, iOS",
+      name: "Databases",
+      detail: "Oracle, MySQL, DB2, Amazon RDS",
     },
     {
       name: "AI-Assisted Development",
-      detail: "Claude Code, GitHub Copilot, Cursor, Replit",
+      detail: "Claude Code, GitHub Copilot, Replit, Cursor",
     },
   ],
   roles: [
     {
       start: "Sep 2024",
       end: "Present",
-      employer: "Tekizma Inc.",
-      title: "Director of Technology",
-      points: ["Engineering and QA leadership", "Technology strategy and solution architecture", "Data, cloud, and AI platforms"],
+      employer: "Tekizma",
+      title: "Director of Technology | AI Solutions Architect",
+      points: ["Enterprise application modernization", "Agentic AI, MCP, and RAG in the application", "Databricks data engineering and reconciliation"],
     },
     {
       start: "Sep 2013",
       end: "Aug 2024",
       employer: "Advanced Software Design",
       title: "Solutions Architect",
-      points: ["Enterprise application architecture", "Application modernization", "Official Health Plan Marketplace for New York State of Health"],
+      points: ["Multi-tier enterprise applications on AWS", "Application modernization", "Official Health Plan Marketplace for New York State of Health"],
     },
     {
       start: "Sep 2010",
       end: "Sep 2013",
       employer: "Marlabs Software",
-      title: "Technical Manager | Solutions Architecture & Mobile Platforms",
-      points: ["Mobile Center of Excellence", "Enterprise integration", "Team formation, hiring, and delivery"],
+      title: "Technical Manager | Mobile Solutions Architecture",
+      points: ["Mobile Centre of Excellence", "Enterprise integration", "Team formation, hiring, and delivery"],
     },
     {
       start: "Sep 2009",
@@ -139,27 +128,27 @@ export const visualResume = {
   ],
   achievements: [
     { figure: "5M", text: "Enrollments supported in 2020 on the official Health Plan Marketplace for New York State of Health" },
-    { figure: "50%", text: "Enhanced reconciliation accuracy" },
-    { figure: "40%", text: "Reduced development effort" },
-    { figure: "Dev & QA", text: "Lead engineering teams across application, data, and AI, and direct the QA function" },
+    { figure: "50%", text: "Improved reconciliation accuracy" },
+    { figure: "20+", text: "Years delivering enterprise applications, cloud-native platforms, and AI-enabled solutions" },
+    { figure: "AIF-C01", text: "AWS Certified AI Practitioner" },
   ],
   recent: {
-    heading: "Tekizma Inc. | Director of Technology",
+    heading: "Tekizma | Director of Technology | AI Solutions Architect",
     when: "Sep 2024 – Present",
     points: [
-      "Lead engineering teams across application, data, and AI workstreams, owning team structure, sprint planning, hiring, mentoring, and delivery.",
-      "Define technology strategy, solution architecture, and technical roadmaps for application, data, cloud, and AI platforms.",
-      "Led the modernization and AWS migration of a Spring/JSP enterprise application to Spring Boot, Angular, REST APIs, Hibernate, and MySQL.",
-      "Direct the QA function, aligning test strategy, release readiness, and defect management with Agile delivery.",
-      "Architect Databricks data platforms on Azure with PySpark, SQL, and dbt.",
-      "Design reconciliation (Recon) architecture with validation rules, data quality controls, and exception handling.",
-      "Integrate Generative AI with enterprise data platforms for natural-language data interaction, automated documentation, and AI-assisted engineering.",
-      "Establish architecture governance and engineering standards, including design reviews, security, and observability.",
+      "Define solution architecture, target-state roadmaps, and design standards for application, data, cloud, and AI platforms.",
+      "Led the modernization of a legacy Spring/JSP application into a cloud-native platform on AWS.",
+      "Developed AI-powered application capabilities with Agentic AI and Amazon Bedrock AgentCore.",
+      "Designed secure AI agent integration using the Model Context Protocol (MCP).",
+      "Implemented RAG-based AI workflows with an enterprise knowledge base.",
+      "Established AI-Driven Development Life Cycle (AIDLC) practices with human review and quality gates.",
+      "Built a Databricks platform with Auto Loader, Lakeflow, PySpark, SQL, dbt, and Unity Catalog.",
+      "Designed the end-to-end data reconciliation architecture and an AI reconciliation agent.",
     ],
   },
   education: {
     degree: "B.E., Computer Science & Engineering",
-    school: "Amrita Institute, Bharathiar University, India",
+    school: "Bharathiar University, India",
   },
   certification: {
     name: "AWS Certified AI Practitioner",

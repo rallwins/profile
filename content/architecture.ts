@@ -3,8 +3,9 @@ export type FlowNode = {
   logical: string;
   physical: string;
   description: string;
-  column: number;
-  row: number;
+  column?: number;
+  row?: number;
+  tone?: "source" | "build" | "control" | "intelligence" | "outcome";
 };
 
 export type FlowEdge = {
@@ -67,8 +68,8 @@ export const dataPlatformDiagram: Diagram = {
     {
       id: "ingestion",
       logical: "Ingestion",
-      physical: "Databricks on Azure",
-      description: "Landing data with enough lineage to trace a later exception.",
+      physical: "Auto Loader and Lakeflow",
+      description: "Incremental ingestion that lands data with enough lineage to trace a later exception.",
       column: 1,
       row: 1,
     },
@@ -91,25 +92,34 @@ export const dataPlatformDiagram: Diagram = {
     {
       id: "recon",
       logical: "Reconciliation",
-      physical: "Recon architecture",
+      physical: "Reconciliation controls",
       description:
-        "Source-to-target mappings, validation rules, exception handling, and a processing pattern that can scale.",
+        "Source-to-target mappings, data quality and validation rules, exception handling, and reconciliation controls across ingestion and transformation.",
       column: 4,
+      row: 0,
+    },
+    {
+      id: "recon-agent",
+      logical: "Exception investigation",
+      physical: "AI reconciliation agent",
+      description:
+        "An agent correlates pipeline failures with mappings and runbooks and recommends fixes for analyst approval, traced and evaluated in Langfuse.",
+      column: 5,
       row: 0,
     },
     {
       id: "model",
       logical: "Data modeling",
-      physical: "Modeled datasets",
-      description: "Models shaped for reuse, not only for a single report.",
+      physical: "PySpark, SQL, and dbt",
+      description: "Models shaped for reuse, not only for a single report, orchestrated with Databricks Workflows.",
       column: 4,
       row: 1,
     },
     {
       id: "products",
       logical: "Data products",
-      physical: "Reusable data products",
-      description: "Assets other teams can consume without recopying the pipeline.",
+      physical: "Governed in Unity Catalog",
+      description: "Reusable assets with governed access that other teams can consume without recopying the pipeline.",
       column: 5,
       row: 1,
     },
@@ -127,6 +137,7 @@ export const dataPlatformDiagram: Diagram = {
     { id: "i-t", source: "ingestion", target: "transform" },
     { id: "t-v", source: "transform", target: "validation" },
     { id: "v-r", source: "validation", target: "recon" },
+    { id: "r-x", source: "recon", target: "recon-agent" },
     { id: "v-m", source: "validation", target: "model" },
     { id: "m-p", source: "model", target: "products" },
     { id: "p-a", source: "products", target: "analytics" },
@@ -138,7 +149,7 @@ export const modernizationDiagram: Diagram = {
   figure: "Figure 2",
   title: "Legacy application modernization",
   caption:
-    "The path for the Spring/JSP application: decompose, expose REST, rebuild services and UI, and land on MySQL and AWS.",
+    "The path for the Spring/JSP application: decompose, expose REST, rebuild services and UI, and land on MySQL, Redis, and AWS.",
   nodes: [
     {
       id: "legacy",
@@ -182,17 +193,18 @@ export const modernizationDiagram: Diagram = {
     },
     {
       id: "mysql",
-      logical: "MySQL",
-      physical: "MySQL",
-      description: "The relational store for the modernized application.",
+      logical: "Data",
+      physical: "MySQL, Redis",
+      description: "The relational store for the modernized application, with Redis for caching.",
       column: 5,
       row: 0,
     },
     {
       id: "aws",
       logical: "AWS",
-      physical: "AWS",
-      description: "The cloud target for compute, deployment, and operations.",
+      physical: "ECS/Fargate, EC2, Lambda",
+      description:
+        "The cloud target: containers built with Docker, infrastructure in Terraform, delivery through AWS CodePipeline, and IAM, KMS, Secrets Manager, Cognito, and WAF for security.",
       column: 6,
       row: 0,
     },
@@ -210,74 +222,57 @@ export const modernizationDiagram: Diagram = {
 export const aiDataDiagram: Diagram = {
   id: "ai-enterprise-data",
   figure: "Figure 3",
-  title: "AI and enterprise data",
+  title: "Agentic AI in the application",
   caption:
-    "A pattern for natural-language access to enterprise data. Retrieval, guardrails, evaluation, and security are part of the path, not an afterthought.",
+    "Agents grounded in enterprise knowledge reach application tools and services only through MCP's controlled interfaces.",
   nodes: [
     {
-      id: "edata",
-      logical: "Enterprise data",
-      physical: "Platform data products",
-      description: "The data the business already trusts, not a shadow copy with no owner.",
+      id: "request",
+      logical: "Business task",
+      physical: "User or business process",
+      description: "A task-oriented request from a user or a business process inside the application.",
       column: 0,
       row: 0,
     },
     {
-      id: "eng",
-      logical: "Data engineering",
-      physical: "Pipelines and models",
-      description: "The engineering that makes that data fit to retrieve.",
+      id: "agent",
+      logical: "AI agent",
+      physical: "Amazon Bedrock AgentCore",
+      description: "Agentic AI that plans and carries out an intelligent, task-oriented workflow.",
       column: 1,
       row: 0,
     },
     {
       id: "knowledge",
-      logical: "Knowledge layer",
-      physical: "Knowledge bases",
-      description: "A knowledge layer built on knowledge bases.",
+      logical: "Enterprise knowledge",
+      physical: "RAG knowledge base",
+      description: "Enterprise knowledge retrieval for contextual responses and information access.",
       column: 2,
       row: 0,
     },
     {
-      id: "rag",
-      logical: "RAG",
-      physical: "Retrieval",
-      description: "Retrieval selects context. It is not a prompt stuffed with everything.",
+      id: "gateway",
+      logical: "Tool interfaces",
+      physical: "Model Context Protocol",
+      description: "Controlled, standardized interfaces to application tools, APIs, and enterprise services.",
+      column: 2,
+      row: 1,
+    },
+    {
+      id: "services",
+      logical: "Enterprise services",
+      physical: "Application APIs and processes",
+      description: "The application services and business processes the workflow is integrated with.",
       column: 3,
-      row: 0,
-    },
-    {
-      id: "llm",
-      logical: "LLM",
-      physical: "Bedrock and related LLMs",
-      description: "The model answers from the retrieved context, with Amazon Bedrock as the platform.",
-      column: 4,
-      row: 0,
-    },
-    {
-      id: "nli",
-      logical: "Natural language interface",
-      physical: "Guarded interface",
-      description: "The interface a person uses. Guardrails, evaluation, and observability belong here.",
-      column: 5,
-      row: 0,
-    },
-    {
-      id: "user",
-      logical: "Business user",
-      physical: "Business user",
-      description: "The person asking a question of enterprise data.",
-      column: 6,
-      row: 0,
+      row: 1,
+      tone: "outcome",
     },
   ],
   edges: [
-    { id: "e-g", source: "edata", target: "eng" },
-    { id: "g-k", source: "eng", target: "knowledge" },
-    { id: "k-r", source: "knowledge", target: "rag" },
-    { id: "r-l", source: "rag", target: "llm" },
-    { id: "l-n", source: "llm", target: "nli" },
-    { id: "n-u", source: "nli", target: "user" },
+    { id: "q-a", source: "request", target: "agent" },
+    { id: "a-k", source: "agent", target: "knowledge" },
+    { id: "a-g", source: "agent", target: "gateway" },
+    { id: "g-s", source: "gateway", target: "services" },
   ],
 };
 
@@ -359,16 +354,28 @@ export const caseStudies: CaseStudy[] = [
     slug: "enterprise-data-platform",
     title: "Enterprise Data Platform",
     context:
-      "Data platform architecture from my current role as Director of Technology: Databricks on Azure, reconciliation, and reusable data products.",
-    headlineOutcome: "50% better reconciliation accuracy and 40% less development effort.",
+      "The Databricks data engineering and reconciliation platform from my current role at Tekizma: incremental ingestion, governed data products, and an AI agent for exception investigation.",
+    headlineOutcome: "50% better reconciliation accuracy.",
     businessProblem:
       "Operational data needed a path to analytics and applications that could be checked, reused, and explained when numbers disagreed.",
     architecture:
-      "Source systems feed ingestion, transformation, and validation. Reconciliation is a first-class flow: mappings, rules, exceptions, and a processing pattern. Modeled data is published as products for analytics and applications.",
-    technologyChoices: ["Databricks on Azure", "PySpark", "dbt", "SQL"],
+      "Auto Loader and Lakeflow ingest data incrementally. PySpark, SQL, and dbt model it, orchestrated by Databricks Workflows. Reconciliation is a first-class flow of mappings, rules, exceptions, and controls, and an AI agent investigates exceptions for analyst approval. Unity Catalog governs the data products, including natural-language access.",
+    technologyChoices: [
+      "Databricks",
+      "Auto Loader",
+      "Lakeflow",
+      "Delta Live Tables",
+      "Databricks Workflows",
+      "Unity Catalog",
+      "PySpark",
+      "SQL",
+      "dbt",
+      "Langfuse",
+      "GitHub Actions",
+    ],
     designDecisions: [
       "Treat validation and reconciliation as architecture, not as a spreadsheet after the pipeline.",
-      "Prefer reusable dbt and Databricks assets over one-off transformations.",
+      "Let an AI agent investigate exceptions and recommend fixes, but keep the analyst as the one who approves them.",
       "Keep source-to-target mappings explicit so an exception has a place to land.",
     ],
     tradeoffs: [
@@ -377,32 +384,40 @@ export const caseStudies: CaseStudy[] = [
       "More control in dbt means less freedom for ad-hoc notebook logic.",
     ],
     security:
-      "Cloud design for this work covers security, networking, and monitoring alongside compute and storage.",
+      "Unity Catalog governs data access, and agent runs are traced and evaluated in Langfuse.",
     scalability:
-      "The reconciliation design calls for scalable processing patterns. Ingestion, transformation, and orchestration sit on Databricks so volume is a platform concern rather than a single job.",
+      "Incremental ingestion with Auto Loader and Lakeflow, and orchestration on Databricks Workflows, make volume a platform concern rather than a single job.",
     dataFlow:
-      "Source Systems → Ingestion → Transformation → Validation → Data Modeling → Data Products → Analytics/Applications, with reconciliation beside validation.",
+      "Source Systems → Ingestion → Transformation → Validation → Data Modeling → Data Products → Analytics/Applications, with reconciliation and AI exception investigation beside validation.",
     outcome:
-      "Enhanced reconciliation accuracy by 50% through the design and deployment of automated validation and exception-handling frameworks. Reduced development effort by 40% through reusable dbt/Databricks frameworks and AI-assisted engineering.",
+      "Improved reconciliation accuracy by 50% through automated validation, standardized exception handling, and AI-assisted exception investigation.",
     diagramId: "data-platform",
   },
   {
     slug: "legacy-modernization",
     title: "Legacy Application Modernization",
     context:
-      "The modernization and AWS migration of a Spring/JSP enterprise application, led in my current role and built on years of Solutions Architect work with REST, Spring Boot, Angular, and AWS.",
-    headlineOutcome: "A Spring/JSP application rebuilt in modern layers on AWS, with automated deployments.",
+      "The modernization of a legacy Spring/JSP enterprise application into a cloud-native platform, led in my current role at Tekizma with AI-Driven Development Life Cycle practices.",
+    headlineOutcome: "A cloud-native platform on AWS, delivered with AI-accelerated engineering.",
     businessProblem:
       "A server-page enterprise application had become hard to change, hard to integrate, and hard to deploy as a set of independent pieces.",
     architecture:
-      "Decompose the legacy application, put a REST API layer in front of Spring Boot services, move the interface to Angular, keep a relational model with Hibernate and MySQL, and run it on AWS.",
+      "Decompose the legacy application, put a REST API layer in front of Spring Boot services, move the interface to Angular, and keep a relational model with Hibernate and MySQL, with Redis for caching. It runs on AWS across EC2, ECS/Fargate, and Lambda, containerized with Docker, provisioned with Terraform, delivered through AWS CodePipeline, and observed end to end with OpenTelemetry, Datadog, Splunk, and CloudWatch.",
     technologyChoices: [
       "Spring Boot",
       "Angular",
       "REST",
       "Hibernate",
       "MySQL",
-      "AWS",
+      "Redis",
+      "Docker",
+      "Terraform",
+      "AWS CodePipeline",
+      "OpenTelemetry",
+      "Datadog",
+      "Splunk",
+      "ECS/Fargate",
+      "Lambda",
     ],
     designDecisions: [
       "Replace page-coupled JSP rendering with an API contract.",
@@ -415,53 +430,53 @@ export const caseStudies: CaseStudy[] = [
       "Angular and Spring Boot split the team’s skills. That is accepted so the UI and the services can change apart.",
     ],
     security:
-      "Authentication and authorization are designed into the REST services rather than added at the edge afterwards.",
+      "VPC networking, ALB/NLB, and CloudFront at the edge, with IAM, KMS, Secrets Manager, Cognito, and WAF as security controls.",
     scalability:
-      "Separating UI, API, and services lets each scale and deploy on its own, with AWS as the cloud target.",
+      "Separating UI, API, and services lets each scale and deploy on its own across ECS/Fargate, EC2, and Lambda.",
     dataFlow:
-      "Legacy → Decomposition → REST API Layer → Spring Boot Services, then Angular UI, MySQL, and AWS as the target-state layers.",
+      "Legacy → Decomposition → REST API Layer → Spring Boot Services, then Angular UI, MySQL and Redis, and AWS as the target-state layers.",
     outcome:
-      "Better scalability, maintainability, deployment automation, and integration.",
+      "Accelerated engineering productivity using Claude Code, Agentic AI, MCP, and RAG to streamline code development, enable intelligent workflows, and improve contextual access to enterprise knowledge.",
     diagramId: "modernization",
   },
   {
     slug: "ai-enterprise-data",
-    title: "AI and Enterprise Data",
+    title: "Agentic AI in the Application",
     context:
-      "Integrating Generative AI with enterprise data platforms for natural-language data interaction, automated documentation, and AI-assisted engineering.",
-    headlineOutcome: "Natural-language data interaction, automated documentation, and AI-assisted engineering.",
+      "AI-powered capabilities inside the modernized application at Tekizma: agentic workflows on Amazon Bedrock AgentCore, MCP integration, and RAG, built through AI-Driven Development Life Cycle practices.",
+    headlineOutcome: "Task-oriented AI workflows integrated with enterprise services through MCP.",
     businessProblem:
-      "People who need answers from enterprise data should not have to learn the warehouse, and a model should not answer from untrusted context.",
+      "Users and business processes needed intelligent, task-oriented help inside the application, without giving AI agents uncontrolled access to enterprise systems.",
     architecture:
-      "Enterprise data is engineered into a knowledge layer. Retrieval (RAG) supplies context to an LLM. A natural-language interface sits in front, with guardrails, evaluation, security, and observability as part of the design. An agent path uses MCP where a tool call is actually required.",
+      "Agentic AI on Amazon Bedrock AgentCore runs task-oriented workflows integrated with enterprise application services and business processes. Agents reach application tools, APIs, and enterprise services through the Model Context Protocol's controlled, standardized interfaces. RAG workflows over an enterprise knowledge base supply contextual responses. The capabilities are built through AIDLC practices, with structured human review and quality gates from requirements to validation.",
     technologyChoices: [
-      "Generative AI",
-      "RAG",
-      "MCP",
+      "Agentic AI",
       "Amazon Bedrock",
-      "AgentCore Runtime",
-      "Knowledge Bases",
-      "AI Guardrails",
-      "AI Evaluation",
+      "AgentCore",
+      "Strands Agents",
+      "MCP",
+      "RAG",
+      "Bedrock Knowledge Bases",
+      "Claude Code",
     ],
     designDecisions: [
-      "Retrieve before generating.",
-      "Keep guardrails and evaluation in the architecture, not in a later review.",
-      "Separate a natural-language interface from an agent that can take an action.",
+      "Integrate agents with application services through MCP rather than bespoke connections.",
+      "Ground responses in enterprise knowledge retrieval rather than in the model alone.",
+      "Put structured human review and quality gates into each AIDLC stage, from requirements to validation.",
     ],
     tradeoffs: [
-      "Retrieval quality caps answer quality. A richer index costs more to govern.",
-      "Bedrock and AgentCore Runtime speed up delivery and add a platform dependency. That trade has to be made deliberately.",
-      "Agents that can act need a narrower permission set than a chatbot. That friction is intentional.",
+      "Retrieval quality caps answer quality, and a richer knowledge base costs more to keep current.",
+      "Bedrock AgentCore speeds up delivery and adds a platform dependency. That trade has to be made deliberately.",
+      "Human review and quality gates slow the fastest path to release. That friction is intentional.",
     ],
     security:
-      "The model sees retrieved enterprise context under the same ownership as the data, with guardrails on what it may say or do.",
+      "Agents interact with tools, APIs, and enterprise services only through MCP's controlled, standardized interfaces.",
     scalability:
-      "The data platform underneath has to absorb retrieval load. The interface itself should stay stateless aside from the conversation the product actually needs.",
+      "New tools and services join through MCP without changing each agent.",
     dataFlow:
-      "Enterprise Data → Data Engineering → Knowledge Layer → RAG → LLM → Natural Language Interface → Business User.",
+      "Business Task → AI Agent → Enterprise Knowledge (RAG), and AI Agent → Tool Interfaces (MCP) → Enterprise Services.",
     outcome:
-      "AI-assisted engineering, together with reusable dbt and Databricks frameworks, reduced development effort by 40%.",
+      "Accelerated engineering productivity using Claude Code, Agentic AI, MCP, and RAG, with intelligent workflows and better contextual access to enterprise knowledge.",
     diagramId: "ai-enterprise-data",
   },
 ];
@@ -473,7 +488,7 @@ export const adrs: Adr[] = [
     context:
       "The current data platforms need ingestion, transformation, modeling, orchestration, validation, and products that more than one team can reuse. Reconciliation needs a place to run rules and exceptions at volume.",
     decision:
-      "Use Databricks on Azure as the processing platform, with PySpark for data-intensive transformation and dbt for reusable, reviewable models.",
+      "Use Databricks as the processing platform, with Auto Loader and Lakeflow for incremental ingestion, PySpark and SQL for data-intensive transformation, dbt for reusable, reviewable models, and Unity Catalog for governance.",
     alternatives: [
       "Leave transformation inside the operational database.",
       "Use a warehouse SQL path only, with no Spark processing layer.",
@@ -485,7 +500,7 @@ export const adrs: Adr[] = [
       "A managed platform shortens the path to orchestration and raises a dependency on that platform.",
     ],
     outcome:
-      "Reusable dbt/Databricks frameworks contributed to a 40% reduction in development effort, and automated validation and exception-handling frameworks enhanced reconciliation accuracy by 50%.",
+      "Reconciliation accuracy improved by 50% through automated validation, standardized exception handling, and AI-assisted exception investigation.",
   },
   {
     slug: "why-rest-spring-boot",
