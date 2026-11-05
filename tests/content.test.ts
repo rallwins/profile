@@ -138,6 +138,18 @@ describe("verified profile facts", () => {
     ]);
     expect(visualResume.roles[4]?.end).toBe("Jun 2009");
     expect(visualResume.roles[6]?.end).toBe("Feb 2007");
+    expect(visualResume.roles.map((role) => role.logo)).toEqual([
+      "tekizma",
+      "asd",
+      "marlabs",
+      "mapview",
+      "star4ce",
+      "amtex",
+      "3i-infotech",
+      "asic",
+    ]);
+    expect(visualResume.certifications.map((item) => item.code)).toEqual(["AIF-C01", "004"]);
+    expect(certifications.map((item) => item.name)).toContain("HashiCorp Certified: Terraform Associate");
     expect(personalProjects.map((project) => [project.name, project.url, project.language])).toEqual([
       ["ent_order_app", "https://github.com/rallwins/ent_order_app", "Python"],
       ["school-sync-ai", "https://github.com/rallwins/school-sync-ai", "Python"],
@@ -177,21 +189,20 @@ describe("verified profile facts", () => {
 
   it("does not publish a phone number or a public email address", () => {
     const pdf = readFileSync(new URL("../public/resume.pdf", import.meta.url));
-    const generator = readFileSync(new URL("../scripts/generate-resume.mjs", import.meta.url), "utf8");
+    const redactor = readFileSync(new URL("../scripts/redact-resume.mjs", import.meta.url), "utf8");
     const blob = Buffer.concat([
       pdf,
       Buffer.from(JSON.stringify({ profile, roles, certifications })),
-      Buffer.from(generator),
+      Buffer.from(redactor),
     ]).toString("latin1");
     expect(pdf.subarray(0, 5).toString("utf8")).toBe("%PDF-");
-    expect(generator).toContain("Tekizma, India");
+    expect(pdf.toString("latin1")).not.toContain("mailto:");
     expect(blob).not.toContain("95666");
     expect(blob).not.toContain("87576");
     expect(blob).not.toContain("1998");
     expect(blob).not.toContain("Avishkar");
-    expect(generator).toContain("Bharathiar University, India");
     expect(blob).not.toContain("Coimbatore");
-    expect(generator).toContain("cd4be8c7c3ea48aca09bc7a181355061");
+    expect(redactor).toContain("linkedin.com/in/allwinsrajaiah");
     const forbidden = ["allwins.rs", "gmail.com"].join("@");
     expect(blob).not.toContain(forbidden);
     const root = fileURLToPath(new URL("..", import.meta.url));

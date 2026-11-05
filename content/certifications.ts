@@ -21,4 +21,14 @@ export const certifications: Certification[] = [
       "https://www.credly.com/earner/earned/badge/496bc744-8636-4032-9eb0-975867c4f0d5",
     note: "The résumé names AWS Certified AI Practitioner AIF-C01 and does not print a credential ID or issue date. The ID, Credly link, and September 2026 issue date are the public LinkedIn and Credly values.",
   },
+  {
+    id: "terraform-associate-004",
+    name: "HashiCorp Certified: Terraform Associate",
+    status: "completed",
+    issued: null,
+    examCode: "004",
+    credentialId: null,
+    verificationUrl: null,
+    note: "The résumé names Hashicorp Certified Terraform Associate (004) and does not print a credential ID or issue date.",
+  },
 ];

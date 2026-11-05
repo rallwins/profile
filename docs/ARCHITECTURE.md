@@ -26,7 +26,8 @@ Redirects in `next.config.ts`: `/certifications` to `/about#credentials` (perman
 ```
 content/*.ts  ──► server pages and JSON-LD
 content/blog/*.mdx ──► src/lib/writing.ts (gray-matter) ──► MDXRemote (hidden by redirect)
-scripts/generate-resume.mjs ──► public/resume.pdf ──► /resume and the download links
+original résumé ──► scripts/redact-resume.mjs ──► public/resume.pdf ──► /resume and the download links
+public/visual-resume.pdf ──► the /visual-resume download (exported from that page)
 ```
 
 Nothing is fetched at request time. There is no database and no API route.

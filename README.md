@@ -19,7 +19,7 @@ npm test
 npm run build
 ```
 
-Regenerate the résumé PDF from the same facts with `npm run resume`.
+Publish an updated résumé with `npm run resume -- <path to the original PDF>`. It removes the email, phone and city, keeps the LinkedIn link, and writes `public/resume.pdf`.
 
 ## Deploy
 

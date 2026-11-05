@@ -82,9 +82,12 @@ export default function AboutPage() {
             <article key={item.id} className="plate">
               <h3 className="text-lg font-semibold text-ink">{item.name}</h3>
               <p className="mt-2 text-slate">
-                {item.examCode} · Issued {item.issued}
+                {item.examCode}
+                {item.issued ? ` · Issued ${item.issued}` : ""}
               </p>
-              <p className="mt-1 break-all text-sm text-slate">Credential ID {item.credentialId}</p>
+              {item.credentialId ? (
+                <p className="mt-1 break-all text-sm text-slate">Credential ID {item.credentialId}</p>
+              ) : null}
               {item.verificationUrl ? (
                 <TrackLink
                   event="credential_verify"

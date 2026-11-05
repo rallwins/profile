@@ -17,6 +17,7 @@ The public name is **Allwins Rajaiah**, matching the LinkedIn URL. The résumé 
 | Bullets and technologies for the five earlier roles | The site's earlier record. The résumé prints only title, employer, and dates for these roles and does not contradict them. |
 | Education | Résumé. No years are printed, so none are shown. |
 | AWS Certified AI Practitioner, exam AIF-C01 | Résumé |
+| HashiCorp Certified: Terraform Associate (004) | Résumé. No credential ID or issue date is printed, so none are shown. |
 | Credential ID, Credly verification URL, issued September 2026 | Public LinkedIn / Credly |
 | Case-study flows and decision notes | Written to stay consistent with the résumé's two Tekizma workstreams: Enterprise Application Modernization and Databricks Data Engineering & Reconciliation |
 | Recommendations | LinkedIn, quoted as written. Home excerpts are cut verbatim, and a test checks this. |
@@ -29,7 +30,7 @@ Résumé achievements are quoted:
 
 ## Withheld on purpose
 
-The résumé prints a phone number, an email address, and a city (Coimbatore). None of them appears on the site, in JSON-LD, or in the generated PDF, and tests enforce this. LinkedIn is the contact route. The attached résumé PDF must not be copied to `public/`; run `npm run resume` instead.
+The résumé prints a phone number, an email address, and a city (Coimbatore). None of them appears on the site, in JSON-LD, or in `public/resume.pdf`, and tests enforce this. LinkedIn is the contact route. Never copy the original résumé PDF into the repository; publish it with `npm run resume -- <path to the original>`, which redacts the contact line, re-centres the LinkedIn link, and refuses to write the file if any contact detail remains.
 
 The résumé lists no awards, so none are published.
 
